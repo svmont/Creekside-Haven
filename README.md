@@ -38,18 +38,26 @@ Each value appears in several files, so search-and-replace across the repository
 
 | What | Placeholder currently in the site | Where |
 | --- | --- | --- |
-| Street address | `500 Creekside Haven Way`, `Montgomery, TX 77356` | every page footer, `contact.html`, JSON-LD in `index.html`, `MAPS` link |
+| Street address | `270 Plez Morgan Dr`, `Montgomery, TX 77356` — taken from the surveyed floor plan sheets; confirm it is the leasing-office address | every page footer, `contact.html`, JSON-LD in `index.html`, `MAPS` link |
 | Phone | `(936) 555-0148` / `tel:+19365550148` | header, footer, `contact.html`, `apply.html`, JSON-LD |
 | Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | First move-ins | "spring 2026" | `index.html` hero, facts strip, FAQ |
-| Starting rents | $1,145 / $1,275 / $1,395 / $1,575 / $1,695 / $1,995 | `floor-plans.html`, `index.html` plan cards |
-| Plan names, sizes, room layouts | The Willow … The Bluffview, 562–1,428 sq ft | `floor-plans.html`, `index.html` |
+| Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
+| Square footage | ~700 (1BR) and ~800 (2BR), rounded from the sum of the labeled rooms | `floor-plans.html`, `index.html`, plan `sqft` |
+| Plan names | "The Cypress" (1BR) and "The Sycamore" (2BR) — marketing names, not from the plan sheets | `floor-plans.html`, `index.html`, `contact.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit, $300 pet fee + $25/mo | `apply.html` |
 | Office hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Amenity list | pool, fitness, dog park, garages, EV charging, etc. | `index.html`, `floor-plans.html` |
 | Photography | illustrated placeholders (inline SVG) | `gallery.html`, `index.html` hero |
+
+### What is real
+
+The **floor plans are the real ones**. Both schematics are drawn to scale from the surveyed
+plan sheets for 270 Plez Morgan Dr, and every room dimension on the page is the surveyed
+dimension. The square footages are computed from those rooms and rounded, so they will not
+match a rent roll exactly — replace them with the official numbers when you have them.
 
 Two things worth double-checking with the source of truth rather than assuming:
 
@@ -58,6 +66,18 @@ Two things worth double-checking with the source of truth rather than assuming:
   current zoning with Montgomery ISD.
 - **Drive times and retail.** Verify the H-E-B and Kroger Marketplace locations and the
   posted drive times before launch; they are labeled "approximate" on the page.
+- **Finishes and amenities.** The quartz counters, stainless appliances, 9-foot ceilings,
+  smart locks, pool, fitness center, dog park, garages and EV charging are all still
+  unconfirmed placeholders. The floor plans do *not* show kitchen islands or double vanities,
+  so those claims have been removed; check the rest against the real property before launch.
+
+## Editing the floor plans
+
+Each plan in `floor-plans.html` (and the pair previewed on `index.html`) is an inline `<svg>`
+drawn to scale: 21 pixels per foot, rooms positioned in feet from the unit's top-left corner.
+To correct a room, edit its `<rect>` (x, y, width, height are all feet × 21) and the matching
+`<text>` label. To add a plan, copy an `<article class="plan-card">` block and redraw it the
+same way.
 
 ## Replacing the illustrations with photography
 
