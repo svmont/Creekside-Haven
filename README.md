@@ -44,7 +44,6 @@ Each value appears in several files, so search-and-replace across the repository
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | First move-ins | "spring 2026" | `index.html` hero, facts strip, FAQ |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
-| Square footage | ~700 (1BR) and ~800 (2BR), rounded from the sum of the labeled rooms | `floor-plans.html`, `index.html`, plan `sqft` |
 | Plan names | "The Cypress" (1BR) and "The Sycamore" (2BR) — marketing names, not from the plan sheets | `floor-plans.html`, `index.html`, `contact.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit, $300 pet fee + $25/mo | `apply.html` |
 | Office hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
@@ -54,10 +53,10 @@ Each value appears in several files, so search-and-replace across the repository
 
 ### What is real
 
-The **floor plans are the real ones**. Both schematics are drawn to scale from the surveyed
-plan sheets for 270 Plez Morgan Dr, and every room dimension on the page is the surveyed
-dimension. The square footages are computed from those rooms and rounded, so they will not
-match a rent roll exactly — replace them with the official numbers when you have them.
+The **floor plans and square footages are the real ones**. Both schematics are drawn to scale
+from the surveyed plan sheets for 270 Plez Morgan Dr, every room dimension on the page is the
+surveyed dimension, and the square footages are the property's official figures: **715 SF** for
+the one-bedroom and **975 SF** for the two-bedroom.
 
 Two things worth double-checking with the source of truth rather than assuming:
 
