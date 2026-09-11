@@ -101,8 +101,11 @@ section on `apply.html` should stay on every page they appear on.
 ## Deploy
 
 `.github/workflows/deploy-pages.yml` publishes the site to GitHub Pages on every push to
-`main`, and enables Pages on the first run (`enablement: true`), so no manual setup is needed.
-It serves at `https://svmont.github.io/Creekside-Haven/`.
+`main`. It needs one manual step, once: **Settings → Pages → Build and deployment → Source:
+"GitHub Actions"**. (The workflow cannot do this itself — `actions/configure-pages` with
+`enablement: true` is rejected with "Resource not accessible by integration", because the
+Actions token is not allowed to create a Pages site.) Once Pages is on, every push to `main`
+deploys, and the site serves at `https://svmont.github.io/Creekside-Haven/`.
 
 For a custom domain, either add one under Settings → Pages (and commit a `CNAME` file), or
 point DNS at any static host (Netlify, Vercel, Cloudflare Pages, S3 + CloudFront) with this
