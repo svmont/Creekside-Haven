@@ -193,13 +193,23 @@ Every image is an inline `<svg>` — there are no binary assets to manage. To dr
    page gallery strip.
 4. Remove the "Illustrations shown" note that follows those galleries.
 
-### The neighborhood hero
+### The neighborhood page's images
 
-`neighborhood.html` opens with a half-width figure beside four highlights. It is meant to be a
-**lifestyle photograph** &mdash; the square, the lake, a street scene &mdash; and is currently the
-`downtown` illustration standing in, with a caption on the figure saying so. To swap it, add the
-file to `assets/`, register it under the `downtown` key in the photo map, and delete the
-`<figcaption>`. Everything else about the section stays as it is.
+`neighborhood.html` is built for photography it does not have yet. Three places are waiting:
+
+| Where | Wants | Standing in |
+| --- | --- | --- |
+| The hero figure, half the page beside the heading | a lifestyle shot &mdash; the square, the lake, a street scene | the `downtown` illustration, with a "photography to come" badge on it |
+| The four-tile strip under the highlights | Lake Conroe, downtown, the community, a wooded road | three illustrations plus the real entrance photograph in slot three |
+
+To swap any of them, add the file to `assets/` and register it in the photo map under the key
+that tile uses (`downtown`, `lake`, `trail`, `exterior`). The page picks a photograph over an
+illustration automatically; delete the hero's badge once a real photograph is in. Both the hero
+and the strip pass `fill=True`, which crops an illustration to its box the way `object-fit:
+cover` crops a photograph &mdash; a photograph needs nothing extra.
+
+The hero's script line (*Historic. Friendly. Home.*) is decorative and hides below 700px, where
+it would otherwise collide with the badge.
 
 The lightbox in `js/site.js` clones whatever element it finds inside the tile — swap the
 `querySelector("svg")` call for `querySelector("img, svg")` when photos go in.
