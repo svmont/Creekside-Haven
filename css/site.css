@@ -422,6 +422,9 @@ p + p { margin-top: .9rem; }
   color: rgba(255, 255, 255, .82);
 }
 
+.lake-band { display: block; background: var(--forest); }
+.lake-band img { width: 100%; height: auto; display: block; }
+
 .nb-isd { background: #eaf0e9; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .nb-isd .container {
   display: grid; grid-template-columns: auto 1fr auto; align-items: center;

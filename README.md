@@ -195,18 +195,33 @@ Every image is an inline `<svg>` — there are no binary assets to manage. To dr
 
 ### The neighborhood page's images
 
-`neighborhood.html` is built for photography it does not have yet. Three places are waiting:
-
-| Where | Wants | Standing in |
+| Where | Has | Wants |
 | --- | --- | --- |
-| The hero figure, half the page beside the heading | a lifestyle shot &mdash; the square, the lake, a street scene | the `downtown` illustration, with a "photography to come" badge on it |
-| The four-tile strip under the highlights | Lake Conroe, downtown, the community, a wooded road | three illustrations plus the real entrance photograph in slot three |
+| The hero figure, half the page beside the heading | the `downtown` illustration, with a "photography to come" badge on it | a lifestyle shot &mdash; the square, a street scene |
+| Strip tile 1 | `neighborhood-lake-conroe.jpg` | &mdash; |
+| Strip tile 2 | the `downtown` illustration | historic downtown Montgomery |
+| Strip tile 3 | `neighborhood-heb.jpg` | &mdash; |
+| Strip tile 4 | the `trail` illustration | a wooded road |
+| The closing band | `lake-band.jpg` | &mdash; |
 
-To swap any of them, add the file to `assets/` and register it in the photo map under the key
-that tile uses (`downtown`, `lake`, `trail`, `exterior`). The page picks a photograph over an
+To swap an illustration for a photograph, add the file to `assets/` and register it in the photo
+map under the key that tile uses (`downtown`, `trail`). The page picks a photograph over an
 illustration automatically; delete the hero's badge once a real photograph is in. Both the hero
 and the strip pass `fill=True`, which crops an illustration to its box the way `object-fit:
 cover` crops a photograph &mdash; a photograph needs nothing extra.
+
+**Captions burned into the artwork.** The two strip photographs and the closing band carry their
+own captions as part of the image. The strip only renders an HTML `<figcaption>` for a tile whose
+`label` is non-empty, so a self-captioning photograph is registered with an empty label; give a
+replacement photograph a label only if its caption is *not* part of the file. This also keeps the
+lake photograph out of the gallery, where a second caption would sit under its printed one &mdash;
+it is keyed `strip-lake`, not `lake`. A text-free export could be registered as `lake` and would
+then appear in the gallery too.
+
+Each of the three is cropped from a larger master kept alongside it (`*-full.png`). The strip
+photographs were cropped to 4:3 to fit the tile **without clipping their printed captions** &mdash;
+the lake image from the bottom, the H-E-B image from the sides. Re-crop from the masters the same
+way if the tiles ever change shape.
 
 The hero's script line (*Historic. Friendly. Home.*) is decorative and hides below 700px, where
 it would otherwise collide with the badge.
