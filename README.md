@@ -81,10 +81,16 @@ get" section), the gallery, and the JSON-LD in `index.html`.
 ### What is real
 
 The **floor plans are the property's own rendered plan sheets**, supplied by the property and
-branded Creekside Haven — not schematics drawn here. Every room dimension shown is the one
-printed on those sheets, and the square footages are the property's official figures: **715 SF**
-for the one-bedroom and **975 SF** for the two-bedroom. The plans are named the way the sheets
-name them, **1 Bedroom** and **2 Bedroom**; there are no invented marketing names.
+branded Creekside Haven — not schematics drawn here. The square footages are the property's
+official figures: **715 SF** for the one-bedroom and **975 SF** for the two-bedroom. The plans
+are named the way the sheets name them, **1 Bedroom** and **2 Bedroom**; there are no invented
+marketing names.
+
+The current sheets label only the bedrooms with dimensions; the earlier revision labelled every
+room. **Nothing on the site should quote a dimension the sheet does not print** — the card
+bullets and the `alt` text are written to match whatever the current render shows, and they need
+re-checking whenever a new render lands. Closet sizes in particular were dropped by the property,
+so the site no longer cites them.
 
 Two things worth double-checking with the source of truth rather than assuming:
 
