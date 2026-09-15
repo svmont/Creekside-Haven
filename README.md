@@ -124,24 +124,24 @@ same way.
 
 ## The logo
 
-The mark on the site is **a redrawing, not the official artwork**. The real logo exists in at
-least three versions — navy on white, gold, and dark brown on a wood plaque — and carries
-arched "CREEKSIDE / HAVEN" lettering plus the address, none of which is reproduced here
-(arched type is illegible at the 44px the header uses).
+`assets/logo.png` is the **official artwork** — the navy seal with the heron, cattails and
+arched CREEKSIDE / HAVEN lettering. It is used in the header at 52px and in the footer at
+104px. `assets/logo-full.png` is the original 1254px upload, kept as the source for print and
+any future sizes; the site does not serve it.
 
-**Replace it with the real files when you have them.** Upload to `assets/` — an SVG if the
-designer supplied one, otherwise a transparent PNG at 512px or larger:
+The web copy is resized to 512px and colour-quantized (the artwork is essentially three
+colours), which took it from 790KB to 24KB with no visible loss. Regenerate it the same way if
+the artwork changes.
 
-1. Swap the inline `<svg class="brand-mark">` in the header and footer of all six pages for
-   `<img class="brand-mark" src="assets/logo.svg" alt="Creekside Haven" width="44" height="44" />`.
-2. Leave `assets/favicon.svg` alone unless the designer supplies a small-size mark. The
-   favicon is deliberately **not** the seal: rings, cattails and water turn to mush at 16px,
-   so it is the heron alone, filled cream on a solid forest tile. `assets/apple-touch-icon.png`
-   (180×180) is the same artwork for iOS home screens.
-3. Consider a wordmark version for the footer, where there is room for the arched lettering.
+In the footer the seal sits on a cream circular chip (`.brand-seal`): the logo's navy is close
+to invisible against the dark footer, and a light chip reads as a deliberate badge rather than
+a mistake. If the designer supplies a reversed (light-on-dark) version, use that instead and
+drop the chip background.
 
-Ask the designer for the source file (AI/EPS/SVG) and the exact brand colours — the navy and
-gold are currently approximated by the site's existing forest/brass palette.
+**The favicon is deliberately not this logo.** At 16px the ring, lettering, cattails and water
+collapse into a smudge, so `assets/favicon.svg` is the heron alone, filled cream on a solid
+forest tile, with `assets/apple-touch-icon.png` (180×180) to match. Leave those as they are
+unless the designer supplies a simplified small-size mark.
 
 ## Photography
 
