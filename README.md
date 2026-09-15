@@ -43,13 +43,13 @@ Each value appears in several files, so search-and-replace across the repository
 
 | What | Placeholder currently in the site | Where |
 | --- | --- | --- |
-| Street address | `270 Plez Morgan Dr`, `Montgomery, TX 77356` — taken from the surveyed floor plan sheets; confirm it is the leasing-office address | every page footer, `contact.html`, JSON-LD in `index.html`, `MAPS` link |
+| Street address | `270 Plez Morgan Dr`, `Montgomery, TX 77356` — taken from the surveyed floor plan sheets | every page footer, `contact.html`, JSON-LD in `index.html`, `MAPS` link |
 | Phone | `(936) 555-0148` / `tel:+19365550148` | header, footer, `contact.html`, `apply.html`, JSON-LD |
 | Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Plan names | "The Cypress" (1BR) and "The Sycamore" (2BR) — marketing names, not from the plan sheets | `floor-plans.html`, `index.html`, `contact.html` |
-| Office hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
+| Hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
 | Photography | illustrated placeholders (inline SVG) | `gallery.html`, `index.html` hero |
@@ -119,6 +119,14 @@ sending anything. To go live:
 
 Add the leasing team to the endpoint's notification list, and confirm the consent checkbox
 language with whoever handles your TCPA/marketing compliance before turning on SMS follow-up.
+
+## No leasing office
+
+The community has no on-site leasing office, so the site never refers to one. Contact copy
+says "call us" / "ask us" rather than "stop by the office", the footer heading is **Contact**
+rather than "Leasing office", hours are just **Hours**, and the contact page's directions card
+points at the address and the map instead of visitor parking in front of an office. Keep that
+wording if you edit these pages.
 
 ## Fair housing
 
