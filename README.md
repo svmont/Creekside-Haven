@@ -1,12 +1,17 @@
 # Creekside Haven — apartment marketing site
 
-Marketing website for **Creekside Haven**, a new-construction apartment community in
-**Montgomery, Texas**. The site's job is leasing: get a visitor to a tour request or an
-application in as few clicks as possible, while presenting the property professionally.
+Marketing website for **Creekside Haven**, an apartment community in **Montgomery, Texas**.
+The site's job is leasing: get a visitor to a tour request or an application in as few clicks
+as possible, while presenting the property professionally.
 
-Positioning it leads with: **brand-new construction**, a **Montgomery ISD** address,
-**value** for the money, and **convenience** — the new H-E-B and Kroger Marketplace,
-historic downtown Montgomery, and easy ingress/egress toward Conroe, The Woodlands and I-45.
+Positioning it leads with: **usable square footage** (715 and 975 SF, with a separate dining
+room and a real laundry room), a **Montgomery ISD** address, **value** for the money, and
+**convenience** — the H-E-B and Kroger Marketplace, historic downtown Montgomery, and easy
+ingress/egress toward Conroe, The Woodlands and I-45.
+
+The community is **existing and occupied — not new construction and not pre-leasing**. Keep
+copy edits consistent with that: homes come available as they turn, so the site says "now
+leasing" and points people to the leasing office for current availability.
 
 It is a fast, dependency-free static site (plain HTML/CSS/JS, no build step, no frameworks).
 The site lives at the repository root, so any static host can publish it as-is.
@@ -42,7 +47,6 @@ Each value appears in several files, so search-and-replace across the repository
 | Phone | `(936) 555-0148` / `tel:+19365550148` | header, footer, `contact.html`, `apply.html`, JSON-LD |
 | Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
-| First move-ins | "spring 2026" | `index.html` hero, facts strip, FAQ |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Plan names | "The Cypress" (1BR) and "The Sycamore" (2BR) — marketing names, not from the plan sheets | `floor-plans.html`, `index.html`, `contact.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit, $300 pet fee + $25/mo | `apply.html` |
@@ -65,10 +69,14 @@ Two things worth double-checking with the source of truth rather than assuming:
   current zoning with Montgomery ISD.
 - **Drive times and retail.** Verify the H-E-B and Kroger Marketplace locations and the
   posted drive times before launch; they are labeled "approximate" on the page.
-- **Finishes and amenities.** The quartz counters, stainless appliances, 9-foot ceilings,
-  smart locks, pool, fitness center, dog park, garages and EV charging are all still
-  unconfirmed placeholders. The floor plans do *not* show kitchen islands or double vanities,
-  so those claims have been removed; check the rest against the real property before launch.
+- **Community amenities.** The pool, fitness center, clubhouse, coworking lounge, dog park,
+  pet spa, grilling pavilion, package lockers, garages, gated entry, EV charging and playground
+  are all still **unconfirmed placeholders** — they are the single largest block of invented
+  content left on the site. Confirm each one and delete the rest.
+  The in-home feature list has already been cut back to what the surveyed floor plans actually
+  show (dining room, laundry room, closets, pantry, split bedrooms); the earlier finish claims —
+  quartz, stainless, plank flooring, 9-foot ceilings, smart locks, kitchen islands, double
+  vanities — have all been removed rather than left asserted.
 
 ## Editing the floor plans
 
