@@ -50,7 +50,7 @@ Each value appears in several files, so search-and-replace across the repository
 | Hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
-| Photography | one real photograph (the entrance); the gallery interiors are still illustrations | `gallery.html`, `index.html` |
+| Photography | one real photograph (the entrance); the gallery interiors and the neighborhood hero are still illustrations | `gallery.html`, `index.html`, `neighborhood.html` |
 
 ### What the photographs confirmed
 
@@ -192,6 +192,14 @@ Every image is an inline `<svg>` — there are no binary assets to manage. To dr
 3. Do the same for the hero in `index.html` (`.hero-art`) and the three tiles in the home
    page gallery strip.
 4. Remove the "Illustrations shown" note that follows those galleries.
+
+### The neighborhood hero
+
+`neighborhood.html` opens with a half-width figure beside four highlights. It is meant to be a
+**lifestyle photograph** &mdash; the square, the lake, a street scene &mdash; and is currently the
+`downtown` illustration standing in, with a caption on the figure saying so. To swap it, add the
+file to `assets/`, register it under the `downtown` key in the photo map, and delete the
+`<figcaption>`. Everything else about the section stays as it is.
 
 The lightbox in `js/site.js` clones whatever element it finds inside the tile — swap the
 `querySelector("svg")` call for `querySelector("img, svg")` when photos go in.

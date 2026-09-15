@@ -359,12 +359,25 @@ p + p { margin-top: .9rem; }
 .drive-table td:last-child { font-weight: 600; }
 .table-scroll { overflow-x: auto; }
 
-.place-card { display: flex; gap: 1rem; align-items: flex-start; }
-.place-card .dot {
+.place-card, .highlight-list li { display: flex; gap: 1rem; align-items: flex-start; }
+.place-card .dot, .highlight-list .dot {
   width: 40px; height: 40px; border-radius: 12px; flex: none; display: grid; place-items: center;
   background: var(--sand); color: var(--moss); border: 1px solid var(--line);
 }
-.place-card .dot svg { width: 20px; height: 20px; }
+.place-card .dot svg, .highlight-list .dot svg { width: 20px; height: 20px; }
+
+.feature-figure {
+  margin: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-sm); background: var(--sand);
+}
+.feature-figure svg, .feature-figure img { width: 100%; height: auto; display: block; }
+.feature-figure figcaption {
+  padding: .7rem 1rem; background: var(--white); border-top: 1px solid var(--line);
+  font-size: .84rem; color: var(--muted);
+}
+.highlight-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.6rem; }
+.highlight-list h3 { margin: 0 0 .35rem; font-size: 1.1rem; }
+.highlight-list p { margin: 0; color: var(--muted); font-size: .98rem; }
 
 /* -------------------------------- Steps --------------------------------- */
 .steps, .grid { counter-reset: step; }
