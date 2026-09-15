@@ -133,10 +133,11 @@ Two things worth knowing about how it got here:
   mostly cope, but it breaks link previews and older clients, so it was re-encoded as real
   progressive JPEG. If you upload more photos, check with `file <name>` that the format matches
   the extension.
-- The file arrived named `eagles-nest-apartment-homes-montgomery-tx-primary-photo.jpg`, which
-  suggests the property was listed as **Eagles Nest Apartment Homes** before the change of
-  management. If that is right, it may be worth naming the former identity somewhere on the
-  site so people searching for the old name still land here.
+- The photo came from a listing under the property's former name. **That name is deliberately
+  not used anywhere on this site** — the owner's decision, for reputation reasons. Do not add
+  it for SEO, do not put it in alt text, filenames, meta descriptions or the JSON-LD, and do
+  not accept a suggestion to "capture searches for the old name". Files brought over from
+  listings should be renamed before they are committed.
 
 ## Replacing the remaining illustrations with photography
 
