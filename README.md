@@ -133,15 +133,16 @@ The web copy is resized to 512px and colour-quantized (the artwork is essentiall
 colours), which took it from 790KB to 24KB with no visible loss. Regenerate it the same way if
 the artwork changes.
 
-In the footer the seal sits on a cream circular chip (`.brand-seal`): the logo's navy is close
-to invisible against the dark footer, and a light chip reads as a deliberate badge rather than
-a mistake. If the designer supplies a reversed (light-on-dark) version, use that instead and
-drop the chip background.
+The footer uses the designer's **reversed** artwork — `assets/logo-reverse.png`, cream on the
+navy disc — which sits on the dark footer without any chip behind it.
+`assets/logo-reverse-full.png` is that original 1254px upload.
 
 **The favicon is deliberately not this logo.** At 16px the ring, lettering, cattails and water
 collapse into a smudge, so `assets/favicon.svg` is the heron alone, filled cream on a solid
-forest tile, with `assets/apple-touch-icon.png` (180×180) to match. Leave those as they are
-unless the designer supplies a simplified small-size mark.
+forest tile, . Leave it as it is unless the designer supplies a simplified small-size mark.
+
+`assets/apple-touch-icon.png` (180×180) is a different matter: iOS renders it large enough for
+the real seal, so it is the reversed artwork composited onto a navy square.
 
 ## Photography
 
