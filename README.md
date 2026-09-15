@@ -63,7 +63,9 @@ guesses:
 - **48 homes in 8 two-storey buildings**, units A–F in each (254, 258, 262, 266, 270, 274,
   278, 282). The community map on `gallery.html` is drawn from that site plan.
 - **A gated entrance** — perimeter iron fencing and drive gates are visible in the photograph.
-- **The brand mark** is the heron-and-cattails roundel from the monument sign, redrawn as SVG.
+- **The brand mark** is the community seal — a heron standing in cattails over water inside a
+  double ring — redrawn as inline SVG to the composition of the official logo, and used in the
+  header, the footer and the favicon.
 - **The buildings** are two storeys, sage-green siding, dark gable roofs, stone wainscot and
   exterior stairs; the hero and exterior illustrations now match.
 - **"Under new management"** — from the banner on the building, now in the hero.
@@ -119,6 +121,24 @@ drawn to scale: 21 pixels per foot, rooms positioned in feet from the unit's top
 To correct a room, edit its `<rect>` (x, y, width, height are all feet × 21) and the matching
 `<text>` label. To add a plan, copy an `<article class="plan-card">` block and redraw it the
 same way.
+
+## The logo
+
+The mark on the site is **a redrawing, not the official artwork**. The real logo exists in at
+least three versions — navy on white, gold, and dark brown on a wood plaque — and carries
+arched "CREEKSIDE / HAVEN" lettering plus the address, none of which is reproduced here
+(arched type is illegible at the 44px the header uses).
+
+**Replace it with the real files when you have them.** Upload to `assets/` — an SVG if the
+designer supplied one, otherwise a transparent PNG at 512px or larger:
+
+1. Swap the inline `<svg class="brand-mark">` in the header and footer of all six pages for
+   `<img class="brand-mark" src="assets/logo.svg" alt="Creekside Haven" width="44" height="44" />`.
+2. Replace `assets/favicon.svg` with the same artwork, trimmed close to the ring.
+3. Consider a wordmark version for the footer, where there is room for the arched lettering.
+
+Ask the designer for the source file (AI/EPS/SVG) and the exact brand colours — the navy and
+gold are currently approximated by the site's existing forest/brass palette.
 
 ## Photography
 
