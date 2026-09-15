@@ -49,11 +49,19 @@ Each value appears in several files, so search-and-replace across the repository
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Plan names | "The Cypress" (1BR) and "The Sycamore" (2BR) — marketing names, not from the plan sheets | `floor-plans.html`, `index.html`, `contact.html` |
-| Fees & deposits | $50 application, $150 admin, $300 deposit, $300 pet fee + $25/mo | `apply.html` |
 | Office hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
-| Amenity list | pool, fitness, dog park, garages, EV charging, etc. | `index.html`, `floor-plans.html` |
+| Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
 | Photography | illustrated placeholders (inline SVG) | `gallery.html`, `index.html` hero |
+
+### Community amenities
+
+The only confirmed community amenity is **covered parking**. An earlier draft of this site
+advertised a pool, fitness center, clubhouse, coworking lounge, dog park, pet spa, grilling
+pavilion, package lockers, detached garages, gated entry, EV charging and a playground — none
+of which were verified, and all of which have been removed. If the property has more than
+covered parking, add it to `COMMUNITY_AMENITIES`-style lists on `index.html` (the "What you
+get" section), the gallery, and the JSON-LD in `index.html`.
 
 ### What is real
 
@@ -69,14 +77,9 @@ Two things worth double-checking with the source of truth rather than assuming:
   current zoning with Montgomery ISD.
 - **Drive times and retail.** Verify the H-E-B and Kroger Marketplace locations and the
   posted drive times before launch; they are labeled "approximate" on the page.
-- **Community amenities.** The pool, fitness center, clubhouse, coworking lounge, dog park,
-  pet spa, grilling pavilion, package lockers, garages, gated entry, EV charging and playground
-  are all still **unconfirmed placeholders** — they are the single largest block of invented
-  content left on the site. Confirm each one and delete the rest.
-  The in-home feature list has already been cut back to what the surveyed floor plans actually
-  show (dining room, laundry room, closets, pantry, split bedrooms); the earlier finish claims —
-  quartz, stainless, plank flooring, 9-foot ceilings, smart locks, kitchen islands, double
-  vanities — have all been removed rather than left asserted.
+- **Pet policy.** The site says pets are considered subject to management's fees and
+  restrictions, and points people to the leasing office. Replace that with the real policy
+  (limits, fees, breed restrictions) once you have it in writing.
 
 ## Editing the floor plans
 
