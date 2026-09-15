@@ -134,7 +134,10 @@ designer supplied one, otherwise a transparent PNG at 512px or larger:
 
 1. Swap the inline `<svg class="brand-mark">` in the header and footer of all six pages for
    `<img class="brand-mark" src="assets/logo.svg" alt="Creekside Haven" width="44" height="44" />`.
-2. Replace `assets/favicon.svg` with the same artwork, trimmed close to the ring.
+2. Leave `assets/favicon.svg` alone unless the designer supplies a small-size mark. The
+   favicon is deliberately **not** the seal: rings, cattails and water turn to mush at 16px,
+   so it is the heron alone, filled cream on a solid forest tile. `assets/apple-touch-icon.png`
+   (180×180) is the same artwork for iOS home screens.
 3. Consider a wordmark version for the footer, where there is room for the arched lettering.
 
 Ask the designer for the source file (AI/EPS/SVG) and the exact brand colours — the navy and
