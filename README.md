@@ -43,7 +43,7 @@ Each value appears in several files, so search-and-replace across the repository
 
 | What | Placeholder currently in the site | Where |
 | --- | --- | --- |
-| Phone | `(936) 555-0148` is still a placeholder — the entrance banner reads 936-777-2166; confirm before publishing | header, footer, `contact.html`, `apply.html`, JSON-LD |
+| Phone | **none shown** — a new number is being set up. Nothing on the site dials out; contact routes to the tour form and email | see "No phone number yet" below |
 | Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
@@ -51,7 +51,7 @@ Each value appears in several files, so search-and-replace across the repository
 | Hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
-| Photography | illustrated placeholders (inline SVG) | `gallery.html`, `index.html` hero |
+| Photography | one real photograph (the entrance); the rest are illustrations | `gallery.html`, `index.html` |
 
 ### What the photographs confirmed
 
@@ -95,6 +95,23 @@ Two things worth double-checking with the source of truth rather than assuming:
   restrictions, and points people to the leasing office. Replace that with the real policy
   (limits, fees, breed restrictions) once you have it in writing.
 
+## No phone number yet
+
+The property is setting up a new number, so **no phone number appears anywhere on the site** —
+a placeholder that does not dial is worse than none on a live page. Contact routes through the
+tour request form and `mailto:` links instead.
+
+When the number arrives, put it back in five places:
+
+1. The header, as a `nav-phone` link before the Apply button, on all six pages.
+2. The footer "Contact" list, above the email line, on all six pages.
+3. `contact.html`, in the "Get in touch" card above the email row.
+4. The tour form's secondary button on `contact.html` (currently "Email Us").
+5. `"telephone"` in the JSON-LD block at the top of `index.html`.
+
+Use `<a href="tel:+19365550148">(936) 555-0148</a>` as the shape — `tel:` needs the digits
+with no punctuation.
+
 ## Editing the floor plans
 
 Each plan in `floor-plans.html` (and the pair previewed on `index.html`) is an inline `<svg>`
@@ -103,7 +120,25 @@ To correct a room, edit its `<rect>` (x, y, width, height are all feet × 21) an
 `<text>` label. To add a plan, copy an `<article class="plan-card">` block and redraw it the
 same way.
 
-## Replacing the illustrations with photography
+## Photography
+
+`assets/entrance-sign.jpg` (1600×1066) is the real entrance photograph, used for the home page
+hero, the home page gallery strip and the Community tile in the gallery.
+`assets/entrance-sign-og.jpg` (1200×800) is the smaller copy used for link previews
+(`og:image`).
+
+Two things worth knowing about how it got here:
+
+- The upload was **AVIF data with a `.jpg` extension** — some export tools do this. Browsers
+  mostly cope, but it breaks link previews and older clients, so it was re-encoded as real
+  progressive JPEG. If you upload more photos, check with `file <name>` that the format matches
+  the extension.
+- The file arrived named `eagles-nest-apartment-homes-montgomery-tx-primary-photo.jpg`, which
+  suggests the property was listed as **Eagles Nest Apartment Homes** before the change of
+  management. If that is right, it may be worth naming the former identity somewhere on the
+  site so people searching for the old name still land here.
+
+## Replacing the remaining illustrations with photography
 
 Every image is an inline `<svg>` — there are no binary assets to manage. To drop in real photos:
 

@@ -71,7 +71,7 @@
     var lastFocus = null;
 
     var openLightbox = function (shot) {
-      var art = shot.querySelector("svg");
+      var art = shot.querySelector("img, svg");
       var cap = shot.querySelector("figcaption");
       if (!art) return;
       lastFocus = shot;
