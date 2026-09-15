@@ -43,8 +43,7 @@ Each value appears in several files, so search-and-replace across the repository
 
 | What | Placeholder currently in the site | Where |
 | --- | --- | --- |
-| Street address | `270 Plez Morgan Dr`, `Montgomery, TX 77356` — taken from the surveyed floor plan sheets | every page footer, `contact.html`, JSON-LD in `index.html`, `MAPS` link |
-| Phone | `(936) 555-0148` / `tel:+19365550148` | header, footer, `contact.html`, `apply.html`, JSON-LD |
+| Phone | `(936) 555-0148` is still a placeholder — the entrance banner reads 936-777-2166; confirm before publishing | header, footer, `contact.html`, `apply.html`, JSON-LD |
 | Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
@@ -54,10 +53,25 @@ Each value appears in several files, so search-and-replace across the repository
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
 | Photography | illustrated placeholders (inline SVG) | `gallery.html`, `index.html` hero |
 
+### What the photographs confirmed
+
+A property photograph and the surveyed site plan pinned down several facts that had been
+guesses:
+
+- **Address: 254–282 Plez Morgan Dr, Montgomery, TX 77356** — from the entrance monument sign
+  and the site plan, replacing the single-unit address taken off a floor plan sheet.
+- **48 homes in 8 two-storey buildings**, units A–F in each (254, 258, 262, 266, 270, 274,
+  278, 282). The community map on `gallery.html` is drawn from that site plan.
+- **A gated entrance** — perimeter iron fencing and drive gates are visible in the photograph.
+- **The brand mark** is the heron-and-cattails roundel from the monument sign, redrawn as SVG.
+- **The buildings** are two storeys, sage-green siding, dark gable roofs, stone wainscot and
+  exterior stairs; the hero and exterior illustrations now match.
+- **"Under new management"** — from the banner on the building, now in the hero.
+
 ### Community amenities
 
-The only confirmed community amenity is **covered parking**. An earlier draft of this site
-advertised a pool, fitness center, clubhouse, coworking lounge, dog park, pet spa, grilling
+The only confirmed community amenities are **covered parking** and the **gated entrance**.
+An earlier draft of this site advertised a pool, fitness center, clubhouse, coworking lounge, dog park, pet spa, grilling
 pavilion, package lockers, detached garages, gated entry, EV charging and a playground — none
 of which were verified, and all of which have been removed. If the property has more than
 covered parking, add it to `COMMUNITY_AMENITIES`-style lists on `index.html` (the "What you
