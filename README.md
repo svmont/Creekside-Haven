@@ -47,11 +47,10 @@ Each value appears in several files, so search-and-replace across the repository
 | Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
-| Plan names | "The Cypress" (1BR) and "The Sycamore" (2BR) — marketing names, not from the plan sheets | `floor-plans.html`, `index.html`, `contact.html` |
 | Hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
-| Photography | one real photograph (the entrance); the rest are illustrations | `gallery.html`, `index.html` |
+| Photography | one real photograph (the entrance); the gallery interiors are still illustrations | `gallery.html`, `index.html` |
 
 ### What the photographs confirmed
 
@@ -81,10 +80,11 @@ get" section), the gallery, and the JSON-LD in `index.html`.
 
 ### What is real
 
-The **floor plans and square footages are the real ones**. Both schematics are drawn to scale
-from the surveyed plan sheets for 270 Plez Morgan Dr, every room dimension on the page is the
-surveyed dimension, and the square footages are the property's official figures: **715 SF** for
-the one-bedroom and **975 SF** for the two-bedroom.
+The **floor plans are the property's own rendered plan sheets**, supplied by the property and
+branded Creekside Haven — not schematics drawn here. Every room dimension shown is the one
+printed on those sheets, and the square footages are the property's official figures: **715 SF**
+for the one-bedroom and **975 SF** for the two-bedroom. The plans are named the way the sheets
+name them, **1 Bedroom** and **2 Bedroom**; there are no invented marketing names.
 
 Two things worth double-checking with the source of truth rather than assuming:
 
@@ -93,9 +93,9 @@ Two things worth double-checking with the source of truth rather than assuming:
   current zoning with Montgomery ISD.
 - **Drive times and retail.** Verify the H-E-B and Kroger Marketplace locations and the
   posted drive times before launch; they are labeled "approximate" on the page.
-- **Pet policy.** The site says pets are considered subject to management's fees and
-  restrictions, and points people to the leasing office. Replace that with the real policy
-  (limits, fees, breed restrictions) once you have it in writing.
+- **Pet policy.** The site says pets are considered subject to management's fees, weight
+  limits and breed restrictions, and asks people to check the current policy before applying.
+  Replace that with the real policy once you have it in writing.
 
 ## No phone number yet
 
@@ -114,13 +114,26 @@ When the number arrives, put it back in five places:
 Use `<a href="tel:+19365550148">(936) 555-0148</a>` as the shape — `tel:` needs the digits
 with no punctuation.
 
-## Editing the floor plans
+## The floor plan images
 
-Each plan in `floor-plans.html` (and the pair previewed on `index.html`) is an inline `<svg>`
-drawn to scale: 21 pixels per foot, rooms positioned in feet from the unit's top-left corner.
-To correct a room, edit its `<rect>` (x, y, width, height are all feet × 21) and the matching
-`<text>` label. To add a plan, copy an `<article class="plan-card">` block and redraw it the
-same way.
+Each plan ships as three files in `assets/`, one set per plan
+(`floorplan-1-bedroom*`, `floorplan-2-bedroom*`):
+
+| File | What it is | Used where |
+| --- | --- | --- |
+| `floorplan-<plan>-full.png` | the original render as supplied (1226×1283 PNG, ~1.5 MB) | archival master — not referenced by any page |
+| `floorplan-<plan>-sheet.jpg` | the full branded sheet, title and disclaimer included | the "View the full floor plan" link on each plan card |
+| `floorplan-<plan>.jpg` | the plan drawing alone, title and footer cropped off | the plan card image on `floor-plans.html` and `index.html` |
+
+The two card images share one crop box — `(110, 170, 1118, 1150)` out of the 1226×1283
+original, resized to 1008×980 — so the one-bedroom and the two-bedroom stay at the same
+scale relative to each other on the page. If a plan is re-exported, re-crop it with that same
+box rather than trimming to its own edges, or the two cards will silently stop matching.
+
+To swap in a revised plan, replace the `-full.png` master, regenerate the other two files from
+it, and keep the file names. To add a third plan, add an entry to the plan list with its `key`,
+`name`, `sqft`, `img` base name, `alt` text and feature bullets; the cards, the floor-plan
+filter chips and the tour form's plan select are all generated from that list.
 
 ## The logo
 

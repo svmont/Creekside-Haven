@@ -288,8 +288,8 @@ p + p { margin-top: .9rem; }
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .plan-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.plan-figure { background: var(--sand); border-bottom: 1px solid var(--line); padding: 1rem; }
-.plan-figure svg { width: 100%; height: auto; }
+.plan-figure { background: #fff; border-bottom: 1px solid var(--line); padding: .9rem .9rem .4rem; }
+.plan-figure svg, .plan-figure img { width: 100%; height: auto; display: block; }
 .plan-body { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
 .plan-name { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; }
 .plan-name h3 { margin: 0; }
@@ -301,7 +301,8 @@ p + p { margin-top: .9rem; }
 }
 .plan-price { font-family: var(--font-display); font-size: 1.35rem; color: var(--forest); }
 .plan-price small { font-family: var(--font-body); font-size: .85rem; color: var(--muted); font-weight: 400; }
-.plan-body ul { margin: 0 0 1.2rem; padding-left: 1.1rem; color: var(--muted); font-size: .96rem; }
+.plan-body ul { margin: 0 0 .9rem; padding-left: 1.1rem; color: var(--muted); font-size: .96rem; }
+.plan-note { margin: 0 0 1.2rem; font-size: .84rem; color: var(--muted); }
 .plan-body ul li { margin-bottom: .3rem; }
 .plan-body .btn-row { margin-top: auto; }
 
