@@ -221,12 +221,13 @@ photographs were cropped to 4:3 to fit the tile **without clipping their printed
 &mdash; the two square images (lake, downtown) from the bottom, the H-E-B image from the sides.
 Re-crop from the masters the same way if the tiles ever change shape.
 
-**The hero photograph is cropped out of a larger banner.** `neighborhood-hero-full.png` is the
-supplied artwork, which had the eyebrow, headline and lede set into the sky on its right-hand
-side &mdash; and a typo, *downtnown*, in that baked lede. The hero takes a 3:2 crop of the
-photographic left half (x 0&ndash;1140), which leaves the printed text behind entirely; the
-heading and copy on the page are real text. Re-crop the same way if the file is replaced, and do
-not put the baked-text version on the page.
+**The hero photograph carries no text**, unlike the strip tiles. `neighborhood-hero-full.png`
+is the supplied master, already 3:2, so the hero is a straight resize of it with no crop. An
+earlier version of this image was a full banner with the eyebrow, headline and lede set into its
+sky &mdash; and a typo, *downtnown*, in that baked lede; it was cropped down to the photograph
+and has since been replaced outright. If a banner-style file turns up again, crop the photograph
+out of it rather than putting the baked text on the page: the heading and copy here are real
+text, and the hero must not repeat them.
 
 The headline's line breaks are `<br>` elements that `display: none` below 900px, so the three
 lines collapse to a natural wrap. Each keeps a space before it &mdash; without that the words run
