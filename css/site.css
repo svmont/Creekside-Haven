@@ -367,13 +367,13 @@ p + p { margin-top: .9rem; }
 .place-card .dot svg, .highlight-list .dot svg { width: 20px; height: 20px; }
 
 /* --------------------------- Neighborhood page --------------------------- */
-.nb-hero { background: var(--cream); padding: clamp(3rem, 6vw, 5.6rem) 0 clamp(2.6rem, 5vw, 4.4rem); }
+.nb-hero { background: var(--cream); padding: clamp(3rem, 6vw, 5.6rem) 0 clamp(1.5rem, 2.6vw, 2.3rem); }
 .nb-hero__grid {
-  display: grid; grid-template-columns: 42fr 58fr; align-items: center;
-  gap: clamp(2rem, 4.5vw, 4rem);
+  display: grid; grid-template-columns: 37fr 63fr; align-items: center;
+  gap: clamp(1.8rem, 3.6vw, 3.2rem);
 }
 .nb-hero__text h1 {
-  margin: 1rem 0 0; font-size: clamp(2rem, 3.3vw, 3rem); line-height: 1.14;
+  margin: 1rem 0 0; font-size: clamp(1.8rem, 2.85vw, 2.7rem); line-height: 1.16;
 }
 .nb-hero__text p {
   margin-top: 1.3rem; color: var(--muted); font-size: 1.06rem; max-width: 44ch;
