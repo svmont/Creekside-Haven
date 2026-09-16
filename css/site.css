@@ -194,9 +194,10 @@ p + p { margin-top: .9rem; }
   padding: clamp(3.4rem, 7.5vw, 6.6rem) 0 clamp(3.8rem, 7.5vw, 6.6rem);
 }
 /* Sized here rather than inheriting the global h1: the photograph takes the
-   larger share of the row, and the headline has to hold three lines in what
-   is left. */
-.hero h1 { color: #fff; font-size: clamp(2.2rem, 4.9vw, 3.75rem); }
+   larger share of the row, and each of the headline's two lines has to fit the
+   column that is left. The ceiling is what "Close to what matters." measures at
+   in the 542px column the desktop layout settles on. */
+.hero h1 { color: #fff; font-size: clamp(2.2rem, 4.7vw, 3.55rem); }
 .hero p.lede { font-size: clamp(1.05rem, 1.5vw, 1.22rem); color: rgba(255,255,255,.86); max-width: 34rem; margin-top: 1.1rem; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -216,6 +217,11 @@ p + p { margin-top: .9rem; }
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 2.2rem; }
   .hero-art { order: -1; }
+}
+/* Narrower than this, the 2.2rem floor above is wider than the column and the
+   headline's second line breaks; track the viewport instead of holding it. */
+@media (max-width: 384px) {
+  .hero h1 { font-size: 8.9vw; }
 }
 
 /* ---------------------------- Fact strip -------------------------------- */
