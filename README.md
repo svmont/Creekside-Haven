@@ -50,7 +50,7 @@ Each value appears in several files, so search-and-replace across the repository
 | Hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
-| Photography | one real photograph (the entrance); the gallery interiors and the neighborhood hero are still illustrations | `gallery.html`, `index.html`, `neighborhood.html` |
+| Photography | the gallery interiors are still illustrations; `neighborhood.html` is fully photographed | `gallery.html`, `index.html` |
 
 ### What the photographs confirmed
 
@@ -195,35 +195,42 @@ Every image is an inline `<svg>` — there are no binary assets to manage. To dr
 
 ### The neighborhood page's images
 
-| Where | Has | Wants |
-| --- | --- | --- |
-| The hero figure, half the page beside the heading | the `downtown` illustration, with a "photography to come" badge on it | a lifestyle shot &mdash; the square, a street scene |
-| Strip tile 1 | `neighborhood-lake-conroe.jpg` | &mdash; |
-| Strip tile 2 | `neighborhood-downtown.jpg` | &mdash; |
-| Strip tile 3 | `neighborhood-heb.jpg` | &mdash; |
-| The closing band | `lake-band.jpg` | &mdash; |
+| Where | Has |
+| --- | --- |
+| The hero figure, 58% of a split hero | `neighborhood-hero.jpg` |
+| Strip tile 1 | `neighborhood-lake-conroe.jpg` |
+| Strip tile 2 | `neighborhood-downtown.jpg` |
+| Strip tile 3 | `neighborhood-heb.jpg` |
+| The closing band | `lake-band.jpg` |
 
-All three strip tiles are photographs now; the hero figure is the only illustration left on the
-page. To swap it, add the file to `assets/` and register it under `downtown` in the photo map.
-The page picks a photograph over an illustration automatically; delete the hero's badge once a real photograph is in. Both the hero
-and the strip pass `fill=True`, which crops an illustration to its box the way `object-fit:
-cover` crops a photograph &mdash; a photograph needs nothing extra.
+Every image on this page is a photograph; no illustration is left on it. The page still picks a
+photograph over an illustration automatically wherever one is registered, and the strip passes
+`fill=True`, which crops an illustration to its box the way `object-fit: cover` crops a
+photograph &mdash; a photograph needs nothing extra.
 
 **Captions burned into the artwork.** The three strip photographs and the closing band carry
-their own captions as part of the image. The strip only renders an HTML `<figcaption>` for a tile whose
-`label` is non-empty, so a self-captioning photograph is registered with an empty label; give a
-replacement photograph a label only if its caption is *not* part of the file. This also keeps the
-lake photograph out of the gallery, where a second caption would sit under its printed one &mdash;
-it is keyed `strip-lake`, not `lake`. A text-free export could be registered as `lake` and would
-then appear in the gallery too.
+their own captions as part of the image. The strip only renders an HTML `<figcaption>` for a tile
+whose `label` is non-empty, so a self-captioning photograph is registered with an empty label;
+give a replacement photograph a label only if its caption is *not* part of the file. This also
+keeps the lake photograph out of the gallery, where a second caption would sit under its printed
+one &mdash; it is keyed `strip-lake`, not `lake`. A text-free export could be registered as
+`lake` and would then appear in the gallery too.
 
-Each of the three is cropped from a larger master kept alongside it (`*-full.png`). The strip
-photographs were cropped to 4:3 to fit the tile **without clipping their printed captions** &mdash;
-the two square images (lake, downtown) from the bottom, the H-E-B image from the sides. Re-crop from the masters the same
-way if the tiles ever change shape.
+Each image is cropped from a larger master kept alongside it (`*-full.png`). The strip
+photographs were cropped to 4:3 to fit the tile **without clipping their printed captions**
+&mdash; the two square images (lake, downtown) from the bottom, the H-E-B image from the sides.
+Re-crop from the masters the same way if the tiles ever change shape.
 
-The hero's script line (*Historic. Friendly. Home.*) is decorative and hides below 700px, where
-it would otherwise collide with the badge.
+**The hero photograph is cropped out of a larger banner.** `neighborhood-hero-full.png` is the
+supplied artwork, which had the eyebrow, headline and lede set into the sky on its right-hand
+side &mdash; and a typo, *downtnown*, in that baked lede. The hero takes a 3:2 crop of the
+photographic left half (x 0&ndash;1140), which leaves the printed text behind entirely; the
+heading and copy on the page are real text. Re-crop the same way if the file is replaced, and do
+not put the baked-text version on the page.
+
+The headline's line breaks are `<br>` elements that `display: none` below 900px, so the three
+lines collapse to a natural wrap. Each keeps a space before it &mdash; without that the words run
+together once the break is hidden.
 
 The lightbox in `js/site.js` clones whatever element it finds inside the tile — swap the
 `querySelector("svg")` call for `querySelector("img, svg")` when photos go in.

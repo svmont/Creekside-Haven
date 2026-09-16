@@ -367,26 +367,22 @@ p + p { margin-top: .9rem; }
 .place-card .dot svg, .highlight-list .dot svg { width: 20px; height: 20px; }
 
 /* --------------------------- Neighborhood page --------------------------- */
-.nb-hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
-.nb-hero__text {
-  padding: clamp(3rem, 6vw, 5.4rem) clamp(2rem, 4vw, 3.6rem) clamp(3rem, 6vw, 5.4rem)
-           max(1.25rem, calc((100vw - var(--container)) / 2));
+.nb-hero { background: var(--cream); padding: clamp(3rem, 6vw, 5.6rem) 0 clamp(2.6rem, 5vw, 4.4rem); }
+.nb-hero__grid {
+  display: grid; grid-template-columns: 42fr 58fr; align-items: center;
+  gap: clamp(2rem, 4.5vw, 4rem);
+}
+.nb-hero__text h1 {
+  margin: 1rem 0 0; font-size: clamp(2rem, 3.3vw, 3rem); line-height: 1.14;
+}
+.nb-hero__text p {
+  margin-top: 1.3rem; color: var(--muted); font-size: 1.06rem; max-width: 44ch;
 }
 .nb-hero__figure {
-  position: relative; margin: 0; align-self: stretch; overflow: hidden; background: var(--sand);
+  margin: 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
 }
-.nb-hero__figure svg, .nb-hero__figure img {
-  position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover;
-}
-.nb-hero__figure::before { content: ""; display: block; padding-top: 72%; }
-.nb-hero__script {
-  position: absolute; right: clamp(1.2rem, 3vw, 2.6rem); bottom: clamp(1.1rem, 2.6vw, 2rem);
-  font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 1.9vw, 1.7rem);
-  color: #fff; text-shadow: 0 2px 16px rgba(0, 0, 0, .5);
-}
-.nb-hero__note {
-  position: absolute; left: 0; bottom: 0; padding: .5rem .85rem;
-  background: rgba(22, 54, 43, .72); color: rgba(255, 255, 255, .92); font-size: .76rem;
+.nb-hero__figure img {
+  width: 100%; height: auto; display: block; aspect-ratio: 3 / 2; object-fit: cover;
 }
 
 .nb-highlights-band { border-top: 1px solid var(--line); background: var(--cream); }
@@ -451,15 +447,11 @@ p + p { margin-top: .9rem; }
   .nb-highlights li:nth-child(4) { border-top: 1px solid var(--line); }
 }
 @media (max-width: 900px) {
-  .nb-hero { grid-template-columns: 1fr; }
-  .nb-hero__text { padding: clamp(2.4rem, 7vw, 3.6rem) 1.25rem; }
-  .nb-hero__figure::before { padding-top: 62%; }
+  /* Stack rather than squeeze: copy first, then a full-width landscape photo. */
+  .nb-hero__grid { grid-template-columns: 1fr; gap: clamp(1.8rem, 5vw, 2.6rem); }
+  .nb-hero__text h1 br { display: none; }
   .nb-isd .container { grid-template-columns: auto 1fr; }
   .nb-isd__link { grid-column: 1 / -1; border-left: 0; padding-left: 0; }
-}
-@media (max-width: 700px) {
-  /* The script line and the illustration note would collide at this width. */
-  .nb-hero__script { display: none; }
 }
 @media (max-width: 760px) {
   /* Three tiles never split evenly in two columns, so stack them. */
