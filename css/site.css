@@ -421,6 +421,10 @@ p + p { margin-top: .9rem; }
 .lake-band { display: block; background: var(--forest); }
 .lake-band img { width: 100%; height: auto; display: block; }
 
+/* The FAQ sits between the ISD band and the lake image; a little more air
+   on each side keeps it from reading as part of either. */
+.nb-faq { padding-block: clamp(4.4rem, 8vw, 7rem); }
+
 .nb-isd { background: #eaf0e9; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .nb-isd .container {
   display: grid; grid-template-columns: auto 1fr auto; align-items: center;
