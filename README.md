@@ -49,8 +49,7 @@ Each value appears in several files, so search-and-replace across the repository
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
-| Photography | only the bedroom tile and the two neighborhood tiles are still illustrations in the gallery; the home page strip still uses the kitchen and bedroom illustrations | `gallery.html`, `index.html` |
-| Bedroom photo | the one interior still missing; the gallery's bedroom tile is drawn | `gallery.html`, `index.html` |
+| Photography | every interior in the gallery is a photograph; only the two neighborhood tiles are drawn there, and the home page strip still uses the kitchen and bedroom illustrations | `gallery.html`, `index.html` |
 
 ### What the photographs confirmed
 
