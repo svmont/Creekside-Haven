@@ -199,19 +199,19 @@ Every image is an inline `<svg>` — there are no binary assets to manage. To dr
 | --- | --- | --- |
 | The hero figure, half the page beside the heading | the `downtown` illustration, with a "photography to come" badge on it | a lifestyle shot &mdash; the square, a street scene |
 | Strip tile 1 | `neighborhood-lake-conroe.jpg` | &mdash; |
-| Strip tile 2 | the `downtown` illustration | historic downtown Montgomery |
+| Strip tile 2 | `neighborhood-downtown.jpg` | &mdash; |
 | Strip tile 3 | `neighborhood-heb.jpg` | &mdash; |
 | Strip tile 4 | the `trail` illustration | a wooded road |
 | The closing band | `lake-band.jpg` | &mdash; |
 
 To swap an illustration for a photograph, add the file to `assets/` and register it in the photo
-map under the key that tile uses (`downtown`, `trail`). The page picks a photograph over an
-illustration automatically; delete the hero's badge once a real photograph is in. Both the hero
+map under the key that tile uses (`trail` is the last one left). The page picks a photograph over
+an illustration automatically; delete the hero's badge once a real photograph is in. Both the hero
 and the strip pass `fill=True`, which crops an illustration to its box the way `object-fit:
 cover` crops a photograph &mdash; a photograph needs nothing extra.
 
-**Captions burned into the artwork.** The two strip photographs and the closing band carry their
-own captions as part of the image. The strip only renders an HTML `<figcaption>` for a tile whose
+**Captions burned into the artwork.** The three strip photographs and the closing band carry
+their own captions as part of the image. The strip only renders an HTML `<figcaption>` for a tile whose
 `label` is non-empty, so a self-captioning photograph is registered with an empty label; give a
 replacement photograph a label only if its caption is *not* part of the file. This also keeps the
 lake photograph out of the gallery, where a second caption would sit under its printed one &mdash;
@@ -220,7 +220,7 @@ then appear in the gallery too.
 
 Each of the three is cropped from a larger master kept alongside it (`*-full.png`). The strip
 photographs were cropped to 4:3 to fit the tile **without clipping their printed captions** &mdash;
-the lake image from the bottom, the H-E-B image from the sides. Re-crop from the masters the same
+the two square images (lake, downtown) from the bottom, the H-E-B image from the sides. Re-crop from the masters the same
 way if the tiles ever change shape.
 
 The hero's script line (*Historic. Friendly. Home.*) is decorative and hides below 700px, where
