@@ -93,9 +93,11 @@ so the site no longer cites them.
 
 Two things worth double-checking with the source of truth rather than assuming:
 
-- **School zoning.** The site says the community is in Montgomery ISD and that campus
-  assignments are set by the district. Do not name specific campuses without confirming
-  current zoning with Montgomery ISD.
+- **School zoning.** The property supplied the campuses: Montgomery Elementary, Montgomery
+  Junior High and Montgomery High School. They are named in the ISD callout and the school FAQ
+  on `neighborhood.html`, each time alongside the statement that assignments are the district's
+  to make and can change year to year. Keep that caveat attached wherever a campus is named,
+  and re-check the zoning against Montgomery ISD each year before it is relied on.
 - **Drive times and retail.** Verify the H-E-B and Kroger Marketplace locations and the
   posted drive times before launch; they are labeled "approximate" on the page.
 - **Pet policy.** The site says pets are considered subject to management's fees, weight
