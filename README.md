@@ -150,6 +150,18 @@ it, and keep the file names. To add a third plan, add an entry to the plan list 
 `name`, `sqft`, `img` base name, `alt` text and feature bullets; the cards, the floor-plan
 filter chips and the tour form's plan select are all generated from that list.
 
+## The home page hero photograph
+
+`assets/home-hero.jpg` is the entrance at sunset, cropped from
+`home-hero-full.png` (a straight resize; the master is already 3:2). It is keyed `home-hero`,
+separate from `exterior`, so the gallery's entrance tile keeps its own older photograph of the
+same subject &mdash; registering one file under both keys would change the gallery too. It loads
+eagerly, being above the fold.
+
+Note the building at the right of the frame carries a "New Management" sign with a phone number
+on it. It is illegible at the size the page renders, but the site otherwise shows no phone number
+at all, so if a number is ever readable there it should be retouched out.
+
 ## The logo
 
 `assets/logo.png` is the **official artwork** — the navy seal with the heron, cattails and
