@@ -47,7 +47,6 @@ Each value appears in several files, so search-and-replace across the repository
 | Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
-| Hours | Mon–Fri 9–6, Sat 10–5, Sun by appointment | footer, `contact.html` |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
 | Photography | the gallery interiors are still illustrations; `neighborhood.html` is fully photographed | `gallery.html`, `index.html` |
@@ -102,6 +101,14 @@ Two things worth double-checking with the source of truth rather than assuming:
 - **Pet policy.** The site says pets are considered subject to management's fees, weight
   limits and breed restrictions, and asks people to check the current policy before applying.
   Replace that with the real policy once you have it in writing.
+
+## No leasing office
+
+There is no onsite leasing staff, so **nothing on the site states staffed office hours**. The
+footer's Leasing column and the contact page's "Scheduling a visit" card both say tours are by
+appointment and ask people to make contact; 24/7 maintenance is stated separately because it is
+a real service, not an office hour. If a staffed schedule ever exists, those are the two places
+to put it, and the JSON-LD has no `openingHours` to keep in step.
 
 ## No phone number yet
 
