@@ -347,6 +347,35 @@ p + p { margin-top: .9rem; }
   color: #fff; padding: 2.2rem .95rem .8rem; font-size: .93rem; font-weight: 600;
 }
 .shot.tall { grid-row: span 2; }
+
+/* ---- Gallery page ------------------------------------------------------
+   Scoped, because index.html reuses .gallery-grid and .shot for its strip.   */
+
+/* The photographs are the page, so the run-up to them is short. */
+.gallery-section { padding-top: clamp(2.4rem, 4.2vw, 3.6rem); padding-bottom: clamp(3rem, 5vw, 4.2rem); }
+.gallery-section .section-head { margin-bottom: 1.35rem; }
+.gallery-section .filter-bar { margin-bottom: 1.15rem; }
+
+/* align-items: start so each tile keeps the height its own photograph asks
+   for, rather than being stretched to the tallest tile in its row. */
+.gallery-section .gallery-grid { gap: clamp(.9rem, 1.4vw, 1.25rem); align-items: start; }
+
+/* No forced ratio and no cover here: the width and height attributes on the
+   tag give the browser the true proportions to reserve, so nothing is cropped. */
+.gallery-section .shot img { aspect-ratio: auto; object-fit: fill; }
+
+/* The photograph is the point; the caption sits under a softer wash, a step
+   smaller and a weight lighter. */
+.gallery-section .shot figcaption {
+  background: linear-gradient(to top, rgba(16, 43, 34, .74), rgba(16, 43, 34, .32) 48%, transparent);
+  color: rgba(255,255,255,.93); padding: 2rem .9rem .72rem;
+  font-size: .86rem; font-weight: 500; line-height: 1.35;
+}
+
+.gallery-note { font-size: .88rem; margin-top: 1.4rem; max-width: 46rem; }
+
+/* A clear break before the site plan, so it reads as its own section. */
+.map-section { padding-top: clamp(4.4rem, 8vw, 7rem); }
 .lightbox {
   position: fixed; inset: 0; z-index: 200; display: none;
   background: rgba(11, 30, 24, .9); padding: 4vh 4vw; place-items: center;
