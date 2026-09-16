@@ -201,12 +201,11 @@ Every image is an inline `<svg>` — there are no binary assets to manage. To dr
 | Strip tile 1 | `neighborhood-lake-conroe.jpg` | &mdash; |
 | Strip tile 2 | `neighborhood-downtown.jpg` | &mdash; |
 | Strip tile 3 | `neighborhood-heb.jpg` | &mdash; |
-| Strip tile 4 | the `trail` illustration | a wooded road |
 | The closing band | `lake-band.jpg` | &mdash; |
 
-To swap an illustration for a photograph, add the file to `assets/` and register it in the photo
-map under the key that tile uses (`trail` is the last one left). The page picks a photograph over
-an illustration automatically; delete the hero's badge once a real photograph is in. Both the hero
+All three strip tiles are photographs now; the hero figure is the only illustration left on the
+page. To swap it, add the file to `assets/` and register it under `downtown` in the photo map.
+The page picks a photograph over an illustration automatically; delete the hero's badge once a real photograph is in. Both the hero
 and the strip pass `fill=True`, which crops an illustration to its box the way `object-fit:
 cover` crops a photograph &mdash; a photograph needs nothing extra.
 
