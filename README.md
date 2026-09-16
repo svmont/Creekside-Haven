@@ -221,7 +221,7 @@ Every image is an inline `<svg>` — there are no binary assets to manage. To dr
 | The hero figure, 58% of a split hero | `neighborhood-hero.jpg` |
 | Strip tile 1 | `neighborhood-lake-conroe.jpg` |
 | Strip tile 2 | `neighborhood-downtown.jpg` |
-| Strip tile 3 | `neighborhood-heb.jpg` |
+| Strip tile 3 | `neighborhood-grocery.jpg` |
 | The closing band | `lake-band.jpg` |
 
 Every image on this page is a photograph; no illustration is left on it. The page still picks a
@@ -239,7 +239,7 @@ one &mdash; it is keyed `strip-lake`, not `lake`. A text-free export could be re
 
 Each image is cropped from a larger master kept alongside it (`*-full.png`). The strip
 photographs were cropped to 4:3 to fit the tile **without clipping their printed captions**
-&mdash; the two square images (lake, downtown) from the bottom, the H-E-B image from the sides.
+&mdash; the two square images (lake, downtown) from the bottom, the grocery image from the sides.
 Re-crop from the masters the same way if the tiles ever change shape.
 
 **The hero photograph carries no text**, unlike the strip tiles. `neighborhood-hero-full.png`
