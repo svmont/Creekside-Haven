@@ -49,7 +49,7 @@ Each value appears in several files, so search-and-replace across the repository
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
-| Photography | the gallery interiors and the two neighborhood tiles are still illustrations; `neighborhood.html` is fully photographed | `gallery.html`, `index.html` |
+| Photography | only the bedroom tile and the two neighborhood tiles are still illustrations in the gallery; the home page strip still uses the kitchen and bedroom illustrations | `gallery.html`, `index.html` |
 
 ### What the photographs confirmed
 
@@ -149,6 +149,19 @@ To swap in a revised plan, replace the `-full.png` master, regenerate the other 
 it, and keep the file names. To add a third plan, add an entry to the plan list with its `key`,
 `name`, `sqft`, `img` base name, `alt` text and feature bullets; the cards, the floor-plan
 filter chips and the tour form's plan select are all generated from that list.
+
+## Virtually staged interiors
+
+`interior-furnished.jpg` and `interior-unfurnished.jpg` are the same one-bedroom room from the
+same camera position; the furnished one has its furniture added digitally. The gallery's
+"Photographs where we have them" note says so and says the furniture is not included. **Keep that
+disclosure whenever a staged photograph is on the page** &mdash; the note is shared, so it also
+appears on the home page, which currently shows no staged image.
+
+They are keyed `interior-furnished` and `interior-unfurnished` rather than reusing `living` and
+`kitchen`, because the home page's three-tile strip asks for `kitchen` and `bedroom` and was to
+keep its approved illustrations. Point that strip at these keys to put real interiors on the
+home page.
 
 ## The home page hero photograph
 
