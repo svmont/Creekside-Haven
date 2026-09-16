@@ -49,7 +49,7 @@ Each value appears in several files, so search-and-replace across the repository
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
-| Photography | the gallery interiors are still illustrations; `neighborhood.html` is fully photographed | `gallery.html`, `index.html` |
+| Photography | the gallery interiors and the two neighborhood tiles are still illustrations; `neighborhood.html` is fully photographed | `gallery.html`, `index.html` |
 
 ### What the photographs confirmed
 

@@ -325,6 +325,10 @@ p + p { margin-top: .9rem; }
   box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease;
 }
 .shot:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+/* The filter chips hide items with the `hidden` attribute. These elements set an
+   explicit display, which as author rules beat the browser's [hidden] rule, so the
+   attribute alone would not hide them. */
+.shot[hidden], .plan-card[hidden] { display: none; }
 .shot svg { width: 100%; height: auto; }
 .shot img { width: 100%; height: auto; display: block; aspect-ratio: 800 / 560; object-fit: cover; }
 .shot figcaption {
