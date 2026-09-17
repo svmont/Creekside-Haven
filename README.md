@@ -256,44 +256,33 @@ columns and sit across. Adding the third photograph needs no stylesheet edit.
 
 | Where | Has |
 | --- | --- |
-| The hero figure, 58% of a split hero | `neighborhood-hero.jpg` |
-| Strip tile 1 | `neighborhood-lake-conroe.jpg` |
-| Strip tile 2 | `neighborhood-downtown.jpg` |
-| Strip tile 3 | `neighborhood-grocery.jpg` |
-| The closing band | `lake-band.jpg` |
+| The hero figure, 63% of a split hero | `nb-downtown.jpg` |
+| The supporting image below the highlights | `nb-lake-conroe.jpg` |
 
-Every image on this page is a photograph; no illustration is left on it. The page still picks a
-photograph over an illustration automatically wherever one is registered, and the strip passes
-`fill=True`, which crops an illustration to its box the way `object-fit: cover` crops a
-photograph &mdash; a photograph needs nothing extra.
+Two photographs, both 1600&times;900, both shared with the gallery's neighborhood collection
+&mdash; one file per subject across the site. The hero figure is 16:9 to match them, so the
+downtown street shows whole with nothing cropped; `object-fit: cover` stays on it so a
+replacement of another shape still fills the box.
 
-**Captions burned into the artwork.** The three strip photographs and the closing band carry
-their own captions as part of the image. The strip only renders an HTML `<figcaption>` for a tile
-whose `label` is non-empty, so a self-captioning photograph is registered with an empty label;
-give a replacement photograph a label only if its caption is *not* part of the file. This also
-keeps the lake photograph out of the gallery, where a second caption would sit under its printed
-one &mdash; it is keyed `strip-lake`, not `lake`. A text-free export could be registered as
-`lake` and would then appear in the gallery too.
+`.nb-strip` is contained rather than full-bleed and reads `data-count`. At one, the photograph
+sits centred at 46rem so it supports the page instead of banding across it; at two it splits
+the row, and it stacks below 700px. Adding The DEN is one line &mdash;
+`("nb-den", "The DEN &middot; Montgomery ISD", "")` after Lake Conroe in `STRIP` &mdash; and
+the count follows from `len(STRIP)`. Nothing stands in for it until then.
 
-Each image is cropped from a larger master kept alongside it (`*-full.png`). The strip
-photographs were cropped to 4:3 to fit the tile **without clipping their printed captions**
-&mdash; the two square images (lake, downtown) from the bottom, the grocery image from the sides.
-Re-crop from the masters the same way if the tiles ever change shape.
+**What came off this page.** The H-E-B photograph, the second downtown photograph and the
+closing lake band, which was a third view of Lake Conroe and the older one. Their files are
+still in `assets/` (`neighborhood-hero.jpg`, `neighborhood-downtown.jpg`,
+`neighborhood-grocery.jpg`, `neighborhood-lake-conroe.jpg`, `lake-band.jpg`), as are their
+`PHOTOS` entries and the `.lake-band` rule, so any of it can go back without being remade. The
+band's wording and wordmark are burned into its file and cannot be reproduced from the newer
+photograph.
 
-**The hero photograph carries no text**, unlike the strip tiles. `neighborhood-hero-full.png`
-is the supplied master, already 3:2, so the hero is a straight resize of it with no crop. An
-earlier version of this image was a full banner with the eyebrow, headline and lede set into its
-sky &mdash; and a typo, *downtnown*, in that baked lede; it was cropped down to the photograph
-and has since been replaced outright. If a banner-style file turns up again, crop the photograph
-out of it rather than putting the baked text on the page: the heading and copy here are real
-text, and the hero must not repeat them.
-
-The headline's line breaks are `<br>` elements that `display: none` below 900px, so the three
-lines collapse to a natural wrap. Each keeps a space before it &mdash; without that the words run
-together once the break is hidden.
-
-The lightbox in `js/site.js` clones whatever element it finds inside the tile — swap the
-`querySelector("svg")` call for `querySelector("img, svg")` when photos go in.
+**Captions burned into the artwork.** The retired strip photographs and the closing band carry
+their captions as part of the image, which is why they are keyed `strip-*` rather than by
+subject: the strip renders an HTML `<figcaption>` only for a tile whose `label` is non-empty,
+so a self-captioning photograph is registered with an empty label. The two photographs the page
+uses now carry no text, so they take labels and the page captions them.
 
 ## Wiring up the forms
 

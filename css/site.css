@@ -442,8 +442,11 @@ p + p { margin-top: .9rem; }
 .nb-hero__figure {
   margin: 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
 }
+/* 16:9, which is what the downtown photograph is: the street stays centred, the
+   frame keeps both sides of it, and it matches the supporting photograph below.
+   object-fit: cover stays so a replacement of another shape still fills the box. */
 .nb-hero__figure img {
-  width: 100%; height: auto; display: block; aspect-ratio: 3 / 2; object-fit: cover;
+  width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: cover;
 }
 
 .nb-highlights-band { border-top: 1px solid var(--line); background: var(--cream); }
@@ -463,12 +466,25 @@ p + p { margin-top: .9rem; }
 .nb-highlights h3 { margin: 0 0 .55rem; font-size: 1.1rem; }
 .nb-highlights p { margin: 0; color: var(--muted); font-size: .95rem; }
 
-.nb-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
-.nb-strip figure { position: relative; margin: 0; overflow: hidden; background: var(--forest); }
-.nb-strip svg, .nb-strip img {
-  width: 100%; height: 100%; display: block; object-fit: cover; aspect-ratio: 4 / 3;
+/* Contained rather than full-bleed: one supporting photograph should read as
+   support for the page, not as a banner across it. Two share the row when The
+   DEN joins Lake Conroe; data-count is how many there are. */
+.nb-strip {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(.9rem, 1.4vw, 1.25rem);
+  width: min(100% - 2.5rem, var(--container)); margin-inline: auto;
+  padding-block: clamp(2.6rem, 5vw, 4.2rem);
 }
-.nb-strip figure { aspect-ratio: 4 / 3; }
+.nb-strip[data-count="1"] { grid-template-columns: 1fr; max-width: 46rem; }
+@media (max-width: 700px) { .nb-strip { grid-template-columns: 1fr; } }
+.nb-strip figure {
+  position: relative; margin: 0; overflow: hidden; background: var(--forest);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+}
+.nb-strip svg, .nb-strip img {
+  width: 100%; height: 100%; display: block; object-fit: cover; aspect-ratio: 16 / 9;
+}
+.nb-strip figure { aspect-ratio: 16 / 9; }
 .nb-strip figcaption {
   position: absolute; inset: auto 0 0 0; padding: 2rem 1.1rem 1.2rem; text-align: center;
   color: #fff; font-size: .8rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
@@ -479,6 +495,8 @@ p + p { margin-top: .9rem; }
   color: rgba(255, 255, 255, .82);
 }
 
+/* Unused since the closing lake band came off the neighborhood page; kept so
+   restoring that section needs nothing but its markup. */
 .lake-band { display: block; background: var(--forest); }
 .lake-band img { width: 100%; height: auto; display: block; }
 
