@@ -229,33 +229,28 @@ Every image is an inline `<svg>` — there are no binary assets to manage. To dr
 
 ### The gallery's neighborhood collection
 
-Six subjects are wanted, in this order:
-
 | # | Subject | Has |
 | --- | --- | --- |
-| 1 | Historic Downtown Montgomery | `nb-downtown.jpg` &mdash; leads the collection |
-| 2 | The DEN &middot; Montgomery ISD | **nothing yet** |
-| 3 | Lake Conroe | `nb-lake-conroe.jpg` |
-| 4 | Fernland Historical Park | **nothing yet** |
-| 5 | Memory Park | **nothing yet** |
-| 6 | Around Montgomery | `nb-around-montgomery.jpg` |
+| 1 | Historic Downtown Montgomery | `nb-downtown.jpg` |
+| 2 | Lake Conroe | `nb-lake-conroe.jpg` |
+| 3 | The DEN &middot; Montgomery ISD | **nothing yet** &mdash; goes last |
 
-The three `nb-*` files are 3:2, 1500&times;1000 crops of the neighborhood page's masters
-(`neighborhood-hero-full.png`, `neighborhood-lake-conroe-full.png`,
-`neighborhood-grocery-full.png`), taken above the caption bands burned into the strip versions
-so the gallery can caption them itself. They have no masters of their own; re-cut them from
-those. A new subject needs a photograph of *that place* &mdash; a stock shot that could be any
-small town is worse than an empty slot.
+Both files are 1600&times;900, cut from the uploads kept beside them as
+`nb-downtown-full.png` and `nb-lake-conroe-full.png`. The crop is the largest exact 16:9
+window, centred, which is why they display at identical dimensions &mdash; the pair has to
+match, and the gallery renders every image at its own proportions. Cut a third the same way:
+`scratchpad` has the script, and the height is forced to a multiple of nine so the ratio is
+exact and nothing is scaled unevenly. A new subject needs a photograph of *that place*; a
+stock shot that could be any small town is worse than an empty slot.
 
-`nb-downtown` is listed in `FEATURED` in `build.py`, which gives it `.shot--feature`. A CSS
-`:has()` rule widens that tile to the full row, and drops the grid to two columns, only while
-the neighborhood filter is the one showing; the filter script knows nothing about it.
+`NEIGHBOURHOOD_INTRO` in `build.py` is the band that introduces them &mdash; eyebrow,
+heading, one line. `gallery()` emits it before the first Neighborhood tile, *inside the
+grid*, so the filter keeps working and no photograph is shown twice. `.gallery-break` spans
+the row, and a `:has()` rule hides the band whenever those tiles are filtered out.
 
-**A caveat on `nb-downtown.jpg`.** The storefront on the left carries a third-party sign with a
-phone number on it, legible at the size the featured tile renders. It is not the property's
-number, and the same frame is already the neighborhood page hero, but the site otherwise shows
-no phone number at all. Crop the left quarter away if that ever needs to be true of this
-photograph too.
+The grid carries `data-nb`, the number of neighborhood tiles. At two, a `:has()` rule puts
+them side by side on a row of their own; at three they fall back to the gallery's own three
+columns and sit across. Adding the third photograph needs no stylesheet edit.
 
 ### The neighborhood page's images
 

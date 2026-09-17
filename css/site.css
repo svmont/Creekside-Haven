@@ -368,15 +368,20 @@ p + p { margin-top: .9rem; }
 .gallery-section .shot:hover img,
 .gallery-section .shot:focus-visible img { transform: scale(1.035); }
 
-/* 4. The downtown photograph leads the neighborhood collection: when that is
-   the only category showing, it takes the whole row. :has() reads the filter
-   state off the tiles themselves, so the filter script stays untouched. */
+/* The neighborhood photographs introduce themselves from inside the grid, on a
+   row of their own, so the filter keeps working and nothing is shown twice.
+   It steps back out of the way when those tiles are filtered out. */
+.gallery-break { grid-column: 1 / -1; max-width: 42rem; padding-block: clamp(1.6rem, 3vw, 2.6rem) .35rem; }
+.gallery-break h2 { margin-top: .15rem; font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.gallery-break p { color: var(--muted); margin-top: .5rem; font-size: 1rem; }
+.gallery-grid:has(.shot[data-cat="neighborhood"][hidden]) .gallery-break { display: none; }
+
+/* Two photographs share the row; a third joins them across on its own, because
+   data-nb counts them and this rule only claims the pair. */
 @media (min-width: 561px) {
-  .gallery-grid:has(.shot[data-cat="interiors"][hidden]):has(.shot[data-cat="community"][hidden]) {
+  .gallery-grid[data-nb="2"]:has(.shot[data-cat="interiors"][hidden]):has(.shot[data-cat="community"][hidden]) {
     grid-template-columns: repeat(2, 1fr);
   }
-  .gallery-grid:has(.shot[data-cat="interiors"][hidden]):has(.shot[data-cat="community"][hidden])
-  .shot--feature { grid-column: 1 / -1; }
 }
 
 /* The photograph is the point; the caption sits under a softer wash, a step
