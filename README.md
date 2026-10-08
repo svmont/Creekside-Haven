@@ -43,7 +43,7 @@ Each value appears in several files, so search-and-replace across the repository
 
 | What | Placeholder currently in the site | Where |
 | --- | --- | --- |
-| Phone | **none shown** — a new number is being set up. Nothing on the site dials out; contact routes to the tour form and email | see "No phone number yet" below |
+| Phone | `(970) 620-2093` — supplied by the property | see "The phone number" below |
 | Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
 | Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
@@ -112,22 +112,21 @@ appointment and ask people to make contact; 24/7 maintenance is stated separatel
 a real service, not an office hour. If a staffed schedule ever exists, those are the two places
 to put it, and the JSON-LD has no `openingHours` to keep in step.
 
-## No phone number yet
+## The phone number
 
-The property is setting up a new number, so **no phone number appears anywhere on the site** —
-a placeholder that does not dial is worse than none on a live page. Contact routes through the
-tour request form and `mailto:` links instead.
+`(970) 620-2093`, set in `build.py` as `PHONE` with `PHONE_HREF = "+19706202093"` &mdash; `tel:`
+wants the digits and nothing else. It is a non-Texas area code; that is what was supplied.
 
-When the number arrives, put it back in five places:
+Setting those two constants is the whole switch. Every place that shows the number renders only
+when `PHONE` is truthy, so setting both back to `None` takes it off the site again without
+touching any markup:
 
-1. The header, as a `nav-phone` link before the Apply button, on all six pages.
-2. The footer "Contact" list, above the email line, on all six pages.
-3. `contact.html`, in the "Get in touch" card above the email row.
-4. The tour form's secondary button on `contact.html` (currently "Email Us").
+1. The header, as a `nav-phone` link before the Apply button, on all six pages. It is hidden with
+   the rest of the nav below 960px and appears inside the mobile menu.
+2. The footer "Contact" list, between the address and the email line, on all six pages.
+3. `contact.html`, in the "Get in touch" card between the address and the email row.
+4. The tour form's buttons on `contact.html`, as "Call (970) 620-2093" beside "Email Us".
 5. `"telephone"` in the JSON-LD block at the top of `index.html`.
-
-Use `<a href="tel:+19365550148">(936) 555-0148</a>` as the shape — `tel:` needs the digits
-with no punctuation.
 
 ## The floor plan images
 
