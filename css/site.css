@@ -356,13 +356,14 @@ p + p { margin-top: .9rem; }
 .gallery-section .section-head { margin-bottom: 1.05rem; }
 .gallery-section .filter-bar { margin-bottom: .9rem; }
 
-/* align-items: start so each tile keeps the height its own photograph asks
-   for, rather than being stretched to the tallest tile in its row. */
-.gallery-section .gallery-grid { gap: clamp(.9rem, 1.4vw, 1.25rem); align-items: start; }
-
-/* No forced ratio and no cover here: the width and height attributes on the
-   tag give the browser the true proportions to reserve, so nothing is cropped. */
-.gallery-section .shot img { aspect-ratio: auto; object-fit: fill; }
+/* Every tile the same box: 3:2, three equal columns, 20px gaps. No masonry and
+   no per-image height, so rows line up whichever filter is showing. */
+.gallery-section .gallery-grid { gap: 20px; }
+.gallery-section .shot { aspect-ratio: 3 / 2; }
+.gallery-section .shot img {
+  width: 100%; height: 100%; aspect-ratio: auto;
+  object-fit: cover; object-position: center;
+}
 
 .gallery-section .shot img { transition: transform .5s cubic-bezier(.2, .7, .3, 1); }
 .gallery-section .shot:hover img,
@@ -376,13 +377,6 @@ p + p { margin-top: .9rem; }
 .gallery-break p { color: var(--muted); margin-top: .5rem; font-size: 1rem; }
 .gallery-grid:has(.shot[data-cat="neighborhood"][hidden]) .gallery-break { display: none; }
 
-/* Two photographs share the row; a third joins them across on its own, because
-   data-nb counts them and this rule only claims the pair. */
-@media (min-width: 561px) {
-  .gallery-grid[data-nb="2"]:has(.shot[data-cat="interiors"][hidden]):has(.shot[data-cat="community"][hidden]) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 /* The photograph is the point; the caption sits under a softer wash, a step
    smaller and a weight lighter. */

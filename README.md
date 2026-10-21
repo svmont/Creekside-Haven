@@ -278,21 +278,35 @@ note wherever a staged interior appears.
 | 3 | The DEN &middot; Montgomery ISD | **nothing yet** &mdash; goes last |
 
 Both files are 1600&times;900, cut from the uploads kept beside them as
-`nb-downtown-full.png` and `nb-lake-conroe-full.png`. The crop is the largest exact 16:9
-window, centred, which is why they display at identical dimensions &mdash; the pair has to
-match, and the gallery renders every image at its own proportions. Cut a third the same way:
-`scratchpad` has the script, and the height is forced to a multiple of nine so the ratio is
-exact and nothing is scaled unevenly. A new subject needs a photograph of *that place*; a
-stock shot that could be any small town is worse than an empty slot.
+`nb-downtown-full.png` and `nb-lake-conroe-full.png`, the largest exact 16:9 window of each,
+centred. The gallery shows them in a 3:2 tile, so about 16% comes off the sides; both were
+checked and the street and the lake survive a centred crop. The lightbox shows them whole.
+A new subject needs a photograph of *that place*; a stock shot that could be any small town
+is worse than an empty slot.
 
 `NEIGHBOURHOOD_INTRO` in `build.py` is the band that introduces them &mdash; eyebrow,
 heading, one line. `gallery()` emits it before the first Neighborhood tile, *inside the
 grid*, so the filter keeps working and no photograph is shown twice. `.gallery-break` spans
 the row, and a `:has()` rule hides the band whenever those tiles are filtered out.
 
-The grid carries `data-nb`, the number of neighborhood tiles. At two, a `:has()` rule puts
-them side by side on a row of their own; at three they fall back to the gallery's own three
-columns and sit across. Adding the third photograph needs no stylesheet edit.
+### One tile size, everywhere
+
+Every tile is **3:2**, in three equal columns with 20px gaps &mdash; two columns below 900px,
+one below 560px &mdash; and that holds under all four filters. `.gallery-section .shot` sets
+the ratio and the image fills it with `object-fit: cover`, so no tile takes its height from
+its own photograph and no row is ragged. There is no masonry here and nothing should
+reintroduce one.
+
+Fourteen of the nineteen photographs are already 3:2 and are not cropped at all. The three
+4:3 community shots lose about 11% top and bottom, and the two 16:9 neighborhood shots about
+16% from the sides; each was checked against its full frame, and `object-position` stays
+`center` because every subject survives it. Change `object-position` per image if a future
+photograph does not.
+
+**The lightbox is deliberately exempt.** It builds its own `<img>` outside `.shot`, so the
+tile rules do not reach it and an enlarged photograph shows its true proportions &mdash;
+verified on every cropped one. Keep it that way: the grid is for rhythm, the lightbox is for
+looking.
 
 ### The neighborhood page's images
 
