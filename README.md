@@ -44,7 +44,7 @@ Each value appears in several files, so search-and-replace across the repository
 | What | Placeholder currently in the site | Where |
 | --- | --- | --- |
 | Phone | `(970) 620-2093` — supplied by the property | see "The phone number" below |
-| Email | `tony@1000fd.com` — the broker's real address, shown until a branded one exists | footer on all six pages, `contact.html`, `apply.html`, the JSON-LD `email` |
+| Email | `Thpmservice@gmail.com` — the leasing address shown on the site | footer on all six pages, `contact.html`, `apply.html`, the JSON-LD `email` |
 | Domain | `https://creeksidehavenapts.com` — the real one, supplied by the property | `<link rel="canonical">`, `og:url`, `og:image`, `robots.txt`, `sitemap.xml`, the JSON-LD `url` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
@@ -128,7 +128,7 @@ There is **no `CNAME` file in the repo.** The custom domain is therefore set in 
 Pages rather than in the tree. That works, but it means the domain is not in version control:
 check before assuming a deploy carries it.
 
-The email shown on the site is `tony@1000fd.com`, which is real but is not on this domain.
+The email shown on the site is `Thpmservice@gmail.com`, which is real but is not on this domain.
 A branded `leasing@creeksidehavenapts.com`, forwarded to whoever should receive it, is the
 thing to set up: the site then shows an address that matches the site, and changing who reads
 it is a forwarding rule rather than 16 edits across six pages.
@@ -330,8 +330,11 @@ uses now carry no text, so they take labels and the page captions them.
 
 The tour form on `contact.html` posts to **FormSubmit**, which needs no account: the
 destination address is the endpoint. Leads go to **`tony@1000fd.com`**, copied to
-**`pattihomesales@gmail.com`** via `_cc`, with the subject **Creekside Haven Prospect from
+**`Thpmservice@gmail.com`** via `_cc`, with the subject **Creekside Haven Prospect from
 Website**, fixed via a `_subject` hidden field so either inbox can filter on it.
+
+Note the form's primary and the address shown on the site are **different on purpose**: leads go
+to the broker, the page tells visitors to write to leasing.
 
 **The primary address is the one that activates the form.** FormSubmit sends its confirmation
 link to the endpoint address, not to the CC. Change the endpoint and the new primary has to
