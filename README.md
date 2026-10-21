@@ -329,8 +329,8 @@ uses now carry no text, so they take labels and the page captions them.
 
 The tour form on `contact.html` posts to **FormSubmit**, which needs no account: the
 destination address is the endpoint. Leads go to **`tony@1000fd.com`**, copied to
-**`pattihomesales@gmail.com`** via `_cc`, with the subject **Creekside Haven**, fixed via a
-`_subject` hidden field so either inbox can filter on it.
+**`pattihomesales@gmail.com`** via `_cc`, with the subject **Creekside Haven Prospect from
+Website**, fixed via a `_subject` hidden field so either inbox can filter on it.
 
 **The primary address is the one that activates the form.** FormSubmit sends its confirmation
 link to the endpoint address, not to the CC. Change the endpoint and the new primary has to
