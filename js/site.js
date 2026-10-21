@@ -133,9 +133,17 @@
         body: new FormData(form),
         headers: { Accept: "application/json" }
       }).then(function (res) {
-        if (!res.ok) throw new Error(res.status);
-        show(ok);
-        form.reset();
+        /* A 200 is not the same as a send. Form services answer 200 with
+           {"success": false} when an endpoint is not activated yet or the
+           submission was rejected, so the body gets a look before anyone is
+           told their request went through. */
+        return res.json().catch(function () { return null; }).then(function (data) {
+          var refused = data && (data.success === false || data.success === "false" ||
+                                 data.ok === false || data.error);
+          if (!res.ok || refused) throw new Error("rejected");
+          show(ok);
+          form.reset();
+        });
       }).catch(function () {
         show(fail);
       }).then(function () {

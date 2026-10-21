@@ -325,26 +325,37 @@ uses now carry no text, so they take labels and the page captions them.
 
 ## Wiring up the forms
 
-**The tour form on `contact.html` is not connected to anything yet.** `data-endpoint` on the
-form is empty, and `js/site.js` reads it:
+The tour form on `contact.html` posts to **FormSubmit**, which needs no account: the
+destination address is the endpoint. Leads go to `pattihomesales@gmail.com` with the subject
+**Creekside Haven**, fixed via a `_subject` hidden field so the inbox can filter on it.
 
-- **Empty** — the submit shows `.form-offline`, which tells the visitor plainly that the
-  request was *not* sent and gives them the phone number. This is the state the site is in.
-- **Set** — the submit POSTs a `FormData` to that URL with `Accept: application/json`, shows
-  `.form-success` on a 2xx and `.form-error` on anything else. On an error the fields are left
-  filled so nobody retypes them, and the button re-enables either way.
+- `data-endpoint` is the AJAX endpoint (`/ajax/<address>`), which answers JSON and lets the
+  page report the outcome in place.
+- `action` is the plain endpoint, so the form still works with JavaScript off: the browser
+  posts natively and FormSubmit shows its own confirmation page.
+- `_honey` is a decoy input. It is off-screen with `.hp` rather than `display:none`, out of the
+  tab order and `aria-hidden`, so a bot fills it and a person never meets it.
+- `_captcha=false` skips FormSubmit's interstitial; `_template=table` makes the email readable.
+- The prospect's own `email` field is what replies go to, which FormSubmit picks up by name.
 
-It deliberately does **not** show a confirmation it has not earned. A fake "a leasing
-specialist will reach out" costs a lead *and* the prospect's goodwill: they wait for a call
-that was never queued.
+**A 200 is not the same as a send.** FormSubmit answers 200 with `{"success": false}` when the
+address has not been activated yet, and Formspree and others have their own shapes. The handler
+in `js/site.js` reads the body as well as the status and treats `success: false`, `ok: false`
+or an `error` key as a failure, so nobody is thanked for a message that did not leave. If you
+move to another service, check what it returns on refusal before trusting the green box.
 
-To go live:
+**Activation.** FormSubmit emails the destination address a confirmation link the first time the
+form is used. Until that link is clicked, submissions are refused and the page correctly shows
+the red notice.
 
-1. Create a form endpoint (Formspree, Netlify Forms, or your own serverless function) — or
-   better, an endpoint that pushes the lead straight into the property management system
-   (Entrata, RealPage, Yardi, AppFolio) so leads land where leasing agents already work.
-2. Put its URL in `data-endpoint` on the form. Nothing else changes.
-3. Submit the form once for real and confirm the lead arrives, before trusting the green box.
+**The address is in the page source**, in both `data-endpoint` and `action`, where scrapers will
+find it. After activation FormSubmit supplies a random alias endpoint (`/el/xxxxx`) that works
+identically and keeps the address off the page &mdash; swap both attributes to it.
+
+To move to a different service, put its URL in `data-endpoint`; the handler is not specific to
+FormSubmit. Better still, an endpoint that pushes the lead straight into the property management
+system (Entrata, RealPage, Yardi, AppFolio) puts leads where leasing agents already work.
+
 4. Point the "Apply" / "Start My Application" buttons in `apply.html` and the plan cards at
    the real resident-portal application URL (they currently link to `contact.html`).
 
