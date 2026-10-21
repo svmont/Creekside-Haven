@@ -215,16 +215,26 @@ Two things worth knowing about how it got here:
   not accept a suggestion to "capture searches for the old name". Files brought over from
   listings should be renamed before they are committed.
 
-## Replacing the remaining illustrations with photography
+## Photography
 
-Every image is an inline `<svg>` — there are no binary assets to manage. To drop in real photos:
+**No illustration is left anywhere on the site.** Every image on every page is a photograph;
+the one drawing that remains is the community site plan at the bottom of `gallery.html`, which
+is labelled as a site plan and carries its own "approximate and not to scale" note.
 
-1. Add the files to `assets/` (WebP or optimized JPEG, roughly 1600×1120 for gallery tiles).
-2. In `gallery.html`, replace the `<svg>…</svg>` inside each `<button class="shot">` with
-   `<img src="assets/your-photo.webp" alt="descriptive alt text" width="1600" height="1120" />`.
-3. Do the same for the hero in `index.html` (`.hero-art`) and the three tiles in the home
-   page gallery strip.
-4. Remove the "Illustrations shown" note that follows those galleries.
+The home page strip under "Take a look around Creekside Haven." shows three of them &mdash; the
+entrance sign, the one-bedroom living/dining/kitchen and the two-bedroom primary bedroom &mdash;
+and its captions must describe what is actually in frame. It held two drawings of a kitchen and
+a bedroom until the photographs existed; a drawing captioned as if it were the apartment is
+worse than one tile fewer.
+
+To add a photograph: put the file in `assets/` (optimized JPEG), then add a tile as
+`<button class="shot" type="button"><img src="assets/your-photo.jpg" width="W" height="H"
+loading="lazy" decoding="async" alt="..." /><figcaption>Caption</figcaption></button>`. Give the
+real pixel dimensions so the browser reserves the right box, and write the alt text from the
+photograph rather than from the floor plan.
+
+Anything furnished is virtually staged, and the note under each gallery says so &mdash; keep that
+note wherever a staged interior appears.
 
 ### The gallery's neighborhood collection
 
