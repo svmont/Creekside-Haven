@@ -44,8 +44,8 @@ Each value appears in several files, so search-and-replace across the repository
 | What | Placeholder currently in the site | Where |
 | --- | --- | --- |
 | Phone | `(970) 620-2093` — supplied by the property | see "The phone number" below |
-| Email | `leasing@creeksidehaven.com` | footer, `contact.html` |
-| Domain | `https://www.creeksidehaven.com` | `<link rel="canonical">`, `og:url`, `robots.txt`, `sitemap.xml` |
+| Email | `leasing@creeksidehaven.com` — **still a placeholder, and on the wrong domain**; needs the real address | footer on all six pages, `contact.html`, the JSON-LD `email` |
+| Domain | `https://creeksidehavenapts.com` — the real one, supplied by the property | `<link rel="canonical">`, `og:url`, `og:image`, `robots.txt`, `sitemap.xml`, the JSON-LD `url` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
 | Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
@@ -111,6 +111,26 @@ footer's Leasing column and the contact page's "Scheduling a visit" card both sa
 appointment and ask people to make contact; 24/7 maintenance is stated separately because it is
 a real service, not an office hour. If a staffed schedule ever exists, those are the two places
 to put it, and the JSON-LD has no `openingHours` to keep in step.
+
+## The domain
+
+`creeksidehavenapts.com`. It appears in 26 places &mdash; a canonical and an `og:url` and an
+`og:image` on each of the six pages, the JSON-LD `url`, six `<loc>` entries in `sitemap.xml`
+and the `Sitemap:` line in `robots.txt`. They are absolute URLs, so they all have to be
+changed together; a grep for the bare host finds every one.
+
+It is written **without `www`**, which is the form the property gave. A canonical has to name
+the host that actually answers: if the site settles on `www.creeksidehavenapts.com` and
+redirects the apex to it, every one of those 26 needs the `www` put back, or the canonicals
+point at a redirect and search engines have to guess.
+
+There is **no `CNAME` file in the repo.** The custom domain is therefore set in Settings &rarr;
+Pages rather than in the tree. That works, but it means the domain is not in version control:
+check before assuming a deploy carries it.
+
+Note the email address is a separate thing and is still `@creeksidehaven.com`, a domain nobody
+here owns. It was not changed to match, because `leasing@creeksidehavenapts.com` would be a
+guess, and a guessed address that bounces is worse than a known-bad one.
 
 ## The phone number
 

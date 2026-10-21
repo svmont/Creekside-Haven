@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.creeksidehaven.com/sitemap.xml
+Sitemap: https://creeksidehavenapts.com/sitemap.xml
