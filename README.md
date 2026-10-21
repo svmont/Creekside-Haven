@@ -328,8 +328,13 @@ uses now carry no text, so they take labels and the page captions them.
 ## Wiring up the forms
 
 The tour form on `contact.html` posts to **FormSubmit**, which needs no account: the
-destination address is the endpoint. Leads go to `pattihomesales@gmail.com` with the subject
-**Creekside Haven**, fixed via a `_subject` hidden field so the inbox can filter on it.
+destination address is the endpoint. Leads go to **`tony@1000fd.com`**, copied to
+**`pattihomesales@gmail.com`** via `_cc`, with the subject **Creekside Haven**, fixed via a
+`_subject` hidden field so either inbox can filter on it.
+
+**The primary address is the one that activates the form.** FormSubmit sends its confirmation
+link to the endpoint address, not to the CC. Change the endpoint and the new primary has to
+confirm before anything is delivered again &mdash; to either of them.
 
 - `data-endpoint` is the AJAX endpoint (`/ajax/<address>`), which answers JSON and lets the
   page report the outcome in place.
