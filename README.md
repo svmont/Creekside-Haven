@@ -190,11 +190,21 @@ navy disc — which sits on the dark footer without any chip behind it.
 `assets/logo-reverse-full.png` is that original 1254px upload.
 
 **The favicon is deliberately not this logo.** At 16px the ring, lettering, cattails and water
-collapse into a smudge, so `assets/favicon.svg` is the heron alone, filled cream on a solid
-forest tile, . Leave it as it is unless the designer supplies a simplified small-size mark.
+collapse into a smudge. The heron alone was tried next and had the same problem: its neck and
+legs are a few pixels wide at tab size. `assets/favicon.svg` is now a **CH monogram**, cream on
+a forest tile with the site's 13px corner radius.
 
-`assets/apple-touch-icon.png` (180×180) is a different matter: iOS renders it large enough for
-the real seal, so it is the reversed artwork composited onto a navy square.
+The letters are Fraunces Bold **converted to outlines**, not a `<text>` element &mdash; browsers
+do not load webfonts for an SVG favicon, so a font reference would render in whatever serif the
+machine happened to have. To re-cut it (different letters, different weight, more or less
+breathing room), take the TTF from the Google Fonts CSS the site already loads and outline the
+glyphs with `fontTools` &mdash; `SVGPathPen` through a `TransformPen` that flips y and fits the
+combined ink box to the tile. The live version sits 4px from each side; that tightness is the
+point, since legibility at 16px is the whole reason for the monogram.
+
+`assets/apple-touch-icon.png` (180×180) is a different matter and is **not** the monogram: iOS
+renders it large enough for the real seal, so it stays the reversed artwork composited onto a
+navy square. The tab needs legibility at 16px; a home screen does not.
 
 ## Photography
 
