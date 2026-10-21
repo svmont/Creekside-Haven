@@ -100,20 +100,47 @@
   }
 
   /* ------------------- Forms: front-end confirmation -------------------- */
-  /* No backend is wired up yet. While a form carries data-demo, submits are
-     intercepted and an on-page confirmation is shown instead of posting.
-     Point the form action at a real endpoint and drop data-demo to go live.
-     See creekside-haven/README.md. */
-  document.querySelectorAll("form[data-demo]").forEach(function (form) {
+  /* The tour form only claims to have sent something when it actually has.
+     Put a form service URL in data-endpoint and it POSTs there and reports
+     what came back; leave it empty and it says it is not connected and sends
+     the visitor to the phone, rather than inventing a confirmation nobody
+     will act on. See creekside-haven/README.md. */
+  document.querySelectorAll("form[data-tour-form]").forEach(function (form) {
+    var ok = form.querySelector(".form-success");
+    var fail = form.querySelector(".form-error");
+    var offline = form.querySelector(".form-offline");
+
+    function show(el) {
+      [ok, fail, offline].forEach(function (n) { if (n) n.classList.remove("show"); });
+      if (!el) return;
+      el.classList.add("show");
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
       if (!form.reportValidity()) return;
-      var ok = form.querySelector(".form-success");
-      if (ok) {
-        ok.classList.add("show");
-        ok.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-      form.reset();
+
+      var endpoint = form.getAttribute("data-endpoint");
+      if (!endpoint) { show(offline); return; }
+
+      var btn = form.querySelector("button[type='submit']");
+      var label = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "Sending\u2026"; }
+
+      fetch(endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        show(ok);
+        form.reset();
+      }).catch(function () {
+        show(fail);
+      }).then(function () {
+        if (btn) { btn.disabled = false; btn.textContent = label; }
+      });
     });
   });
 

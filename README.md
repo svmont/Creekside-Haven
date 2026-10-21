@@ -125,7 +125,7 @@ touching any markup:
    the rest of the nav below 960px and appears inside the mobile menu.
 2. The footer "Contact" list, between the address and the email line, on all six pages.
 3. `contact.html`, in the "Get in touch" card between the address and the email row.
-4. The tour form's buttons on `contact.html`, as "Call (970) 620-2093" beside "Email Us".
+4. The tour form's offline and error notices on `contact.html`, as the fallback to call.
 5. `"telephone"` in the JSON-LD block at the top of `index.html`.
 
 ## The floor plan images
@@ -305,15 +305,26 @@ uses now carry no text, so they take labels and the page captions them.
 
 ## Wiring up the forms
 
-The tour request form in `contact.html` carries a `data-demo` attribute. While that attribute
-is present, `js/site.js` intercepts the submit and shows an on-page confirmation instead of
-sending anything. To go live:
+**The tour form on `contact.html` is not connected to anything yet.** `data-endpoint` on the
+form is empty, and `js/site.js` reads it:
+
+- **Empty** — the submit shows `.form-offline`, which tells the visitor plainly that the
+  request was *not* sent and gives them the phone number. This is the state the site is in.
+- **Set** — the submit POSTs a `FormData` to that URL with `Accept: application/json`, shows
+  `.form-success` on a 2xx and `.form-error` on anything else. On an error the fields are left
+  filled so nobody retypes them, and the button re-enables either way.
+
+It deliberately does **not** show a confirmation it has not earned. A fake "a leasing
+specialist will reach out" costs a lead *and* the prospect's goodwill: they wait for a call
+that was never queued.
+
+To go live:
 
 1. Create a form endpoint (Formspree, Netlify Forms, or your own serverless function) — or
    better, an endpoint that pushes the lead straight into the property management system
    (Entrata, RealPage, Yardi, AppFolio) so leads land where leasing agents already work.
-2. Set `action="https://your-endpoint"` and `method="post"` on the form.
-3. Delete the `data-demo` attribute so the browser submits normally.
+2. Put its URL in `data-endpoint` on the form. Nothing else changes.
+3. Submit the form once for real and confirm the lead arrives, before trusting the green box.
 4. Point the "Apply" / "Start My Application" buttons in `apply.html` and the plan cards at
    the real resident-portal application URL (they currently link to `contact.html`).
 

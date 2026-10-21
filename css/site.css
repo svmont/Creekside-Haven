@@ -590,6 +590,80 @@ p + p { margin-top: .9rem; }
 }
 .form-success.show { display: block; }
 
+/* ----------------------------- Contact page ------------------------------
+   Scoped to .contact-page / .contact-faq: the form and FAQ styles above are
+   shared, and nothing else on the site should move. --------------------- */
+
+/* Near-equal columns, the form a little wider because it carries more. */
+.contact-grid {
+  display: grid; grid-template-columns: 1.08fr .92fr;
+  gap: clamp(2rem, 4.5vw, 4rem); align-items: start;
+}
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+
+/* Lighter than the shared card: one hairline, no drop shadow. */
+.contact-page .form-card {
+  box-shadow: none; border-color: var(--line);
+  border-radius: var(--radius); background: var(--white);
+}
+
+/* Every control exactly the same height. A date input and a select each come
+   with their own idea of one, so the height is set rather than suggested and
+   the vertical padding comes off; both centre their own text. */
+.contact-page .field input,
+.contact-page .field select {
+  height: 54px; padding-block: 0; line-height: normal; box-sizing: border-box;
+}
+.contact-page .field { margin-bottom: 1.15rem; }
+.contact-page .field-row { gap: 1.1rem; }
+.field-opt { font-weight: 400; color: var(--muted); }
+
+/* A select sized for its own arrow, so the longest option still reads in full. */
+.contact-page .field select {
+  appearance: none; -webkit-appearance: none; padding-right: 2.7rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316362b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 1rem center; background-size: 18px 18px;
+  text-overflow: ellipsis;
+}
+.contact-page .form-actions { margin-top: 1.4rem; }
+
+/* The three things a submit can honestly say. */
+.form-error, .form-offline { display: none; border-radius: 12px; padding: 1rem 1.1rem;
+  margin-bottom: 1.1rem; font-weight: 600; }
+.form-error.show, .form-offline.show { display: block; }
+.form-error { background: rgba(176, 58, 46, .09); border: 1px solid #b03a2e; color: #8c2d24; }
+.form-offline { background: rgba(192, 138, 62, .12); border: 1px solid var(--brass); color: #6b4a16; }
+.form-error a, .form-offline a { color: inherit; }
+
+/* One panel, no box: whitespace and hairlines do the separating. */
+.connect { padding-top: .35rem; }
+.connect h2 { font-size: clamp(1.45rem, 2.4vw, 1.85rem); margin: 0 0 1.4rem; }
+.connect-list { list-style: none; margin: 0; padding: 0; }
+.connect-list li {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1.1rem 0; border-top: 1px solid var(--line);
+}
+.connect-list li:last-child { border-bottom: 1px solid var(--line); }
+.connect-ico {
+  flex: none; width: 38px; height: 38px; display: grid; place-items: center;
+  border: 1px solid rgba(192, 138, 62, .45); border-radius: 50%; color: var(--brass);
+}
+.connect-ico svg { width: 18px; height: 18px; }
+.connect-body { display: grid; gap: .15rem; }
+.connect-label {
+  font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 700; color: var(--muted);
+}
+.connect-body a { color: var(--forest); text-decoration: none; font-weight: 600; font-size: 1.05rem; }
+.connect-body a:hover { text-decoration: underline; }
+.connect-note { color: var(--muted); font-size: .95rem; margin: 1.3rem 0 1.5rem; max-width: 34ch; }
+/* Solid deep green, not the teal gradient. */
+.connect-cta { background: var(--forest); color: #fff; }
+.connect-cta:hover { background: var(--forest-2); }
+
+/* The FAQ loses its shadows here too. */
+.contact-faq .faq details { box-shadow: none; }
+
 /* --------------------------------- FAQ ---------------------------------- */
 .faq { display: grid; gap: .8rem; }
 .faq details {
