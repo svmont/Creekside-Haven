@@ -44,7 +44,7 @@ Each value appears in several files, so search-and-replace across the repository
 | What | Placeholder currently in the site | Where |
 | --- | --- | --- |
 | Phone | `(970) 620-2093` — supplied by the property | see "The phone number" below |
-| Email | `leasing@creeksidehaven.com` — **still a placeholder, and on the wrong domain**; needs the real address | footer on all six pages, `contact.html`, the JSON-LD `email` |
+| Email | `tony@1000fd.com` — the broker's real address, shown until a branded one exists | footer on all six pages, `contact.html`, `apply.html`, the JSON-LD `email` |
 | Domain | `https://creeksidehavenapts.com` — the real one, supplied by the property | `<link rel="canonical">`, `og:url`, `og:image`, `robots.txt`, `sitemap.xml`, the JSON-LD `url` |
 | Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
 | Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
@@ -128,9 +128,10 @@ There is **no `CNAME` file in the repo.** The custom domain is therefore set in 
 Pages rather than in the tree. That works, but it means the domain is not in version control:
 check before assuming a deploy carries it.
 
-Note the email address is a separate thing and is still `@creeksidehaven.com`, a domain nobody
-here owns. It was not changed to match, because `leasing@creeksidehavenapts.com` would be a
-guess, and a guessed address that bounces is worse than a known-bad one.
+The email shown on the site is `tony@1000fd.com`, which is real but is not on this domain.
+A branded `leasing@creeksidehavenapts.com`, forwarded to whoever should receive it, is the
+thing to set up: the site then shows an address that matches the site, and changing who reads
+it is a forwarding rule rather than 16 edits across six pages.
 
 ## The phone number
 
