@@ -677,6 +677,10 @@ p + p { margin-top: .9rem; }
 /* The FAQ loses its shadows here too. */
 .contact-faq .faq details { box-shadow: none; }
 
+/* The site plan is a wide drawing in a white card: let it fill the card and
+   keep its own proportions. */
+.site-plan img { width: 100%; height: auto; display: block; border-radius: var(--radius-sm); }
+
 /* --------------------------------- FAQ ---------------------------------- */
 .faq { display: grid; gap: .8rem; }
 .faq details {

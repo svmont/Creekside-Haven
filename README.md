@@ -59,7 +59,7 @@ guesses:
 - **Address: 254–282 Plez Morgan Dr, Montgomery, TX 77356** — from the entrance monument sign
   and the site plan, replacing the single-unit address taken off a floor plan sheet.
 - **48 homes in 8 two-storey buildings**, units A–F in each (254, 258, 262, 266, 270, 274,
-  278, 282). The community map on `gallery.html` is drawn from that site plan.
+  278, 282). The community map on `gallery.html` is that site plan, as supplied: `assets/site-plan.webp`, 1536×1024.
 - **A gated entrance** — perimeter iron fencing and drive gates are visible in the photograph.
 - **The brand mark** is the community seal — a heron standing in cattails over water inside a
   double ring — redrawn as inline SVG to the composition of the official logo, and used in the
@@ -248,8 +248,10 @@ Two things worth knowing about how it got here:
 ## Photography
 
 **No illustration is left anywhere on the site.** Every image on every page is a photograph;
-the one drawing that remains is the community site plan at the bottom of `gallery.html`, which
-is labelled as a site plan and carries its own "approximate and not to scale" note.
+the community site plan at the bottom of `gallery.html` is `assets/site-plan.webp`, the
+rendered plan supplied by the property, and it carries its own "approximate and not to scale"
+note. The hand-drawn SVG that stood in for it is gone; git has it if the rendered plan ever
+needs to be replaced in a hurry.
 
 The home page strip under "Take a look around Creekside Haven." shows three of them &mdash; the
 entrance sign, the one-bedroom living/dining/kitchen and the two-bedroom primary bedroom &mdash;
