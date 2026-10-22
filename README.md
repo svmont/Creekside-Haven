@@ -328,6 +328,17 @@ The embed URL is in the `<iframe src>`. Two things about it:
 everyone who is not its owner, while looking perfect to whoever made it. Check it in a private
 window after any change to the map.
 
+**The My Maps header is clipped, not hidden.** It has no parameter that turns it off, so
+`.nb-map__clip` is the visible box and the iframe inside it is taller by `--map-header` and
+offset upwards by the same amount; the title, owner name, "made with Google My Maps" promo and
+the share and fullscreen buttons render above the visible area. **Google's map-data attribution
+is at the bottom of the canvas and is deliberately left alone** &mdash; never crop the bottom or
+overlay the frame. `--map-header` is one number: 64px, and 88px below 560px where the header
+wraps to two lines. Re-measure it if Google changes the chrome.
+
+Clipping takes the fullscreen control with it, so `.nb-map__larger` ("View larger map") links
+out to the full My Maps viewer in its place.
+
 **The label on the anchor pin is ours, not Google's.** My Maps will not keep a marker's label
 permanently visible for hand-added pins (the Labels dropdown belongs to layers imported from a
 spreadsheet), so `.nb-map__legend` names Creekside Haven under the frame instead. It sits

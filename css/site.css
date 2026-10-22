@@ -688,10 +688,28 @@ p + p { margin-top: .9rem; }
 
 /* No overlay and no cropping: Google's attribution sits inside the frame and
    has to stay legible. */
-.nb-map__frame > iframe {
-  width: 100%; aspect-ratio: 4 / 3; border: 0; display: block;
+/* The My Maps header -- title, owner, "made with Google My Maps", share and
+   fullscreen -- has no parameter that turns it off, so it is clipped instead:
+   the clip box is the size we want, the iframe inside is taller by exactly the
+   header and shifted up by the same amount, so the header renders above the
+   visible area. Google's map-data attribution is at the BOTTOM of the canvas
+   and is deliberately untouched. --map-header is the one number to tune. */
+.nb-map__clip {
+  --map-header: 64px;
+  position: relative; overflow: hidden; aspect-ratio: 4 / 3;
   border: 1px solid var(--line); border-radius: var(--radius); background: var(--sand-2);
 }
+.nb-map__clip > iframe {
+  position: absolute; left: 0; top: calc(var(--map-header) * -1);
+  width: 100%; height: calc(100% + var(--map-header));
+  border: 0; display: block;
+}
+/* Narrow enough and the header wraps to two lines, so more has to come off. */
+@media (max-width: 560px) { .nb-map__clip { --map-header: 88px; } }
+
+/* Clipping takes the fullscreen control with it; this is the way out. */
+.nb-map__larger { margin-left: auto; font-weight: 600; color: var(--moss); text-decoration: none; }
+.nb-map__larger:hover { text-decoration: underline; }
 /* My Maps will not guarantee a permanent label on a pin, so the anchor names
    itself here instead: always visible, in our palette, and outside the frame so
    it covers nothing Google needs to show. */
