@@ -335,6 +335,22 @@ The embed URL is in the `<iframe src>`. Two things about it:
 map, not of the URL, so the code My&nbsp;Maps hands you is byte-identical before and after you
 change it. Change `z` here instead.
 
+**Picking `z`.** Each step halves the ground covered, so it is worth doing the arithmetic rather
+than nudging. At the frame's 776&times;620 and this latitude, one pixel spans `135 / 2**z`
+kilometres, which makes the view `776 * 135 / 2**z` km wide:
+
+| `z` | view | reaches from centre |
+| --- | --- | --- |
+| 15 | 3.2 &times; 2.6&nbsp;km | 1.6&nbsp;km |
+| 14 | 6.4 &times; 5.1&nbsp;km | 3.2&nbsp;km |
+| 13 | 12.8 &times; 10.2&nbsp;km | 6.4&nbsp;km |
+| 12 | 25.6 &times; 20.4&nbsp;km | 12.8&nbsp;km |
+
+`z=12` is set so Lake&nbsp;Conroe is in frame. Its nearest water is about 7.3&nbsp;km east of the
+property, which `z=13` misses by roughly a kilometre. Pin icons are a fixed pixel size and do not
+shrink as you zoom out, so the only cost of a wider view is that the closer destinations crowd
+together &mdash; about 30&nbsp;px per kilometre at `z=12` against 66 at `z=13`.
+
 **The map must be shared "Anyone with the link &rarr; Viewer"** or it renders blank for
 everyone who is not its owner, while looking perfect to whoever made it. Check it in a private
 window after any change to the map.
