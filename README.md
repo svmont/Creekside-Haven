@@ -346,7 +346,11 @@ kilometres, which makes the view `776 * 135 / 2**z` km wide:
 | 13 | 12.8 &times; 10.2&nbsp;km | 6.4&nbsp;km |
 | 12 | 25.6 &times; 20.4&nbsp;km | 12.8&nbsp;km |
 
-`z=12` is set so Lake&nbsp;Conroe is in frame. Its nearest water is about 7.3&nbsp;km east of the
+`z=13` is set, centred on `30.3936,-95.6633` rather than on the property. Centring on the
+property wastes half the frame on empty land to its west; moving the centre about 3&nbsp;km east
+puts the property a quarter of the way in from the left and gives the remainder to
+Lake&nbsp;Conroe, whose nearest water is roughly 7.3&nbsp;km east. Those numbers were reconstructed
+from a screenshot of the wanted view by measuring where the property marker sat in it. Its nearest water is about 7.3&nbsp;km east of the
 property, which `z=13` misses by roughly a kilometre. Pin icons are a fixed pixel size and do not
 shrink as you zoom out, so the only cost of a wider view is that the closer destinations crowd
 together &mdash; about 30&nbsp;px per kilometre at `z=12` against 66 at `z=13`.
