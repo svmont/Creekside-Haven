@@ -308,6 +308,36 @@ tile rules do not reach it and an enlarged photograph shows its true proportions
 verified on every cropped one. Keep it that way: the grid is for rhythm, the lightbox is for
 looking.
 
+### The neighborhood map
+
+`#explore` on `neighborhood.html` embeds a **Google My Maps** map, chosen because it needs no
+API key, no billing and no coordinates from anyone: the owner adds each place by searching
+Google, so every pin is placed from Google's own index rather than from someone's recollection.
+The map is owned by the Google account that created it &mdash; losing access to that account
+means losing the ability to edit it.
+
+The embed URL is in the `<iframe src>`. Two things about it:
+
+- **No `/u/N/`.** Google hands you `/maps/d/u/2/embed?mid=...` when the browser has several
+  accounts signed in; the number is an account index and has no business on a public page.
+  The account-neutral form is `/maps/d/embed?mid=...`.
+- **`ehbc` is the embed's chrome colour**, set to `16362B` to match `--forest`. It arrived as
+  `2E312F`.
+
+**The map must be shared "Anyone with the link &rarr; Viewer"** or it renders blank for
+everyone who is not its owner, while looking perfect to whoever made it. Check it in a private
+window after any change to the map.
+
+**The label on the anchor pin is ours, not Google's.** My Maps will not keep a marker's label
+permanently visible for hand-added pins (the Labels dropdown belongs to layers imported from a
+spreadsheet), so `.nb-map__legend` names Creekside Haven under the frame instead. It sits
+*outside* the iframe: nothing may overlay the frame, because Google's attribution lives inside
+it and has to stay legible.
+
+The destination list beside the map links to Google Maps **by place name**
+(`/maps/search/?api=1&query=...`), not by coordinate, so the links resolve correctly without
+anything stored here needing to be verified.
+
 ### The neighborhood page's images
 
 | Where | Has |
