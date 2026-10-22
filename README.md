@@ -323,37 +323,24 @@ The embed URL is in the `<iframe src>`. Two things about it:
   The account-neutral form is `/maps/d/embed?mid=...`.
 - **`ehbc` is the embed's chrome colour**, set to `16362B` to match `--forest`. It arrived as
   `2E312F`.
-- **`ll` and `z` pin the opening centre and zoom**, overriding the map's saved default view.
-  They are there because "Set default view" in My&nbsp;Maps proved unreliable to propagate, and
-  because a view held in the URL is one we can change without touching the map. The pair is
-  undocumented by Google and could stop working; if the map ever opens somewhere unexpected,
-  that is the first thing to suspect. The coordinates came from Google itself &mdash; right-click
-  a place in Google Maps and the first menu item is its latitude and longitude &mdash; not from
-  anything reconstructed here.
+- **No view parameters.** `ll` and `z` were tried here and the `/embed` endpoint ignores them.
+  They are not documented for this endpoint, and three rounds of changing them moved the map not
+  at all; they were removed so that nothing in the URL can ever silently override the view set on
+  the map itself.
 
-**Re-pasting the embed code does not change the view.** The default view is a property of the
-map, not of the URL, so the code My&nbsp;Maps hands you is byte-identical before and after you
-change it. Change `z` here instead.
+**The opening view lives in the map, not in this page.** Set it in My&nbsp;Maps: open the map for
+editing, pan and zoom to the view you want, then use the **&#8942;** menu beside the *map's title*
+at the top of the left panel &mdash; the one that also holds "Embed on my site" &mdash; and choose
+**Set default view**. The embed honours it within a few minutes; a hard refresh helps. The
+&#8942; menu on the *layer* below the title is a different menu and does not have it.
 
-**Picking `z`.** Each step halves the ground covered, so it is worth doing the arithmetic rather
-than nudging. At the frame's 776&times;620 and this latitude, one pixel spans `135 / 2**z`
-kilometres, which makes the view `776 * 135 / 2**z` km wide:
+Two things follow from that, both of which cost time here before they were understood:
 
-| `z` | view | reaches from centre |
-| --- | --- | --- |
-| 15 | 3.2 &times; 2.6&nbsp;km | 1.6&nbsp;km |
-| 14 | 6.4 &times; 5.1&nbsp;km | 3.2&nbsp;km |
-| 13 | 12.8 &times; 10.2&nbsp;km | 6.4&nbsp;km |
-| 12 | 25.6 &times; 20.4&nbsp;km | 12.8&nbsp;km |
-
-`z=13` is set, centred on `30.3936,-95.6633` rather than on the property. Centring on the
-property wastes half the frame on empty land to its west; moving the centre about 3&nbsp;km east
-puts the property a quarter of the way in from the left and gives the remainder to
-Lake&nbsp;Conroe, whose nearest water is roughly 7.3&nbsp;km east. Those numbers were reconstructed
-from a screenshot of the wanted view by measuring where the property marker sat in it. Its nearest water is about 7.3&nbsp;km east of the
-property, which `z=13` misses by roughly a kilometre. Pin icons are a fixed pixel size and do not
-shrink as you zoom out, so the only cost of a wider view is that the closer destinations crowd
-together &mdash; about 30&nbsp;px per kilometre at `z=12` against 66 at `z=13`.
+- **Re-pasting the embed code does not change the view.** The code My&nbsp;Maps hands you is
+  byte-identical before and after you change the view, because the view is not in it. Changing
+  the view in My&nbsp;Maps is the whole job; the page needs no edit at all.
+- **Nothing in this repository can move the map.** If the view is wrong, the fix is in
+  My&nbsp;Maps. Editing `neighborhood.html` is wasted effort.
 
 **The map must be shared "Anyone with the link &rarr; Viewer"** or it renders blank for
 everyone who is not its owner, while looking perfect to whoever made it. Check it in a private
