@@ -323,6 +323,17 @@ The embed URL is in the `<iframe src>`. Two things about it:
   The account-neutral form is `/maps/d/embed?mid=...`.
 - **`ehbc` is the embed's chrome colour**, set to `16362B` to match `--forest`. It arrived as
   `2E312F`.
+- **`ll` and `z` pin the opening centre and zoom**, overriding the map's saved default view.
+  They are there because "Set default view" in My&nbsp;Maps proved unreliable to propagate, and
+  because a view held in the URL is one we can change without touching the map. The pair is
+  undocumented by Google and could stop working; if the map ever opens somewhere unexpected,
+  that is the first thing to suspect. The coordinates came from Google itself &mdash; right-click
+  a place in Google Maps and the first menu item is its latitude and longitude &mdash; not from
+  anything reconstructed here.
+
+**Re-pasting the embed code does not change the view.** The default view is a property of the
+map, not of the URL, so the code My&nbsp;Maps hands you is byte-identical before and after you
+change it. Change `z` here instead.
 
 **The map must be shared "Anyone with the link &rarr; Viewer"** or it renders blank for
 everyone who is not its owner, while looking perfect to whoever made it. Check it in a private

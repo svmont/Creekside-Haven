@@ -681,8 +681,8 @@ p + p { margin-top: .9rem; }
    own index, so no coordinate here is anyone's recollection. Everything around
    it is ours. --------------------------------------------------------- */
 .nb-map__grid {
-  display: grid; grid-template-columns: 1.55fr .95fr;
-  gap: clamp(1.5rem, 3vw, 2.6rem); align-items: start;
+  display: grid; grid-template-columns: 2.1fr 1fr;
+  gap: clamp(1.4rem, 2.6vw, 2.2rem); align-items: start;
 }
 @media (max-width: 900px) { .nb-map__grid { grid-template-columns: 1fr; } }
 
@@ -696,7 +696,7 @@ p + p { margin-top: .9rem; }
    and is deliberately untouched. --map-header is the one number to tune. */
 .nb-map__clip {
   --map-header: 64px;
-  position: relative; overflow: hidden; aspect-ratio: 4 / 3;
+  position: relative; overflow: hidden; aspect-ratio: 5 / 4;
   border: 1px solid var(--line); border-radius: var(--radius); background: var(--sand-2);
 }
 .nb-map__clip > iframe {
