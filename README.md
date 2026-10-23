@@ -458,6 +458,25 @@ Originals are kept beside the cropped versions as `*-full.webp` / `*-full.png` s
 starts from the source rather than from a crop.
 
 
+## Things the copy must not say
+
+**There is no leasing office and no onsite leasing staff.** Nothing on the site may refer to one.
+Ten references were removed on 2026-10-23: "leasing team", "leasing specialist" and "ask the
+office", across `index.html`, `contact.html`, `apply.html` and `floor-plans.html`. Two of them
+were in `contact.html`'s `description` and `og:description`, which is worth noting because a
+search of the rendered pages alone would not have found them.
+
+The voice that replaced them is first person &mdash; "ask us", "we will confirm", "send us a
+message" &mdash; which is what the rest of the site already used. Contact is the phone number and
+the email in the footer, and the tour form.
+
+**No valet trash.** The "What is included in rent?" answer on `index.html` used to say water,
+sewer and valet trash were billed monthly, which also contradicted its own first sentence about
+trash being included. It now reads water and sewer.
+
+A `grep -riE 'the office|leasing (specialist|team|office)|valet'` over `*.html` should come back
+empty; it covers meta tags, which reading the pages does not.
+
 ## Wiring up the forms
 
 The tour form on `contact.html` posts to **FormSubmit**, which needs no account: the
