@@ -334,6 +334,10 @@ at the top of the left panel &mdash; the one that also holds "Embed on my site" 
 **Set default view**. The embed honours it within a few minutes; a hard refresh helps. The
 &#8942; menu on the *layer* below the title is a different menu and does not have it.
 
+This is how the current view was set, on 2026-10-23, and it is confirmed rendering. It is worth
+saying plainly because three rounds were spent first on `ll` and `z`, which this endpoint ignores:
+nothing in this repository can move that map.
+
 Two things follow from that, both of which cost time here before they were understood:
 
 - **Re-pasting the embed code does not change the view.** The code My&nbsp;Maps hands you is
