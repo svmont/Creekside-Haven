@@ -401,16 +401,28 @@ uses now carry no text, so they take labels and the page captions them.
 
 ### The neighborhood photo row
 
-`.nb-strip` below the map is a two-up grid: Lake&nbsp;Conroe and The&nbsp;Den, both 1600&times;900
-and locked to 16:9, 24px apart, at the same width as the page content. It collapses to one
-column at 700px. `[data-count="1"]` is still in the CSS and narrows the row for a single image;
-it is unused while there are two.
+`.nb-strip` below the map is three cards &mdash; Lake&nbsp;Conroe, Historic Downtown Montgomery,
+The&nbsp;Den &mdash; all 1350&times;900 and locked to 3:2, 24px apart, at the page content width.
 
-**The Den photo is cropped bottom-aligned on purpose.** The source is 3:2 with a large empty sky,
-and the caption gradient reaches about 48% up the card, so a centred 16:9 crop pushed the monument
-sign down into the dark band and cost the bottom line of its lettering. Taking the lower 864px of
-the source drops the sky instead and lifts the sign clear. Re-crop from the original if it is ever
-replaced; do not centre it.
+**It goes from three columns straight to one at 1099px.** Not two: three tiles in two columns
+leave a lone third with an obvious hole beside it. And 1099 rather than a round 1000 because
+below roughly 330px per card the caption "Historic Downtown Montgomery" wraps to a second line
+while the other two stay on one, so the three stop matching. Both numbers were measured in a
+browser, not guessed; re-measure if a caption is ever made longer.
+
+**Each photo is cropped for a reason. Do not re-crop from centre.**
+
+- *Lake Conroe* &mdash; the original is a 2.05 panorama, so 3:2 takes a centre crop and loses the
+  far ends. The peninsula is central, so this is the cheap edge to lose.
+- *Historic Downtown Montgomery* &mdash; trimmed from the left, which drops a third party's
+  business name and telephone number off a wall in the frame. Keep that trim: it is not
+  composition, it is somebody else's contact details on our marketing page.
+- *The Den* &mdash; cropped bottom-aligned, dropping 91px of empty sky. The caption gradient
+  reaches about 48% up the card; a centred crop sinks the monument sign into the dark band and
+  the bottom line of its lettering stops reading.
+
+Originals are kept beside the cropped versions as `*-full.webp` / `*-full.png` so any re-crop
+starts from the source rather than from a crop.
 
 
 ## Wiring up the forms

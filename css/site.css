@@ -464,7 +464,7 @@ p + p { margin-top: .9rem; }
    support for the page, not as a banner across it. Two share the row when The
    DEN joins Lake Conroe; data-count is how many there are. */
 .nb-strip {
-  display: grid; grid-template-columns: repeat(2, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: min(100% - 2.5rem, var(--container)); margin-inline: auto;
   /* The section above already ends on its own padding, so the top here is
@@ -472,15 +472,14 @@ p + p { margin-top: .9rem; }
   padding-block: clamp(.4rem, 1vw, .9rem) clamp(2.6rem, 5vw, 4.2rem);
 }
 .nb-strip[data-count="1"] { grid-template-columns: 1fr; max-width: 46rem; }
-@media (max-width: 700px) { .nb-strip { grid-template-columns: 1fr; } }
 .nb-strip figure {
   position: relative; margin: 0; overflow: hidden; background: var(--forest);
   border-radius: var(--radius); box-shadow: var(--shadow-sm);
 }
 .nb-strip svg, .nb-strip img {
-  width: 100%; height: 100%; display: block; object-fit: cover; aspect-ratio: 16 / 9;
+  width: 100%; height: 100%; display: block; object-fit: cover; aspect-ratio: 3 / 2;
 }
-.nb-strip figure { aspect-ratio: 16 / 9; }
+.nb-strip figure { aspect-ratio: 3 / 2; }
 .nb-strip figcaption {
   position: absolute; inset: auto 0 0 0; padding: 2rem 1.1rem 1.2rem; text-align: center;
   color: #fff; font-size: .8rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
@@ -532,8 +531,12 @@ p + p { margin-top: .9rem; }
   .nb-isd .container { grid-template-columns: auto 1fr; }
   .nb-isd__link { grid-column: 1 / -1; border-left: 0; padding-left: 0; }
 }
-@media (max-width: 760px) {
-  /* Three tiles never split evenly in two columns, so stack them. */
+@media (max-width: 1099px) {
+  /* Three tiles never split evenly in two columns -- two up and a lone
+     third leaves an obvious hole -- so go straight from three to one.
+     1099 rather than a rounder number because that is where the cards fall
+     under ~330px and "Historic Downtown Montgomery" wraps to two lines,
+     leaving one caption taller than the other two. */
   .nb-strip { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
