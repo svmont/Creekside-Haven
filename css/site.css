@@ -43,10 +43,10 @@
   --shadow-lg: 0 34px 80px rgba(22, 54, 43, .2);
   --ring: 0 0 0 4px rgba(43, 125, 146, .25);
 
-  --grad-hero:
-    radial-gradient(1100px 620px at 88% -12%, rgba(220, 171, 95, .30), transparent 62%),
-    radial-gradient(900px 520px at -5% 8%, rgba(63, 155, 176, .30), transparent 58%),
-    linear-gradient(158deg, #102b22 0%, #1b4535 45%, #1f5a45 100%);
+  /* One quiet green. It ends on --forest-2, which is also the fact strip's
+     background, so the two meet with no visible seam. The gold and teal
+     radial glows that used to sit on top of this are gone. */
+  --grad-hero: linear-gradient(180deg, #143022 0%, #1a4030 58%, #1e4a3a 100%);
   --grad-brass: linear-gradient(135deg, var(--brass-2) 0%, var(--brass) 100%);
   --grad-moss: linear-gradient(135deg, var(--moss-2) 0%, var(--creek) 100%);
 }
@@ -183,21 +183,19 @@ p + p { margin-top: .9rem; }
 
 /* -------------------------------- Hero --------------------------------- */
 .hero { position: relative; background: var(--grad-hero); color: #fff; overflow: hidden; }
-.hero::after {
-  content: ""; position: absolute; inset: auto 0 -1px 0; height: 90px;
-  background: linear-gradient(to bottom, transparent, var(--cream));
-  opacity: .18; pointer-events: none;
-}
 .hero-inner {
-  display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(1.8rem, 3vw, 2.4rem);
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(1.8rem, 3vw, 2.6rem);
   align-items: center;
-  padding: clamp(3.4rem, 7.5vw, 6.6rem) 0 clamp(3.8rem, 7.5vw, 6.6rem);
+  padding: clamp(2.8rem, 5.6vw, 4.9rem) 0 clamp(3.2rem, 6vw, 5.2rem);
 }
-/* Sized here rather than inheriting the global h1: the photograph takes the
-   larger share of the row, and each of the headline's two lines has to fit the
-   column that is left. The ceiling is what "Close to what matters." measures at
-   in the 542px column the desktop layout settles on. */
-.hero h1 { color: #fff; font-size: clamp(2.2rem, 4.7vw, 3.55rem); }
+/* Sized here rather than inheriting the global h1. The <br> puts each sentence
+   on its own line; the job of the ceiling is to keep the longer of the two,
+   "Close to what matters.", inside the text column so it does not wrap and
+   strand its last word. The text column was widened for the same reason.
+   text-wrap: balance only matters at the narrow end, where a sentence has to
+   wrap however it is sized: it evens the two lines instead of leaving one word
+   alone. Browsers without it fall back to ordinary wrapping. */
+.hero h1 { color: #fff; font-size: clamp(2.05rem, 3.9vw, 3.15rem); text-wrap: balance; }
 .hero p.lede { font-size: clamp(1.05rem, 1.5vw, 1.22rem); color: rgba(255,255,255,.86); max-width: 34rem; margin-top: 1.1rem; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -220,24 +218,44 @@ p + p { margin-top: .9rem; }
 }
 /* Narrower than this, the 2.2rem floor above is wider than the column and the
    headline's second line breaks; track the viewport instead of holding it. */
-@media (max-width: 384px) {
-  .hero h1 { font-size: 8.9vw; }
+@media (max-width: 408px) {
+  .hero h1 { font-size: 8.1vw; }
 }
 
 /* ---------------------------- Fact strip -------------------------------- */
-.facts { background: var(--forest-2); color: #fff; }
+/* The strip rides up over the hero, and the transform does not shrink the
+   section, so the matching negative margin takes back the band of dead green
+   it would otherwise leave underneath. */
+.facts { background: var(--forest-2); color: #fff; margin-bottom: -38px; }
 .facts-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 1px; background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.12);
   border-radius: var(--radius); overflow: hidden;
   transform: translateY(-38px); box-shadow: var(--shadow);
 }
-.fact { background: var(--forest-2); padding: 1.4rem 1.3rem; }
+.fact { background: var(--forest-2); padding: 1.35rem 1.25rem; display: grid; align-content: start; }
 .fact dt { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--brass-2); font-weight: 700; }
-.fact dd { font-family: var(--font-display); font-size: 1.28rem; margin-top: .3rem; }
+/* "Washer & dryer included" is the longest of the four values; the ceiling is
+   what keeps it on one line so the row does not end up one line taller than
+   the other three. */
+.fact dd { font-family: var(--font-display); font-size: clamp(1.02rem, 1.02vw + .18rem, 1.2rem); margin-top: .34rem; }
+.facts.flat { margin-bottom: 0; }
 .facts.flat .facts-grid { transform: none; }
-@media (max-width: 780px) { .facts-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 420px) { .facts-grid { grid-template-columns: 1fr; } }
+/* The strip already supplies the separation; the section below it does not
+   need a full helping of its own on top. */
+.why-section { padding-top: clamp(2.6rem, 4.4vw, 3.9rem); }
+/* Three benefit cards in two columns leave the third alone with a hole beside
+   it, which reads as a mistake rather than a layout. Go three to one. Scoped
+   to this section so .grid-3 keeps its two-column step elsewhere, where the
+   grids do not hold exactly three items. */
+@media (max-width: 980px) { .why-section .grid-3 { grid-template-columns: 1fr; } }
+/* These step down earlier than they used to. "Washer & dryer included" is a
+   good deal longer than the "Now leasing" it replaced, and a column under
+   roughly 224px wraps it onto a second line while the other three stay on one,
+   which leaves the row visibly lopsided. Measured, not guessed. */
+@media (max-width: 1000px) { .facts-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .facts-grid { grid-template-columns: 1fr; } }
 
 /* ------------------------------ Sections -------------------------------- */
 .section { padding: clamp(3.4rem, 6.5vw, 5.6rem) 0; }
@@ -250,6 +268,25 @@ p + p { margin-top: .9rem; }
 .section-head.center { margin-inline: auto; }
 .section-head p { color: var(--muted); margin-top: .85rem; font-size: 1.06rem; }
 .section.forest .section-head p { color: rgba(255,255,255,.76); }
+
+/* "Why Creekside Haven": the heading and its paragraph sit beside a photo,
+   with the three benefit cards in a row underneath. The photo carries the
+   hero's larger radius so the two read as the same family. */
+.why-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(1.8rem, 3.4vw, 3.2rem); align-items: center;
+  margin-bottom: clamp(2.2rem, 3.8vw, 3.2rem);
+}
+.why-intro .section-head { max-width: none; margin-bottom: 0; }
+.why-figure { margin: 0; }
+.why-figure img {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+}
+.why-figure figcaption { margin-top: .75rem; font-size: .84rem; }
+@media (max-width: 900px) {
+  .why-intro { grid-template-columns: 1fr; gap: clamp(1.4rem, 3vw, 2rem); }
+}
 
 .grid { display: grid; gap: 1.4rem; }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }

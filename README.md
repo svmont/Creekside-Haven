@@ -399,6 +399,35 @@ subject: the strip renders an HTML `<figcaption>` only for a tile whose `label` 
 so a self-captioning photograph is registered with an empty label. The two photographs the page
 uses now carry no text, so they take labels and the page captions them.
 
+### The homepage hero and fact strip
+
+**The headline breaks where the sentence does.** `<br>` between the two sentences, and
+`.hero h1`'s size ceiling exists to keep the longer one, "Close to what matters.", inside the
+text column so it does not wrap and leave "matters." alone on a line. The text column takes
+`1.05fr` against the photo's `.95fr` for the same reason. Raise the ceiling or narrow the column
+and the orphan comes back &mdash; check it at 1360 and at 360 before changing either.
+`text-wrap: balance` is there for the narrow end, where the sentence has to wrap however it is
+sized; it evens the two lines rather than stranding a word.
+
+**The hero background is one gradient and nothing else.** It ends on `--forest-2`, which is also
+`.facts`'s background, so the two sections meet with no seam. There used to be two radial glows
+over the top and a pale wash fading to cream just above the strip; together they drew a visible
+band across the page. If the hero's end colour is ever changed, change the strip's with it or the
+seam returns.
+
+**The strip's breakpoints follow its longest value.** "Washer & dryer included" needs about
+224px of column, so four columns need ~1000px of viewport and two need ~540px. Below those it
+wraps onto a second line while the other three values stay on one and the row goes lopsided.
+Re-measure if a value is ever made longer.
+
+**`.facts` carries `margin-bottom: -38px`** to match the `translateY(-38px)` on its grid. The
+transform moves the card without shrinking the section, so without the negative margin the
+section leaves a band of empty green underneath exactly as tall as the overlap.
+
+**`.why-section` stacks its three cards at 980px rather than halving them.** Three cards in two
+columns leave the third with a hole beside it. It is scoped rather than applied to `.grid-3`
+generally because that class is not promised to hold exactly three things.
+
 ### The neighborhood photo row
 
 `.nb-strip` below the map is three cards &mdash; Lake&nbsp;Conroe, Historic Downtown Montgomery,
