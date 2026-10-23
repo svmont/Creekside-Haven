@@ -402,12 +402,14 @@ uses now carry no text, so they take labels and the page captions them.
 ## Wiring up the forms
 
 The tour form on `contact.html` posts to **FormSubmit**, which needs no account: the
-destination address is the endpoint. Leads go to **`tony@1000fd.com`**, copied to
+destination address is the endpoint. Leads go to **`creeksidehavenapts@gmail.com`**, copied to
 **`Thpmservice@gmail.com`** via `_cc`, with the subject **Creekside Haven Prospect from
 Website**, fixed via a `_subject` hidden field so either inbox can filter on it.
 
-Note the form's primary and the address shown on the site are **different on purpose**: leads go
-to the broker, the page tells visitors to write to leasing.
+Note the form's primary and the address shown on the site are **different on purpose**: leads
+land in the property's own inbox, while the page tells visitors to write to leasing. The primary
+was the broker's address until the inbox above was created; it was moved so that whoever needs to
+activate the endpoint is also whoever owns it.
 
 **The primary address is the one that activates the form.** FormSubmit sends its confirmation
 link to the endpoint address, not to the CC. Change the endpoint and the new primary has to
