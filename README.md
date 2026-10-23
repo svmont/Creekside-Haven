@@ -403,11 +403,13 @@ uses now carry no text, so they take labels and the page captions them.
 
 The tour form on `contact.html` posts to **FormSubmit**, which needs no account: the
 destination address is the endpoint. Leads go to **`creeksidehavenapts@gmail.com`**, copied to
-**`Thpmservice@gmail.com`** via `_cc`, with the subject **Creekside Haven Prospect from
+**`maggie.michener@gmail.com`** via `_cc`, with the subject **Creekside Haven Prospect from
 Website**, fixed via a `_subject` hidden field so either inbox can filter on it.
 
 Note the form's primary and the address shown on the site are **different on purpose**: leads
-land in the property's own inbox, while the page tells visitors to write to leasing. The primary
+land in the property's own inbox and a copy goes to the agent, while the page tells
+visitors to write to leasing. `_cc` takes a comma-separated list if more than one copy is
+ever wanted. The primary
 was the broker's address until the inbox above was created; it was moved so that whoever needs to
 activate the endpoint is also whoever owns it.
 
