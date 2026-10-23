@@ -399,6 +399,20 @@ subject: the strip renders an HTML `<figcaption>` only for a tile whose `label` 
 so a self-captioning photograph is registered with an empty label. The two photographs the page
 uses now carry no text, so they take labels and the page captions them.
 
+### The neighborhood photo row
+
+`.nb-strip` below the map is a two-up grid: Lake&nbsp;Conroe and The&nbsp;Den, both 1600&times;900
+and locked to 16:9, 24px apart, at the same width as the page content. It collapses to one
+column at 700px. `[data-count="1"]` is still in the CSS and narrows the row for a single image;
+it is unused while there are two.
+
+**The Den photo is cropped bottom-aligned on purpose.** The source is 3:2 with a large empty sky,
+and the caption gradient reaches about 48% up the card, so a centred 16:9 crop pushed the monument
+sign down into the dark band and cost the bottom line of its lettering. Taking the lower 864px of
+the source drops the sky instead and lifts the sign clear. Re-crop from the original if it is ever
+replaced; do not centre it.
+
+
 ## Wiring up the forms
 
 The tour form on `contact.html` posts to **FormSubmit**, which needs no account: the

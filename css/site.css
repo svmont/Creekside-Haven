@@ -465,9 +465,11 @@ p + p { margin-top: .9rem; }
    DEN joins Lake Conroe; data-count is how many there are. */
 .nb-strip {
   display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: clamp(.9rem, 1.4vw, 1.25rem);
+  gap: 24px;
   width: min(100% - 2.5rem, var(--container)); margin-inline: auto;
-  padding-block: clamp(2.6rem, 5vw, 4.2rem);
+  /* The section above already ends on its own padding, so the top here is
+     small on purpose: the two together were leaving a dead band. */
+  padding-block: clamp(.4rem, 1vw, .9rem) clamp(2.6rem, 5vw, 4.2rem);
 }
 .nb-strip[data-count="1"] { grid-template-columns: 1fr; max-width: 46rem; }
 @media (max-width: 700px) { .nb-strip { grid-template-columns: 1fr; } }
