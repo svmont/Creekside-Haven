@@ -490,7 +490,12 @@ move to another service, check what it returns on refusal before trusting the gr
 **Activation.** FormSubmit emails the destination address a confirmation link the first time the
 form is used. Until that link is clicked, submissions are refused and the page correctly shows
 the red notice. **`creeksidehavenapts@gmail.com` was activated on 2026-10-23** and a test
-submission was confirmed delivered.
+submission was confirmed delivered to both the endpoint and the `_cc` address.
+
+**The CC needs no activation of its own.** That was an open question when the copy address was
+changed &mdash; FormSubmit's confirmation link goes to the endpoint only, and whether a copy
+address rides along on that approval is not something the service states. The test above settles
+it: the CC arrived without being confirmed separately.
 
 Activation is per address. Point the endpoint at a different inbox and the new one starts
 unactivated, so the form stops delivering until somebody clicks a link in an inbox they may not
