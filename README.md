@@ -434,7 +434,13 @@ move to another service, check what it returns on refusal before trusting the gr
 
 **Activation.** FormSubmit emails the destination address a confirmation link the first time the
 form is used. Until that link is clicked, submissions are refused and the page correctly shows
-the red notice.
+the red notice. **`creeksidehavenapts@gmail.com` was activated on 2026-10-23** and a test
+submission was confirmed delivered.
+
+Activation is per address. Point the endpoint at a different inbox and the new one starts
+unactivated, so the form stops delivering until somebody clicks a link in an inbox they may not
+watch &mdash; which is how it sat silently broken before. Change the endpoint only alongside
+someone able to confirm it, and re-test straight after.
 
 **The address is in the page source**, in both `data-endpoint` and `action`, where scrapers will
 find it. After activation FormSubmit supplies a random alias endpoint (`/el/xxxxx`) that works
