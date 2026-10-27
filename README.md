@@ -497,6 +497,7 @@ credited to the campaign without any extra work.
 | --- | --- |
 | Facebook Marketplace | `https://creeksidehavenapts.com/?utm_source=facebook&utm_medium=social&utm_campaign=marketplace` |
 | Facebook page post | `https://creeksidehavenapts.com/?utm_source=facebook&utm_medium=social&utm_campaign=page` |
+| Facebook **paid** ad | `https://creeksidehavenapts.com/?utm_source=facebook&utm_medium=paid_social&utm_campaign=launch-oct` |
 | Facebook local group | `https://creeksidehavenapts.com/?utm_source=facebook&utm_medium=social&utm_campaign=group` |
 | Google Business Profile | `https://creeksidehavenapts.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp` |
 | Zillow | `https://creeksidehavenapts.com/?utm_source=zillow&utm_medium=listing&utm_campaign=rentals` |
@@ -510,6 +511,9 @@ Rules that keep the reports readable:
 - Point a link at a deeper page if that is what was posted &mdash; `/floor-plans.html?utm_source=...`
   &mdash; keeping the parameters.
 - Facebook appends its own `?fbclid=...`; that is harmless and does not disturb these.
+- Keep `utm_medium` honest: `paid_social` for anything paid for, `social` for an ordinary
+  post. Mixing them makes it impossible to tell later whether the money or the posting worked.
+- Change `utm_campaign` per campaign, not per post, so a campaign's posts stay totalled together.
 
 Read them in GA4 under **Reports &rarr; Acquisition &rarr; Traffic acquisition**, which lists
 sessions and key events by source once `tour_request` and `phone_click` are marked as key events.
