@@ -484,6 +484,40 @@ pages render and the form still works.
 
 **Analytics only counts forward.** There is no history before the install date.
 
+## Campaign links (UTM)
+
+Post these rather than the bare domain. GA4 reads the parameters directly, so attribution does not
+depend on a referrer surviving &mdash; which matters most for Facebook, whose link shims and in-app
+browser routinely strip it and leave a visit filed under `(direct) / (none)`.
+
+Source is attached to the **session**, so a `tour_request` or `phone_click` during that visit is
+credited to the campaign without any extra work.
+
+| Where it is posted | Link |
+| --- | --- |
+| Facebook Marketplace | `https://creeksidehavenapts.com/?utm_source=facebook&utm_medium=social&utm_campaign=marketplace` |
+| Facebook page post | `https://creeksidehavenapts.com/?utm_source=facebook&utm_medium=social&utm_campaign=page` |
+| Facebook local group | `https://creeksidehavenapts.com/?utm_source=facebook&utm_medium=social&utm_campaign=group` |
+| Google Business Profile | `https://creeksidehavenapts.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp` |
+| Zillow | `https://creeksidehavenapts.com/?utm_source=zillow&utm_medium=listing&utm_campaign=rentals` |
+| Apartments.com | `https://creeksidehavenapts.com/?utm_source=apartments-com&utm_medium=listing&utm_campaign=rentals` |
+
+Rules that keep the reports readable:
+
+- **Lower case, always.** `Facebook` and `facebook` become two separate rows in GA4.
+- **Keep the spellings above.** Invent a new `utm_source` for the same channel and its history
+  splits in two.
+- Point a link at a deeper page if that is what was posted &mdash; `/floor-plans.html?utm_source=...`
+  &mdash; keeping the parameters.
+- Facebook appends its own `?fbclid=...`; that is harmless and does not disturb these.
+
+Read them in GA4 under **Reports &rarr; Acquisition &rarr; Traffic acquisition**, which lists
+sessions and key events by source once `tour_request` and `phone_click` are marked as key events.
+
+**What this cannot see:** somebody who reads the phone number straight off a Facebook listing and
+dials it without ever opening the site. No web analytics catches that. Treat these counts as a
+floor.
+
 ## Things the copy must not say
 
 **There is no leasing office and no onsite leasing staff.** Nothing on the site may refer to one.
