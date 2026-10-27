@@ -48,7 +48,7 @@ Each value appears in several files, so search-and-replace across the repository
 | Domain | `https://creeksidehavenapts.com` — the real one, supplied by the property | `<link rel="canonical">`, `og:url`, `og:image`, `robots.txt`, `sitemap.xml`, the JSON-LD `url` |
 | Rents | **resolved 2026-10-27** &mdash; $1,150 (1BR) / $1,250 (2BR) starting, supplied by the property | `floor-plans.html`, `index.html` plan cards |
 | Drive times | **ACCEPTED 2026-10-27** &mdash; seven figures, 5 min H-E-B through 25 min The Woodlands. Never driven or checked against a routing service, but reviewed by the property and judged close enough. Every place they appear is hedged &mdash; "approximate", "about", "vary with traffic" &mdash; so they are presented as estimates, which is what they are. | `index.html`, `neighborhood.html` |
-| Fees & deposits | **PARTLY RESOLVED** &mdash; deposit is $750, supplied by the property 2026-10-27. The $50 application fee and $150 administrative fee are **still invented**: scaffolding from the first commit, never confirmed. | `apply.html` |
+| Fees & deposits | **RESOLVED 2026-10-27** &mdash; $750 deposit and $50 application fee, both confirmed by the property. The $150 administrative fee was never confirmed and its whole line is **removed from the page** until it is; restore it with a real figure, do not reinstate $150. | `apply.html` |
 | Income criteria | **UNCONFIRMED** &mdash; three times the rent, five times for a guarantor. Industry-standard figures, but not known to be this property's. | `apply.html` |
 | Photography | every interior in the gallery is a photograph; only the two neighborhood tiles are drawn there, and the home page strip still uses the kitchen and bedroom illustrations | `gallery.html`, `index.html` |
 
