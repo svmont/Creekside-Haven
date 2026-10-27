@@ -458,6 +458,27 @@ Originals are kept beside the cropped versions as `*-full.webp` / `*-full.png` s
 starts from the source rather than from a crop.
 
 
+## Analytics
+
+GA4, property `G-PY15QV11W2`, installed in the `<head>` of all six pages. The tag is `async`, so
+it cannot block rendering.
+
+Two events are sent beyond page views, from `js/site.js`:
+
+- **`tour_request`** &mdash; fired after the response body is checked, not on submit. FormSubmit
+  answers 200 with `{"success": false}` for a refused submission, so firing on submit would count
+  leads that were never delivered.
+- **`phone_click`** &mdash; any `tel:` link, by delegated listener. There is no leasing office, so
+  the phone is a primary channel; without this a listing that produces only calls looks like a
+  listing that produced nothing.
+
+Both go through a `track()` helper that does nothing when `gtag` is undefined. That is not
+theoretical: ad blockers block `googletagmanager.com` for a meaningful share of visitors, and an
+analytics call must never be able to break the tour form. Verified with the domain blocked &mdash;
+pages render and the form still works.
+
+**Analytics only counts forward.** There is no history before the install date.
+
 ## Things the copy must not say
 
 **There is no leasing office and no onsite leasing staff.** Nothing on the site may refer to one.

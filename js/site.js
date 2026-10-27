@@ -105,6 +105,23 @@
      what came back; leave it empty and it says it is not connected and sends
      the visitor to the phone, rather than inventing a confirmation nobody
      will act on. See creekside-haven/README.md. */
+  /* Analytics events. Page views arrive on their own; these are the two things
+     that actually count as a lead here, and neither is a page view: the tour
+     form being accepted, and somebody tapping the phone number. Without the
+     second, phone leads are invisible and a listing that only produces calls
+     looks like a listing that produced nothing.
+
+     Guarded, because gtag is absent if the tag is blocked or removed, and a
+     missing analytics call must never break a form. */
+  function track(name, params) {
+    if (typeof window.gtag === "function") { window.gtag("event", name, params || {}); }
+  }
+
+  document.addEventListener("click", function (e) {
+    var tel = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (tel) { track("phone_click", { link_url: tel.getAttribute("href") }); }
+  });
+
   document.querySelectorAll("form[data-tour-form]").forEach(function (form) {
     var ok = form.querySelector(".form-success");
     var fail = form.querySelector(".form-error");
@@ -142,6 +159,9 @@
                                  data.ok === false || data.error);
           if (!res.ok || refused) throw new Error("rejected");
           show(ok);
+          /* After the body check, so this counts delivered requests rather
+             than attempts: a refused submission returns 200 too. */
+          track("tour_request", { form_id: form.getAttribute("id") || "tour-form" });
           form.reset();
         });
       }).catch(function () {
