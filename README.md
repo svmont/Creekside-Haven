@@ -471,7 +471,11 @@ Two events are sent beyond page views, from `js/site.js`:
   leads that were never delivered.
 - **`phone_click`** &mdash; any `tel:` link, by delegated listener. There is no leasing office, so
   the phone is a primary channel; without this a listing that produces only calls looks like a
-  listing that produced nothing.
+  listing that produced nothing. It listens on **`pointerdown`, not `click`**: tapping a `tel:`
+  link hands the page to the dialer, and an event fired on `click` can be lost in that handoff.
+  A 1s dedupe keeps the `click` that follows the same press from counting twice, and
+  `transport_type: "beacon"` asks the browser to deliver the request even if the page goes away.
+  One press counts once; two presses a second apart count twice.
 
 Both go through a `track()` helper that does nothing when `gtag` is undefined. That is not
 theoretical: ad blockers block `googletagmanager.com` for a meaningful share of visitors, and an

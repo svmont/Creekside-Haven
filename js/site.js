@@ -117,10 +117,27 @@
     if (typeof window.gtag === "function") { window.gtag("event", name, params || {}); }
   }
 
-  document.addEventListener("click", function (e) {
-    var tel = e.target.closest && e.target.closest('a[href^="tel:"]');
-    if (tel) { track("phone_click", { link_url: tel.getAttribute("href") }); }
-  });
+  /* Listening on pointerdown rather than click, because tapping a tel: link
+     hands the page to the dialer and an event fired on click can be lost in
+     that handoff -- the one case where the tap matters most. pointerdown runs
+     before any navigation starts. The dedupe stops the click that follows the
+     same press from counting twice, and transport_type beacon asks the browser
+     to deliver the request even if the page goes away mid-flight. */
+  var lastTel = 0;
+  function telDown(e) {
+    var tel = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (!tel) { return; }
+    var now = Date.now();
+    if (now - lastTel < 1000) { return; }
+    lastTel = now;
+    track("phone_click", {
+      link_url: tel.getAttribute("href"),
+      transport_type: "beacon"
+    });
+  }
+  document.addEventListener("pointerdown", telDown);
+  /* Fallback for anything without pointer events. */
+  document.addEventListener("click", telDown);
 
   document.querySelectorAll("form[data-tour-form]").forEach(function (form) {
     var ok = form.querySelector(".form-success");
