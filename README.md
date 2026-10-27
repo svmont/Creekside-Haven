@@ -46,9 +46,10 @@ Each value appears in several files, so search-and-replace across the repository
 | Phone | `(970) 620-2093` — supplied by the property | see "The phone number" below |
 | Email | `Thpmservice@gmail.com` — the leasing address shown on the site | footer on all six pages, `contact.html`, `apply.html`, the JSON-LD `email` |
 | Domain | `https://creeksidehavenapts.com` — the real one, supplied by the property | `<link rel="canonical">`, `og:url`, `og:image`, `robots.txt`, `sitemap.xml`, the JSON-LD `url` |
-| Rents | none shown — cards read "Call for current pricing" | `floor-plans.html`, `index.html` plan cards |
-| Drive times | 5 min H-E-B, 25 min The Woodlands, etc. | `index.html`, `neighborhood.html` |
-| Fees & deposits | $50 application, $150 admin, $300 deposit | `apply.html` |
+| Rents | **resolved 2026-10-27** &mdash; $1,150 (1BR) / $1,250 (2BR) starting, supplied by the property | `floor-plans.html`, `index.html` plan cards |
+| Drive times | **UNVERIFIED** &mdash; seven figures, 5 min H-E-B through 25 min The Woodlands. Plausible for the distances, but never driven or checked against a routing service, and no container here has had a route to one. | `index.html`, `neighborhood.html` |
+| Fees & deposits | **STILL INVENTED** &mdash; $50 application, $150 admin, $300 deposit. Written as scaffolding in the first commit and never confirmed by anyone. | `apply.html` |
+| Income criteria | **UNCONFIRMED** &mdash; three times the rent, five times for a guarantor. Industry-standard figures, but not known to be this property's. | `apply.html` |
 | Photography | every interior in the gallery is a photograph; only the two neighborhood tiles are drawn there, and the home page strip still uses the kitchen and bedroom illustrations | `gallery.html`, `index.html` |
 
 ### What the photographs confirmed
