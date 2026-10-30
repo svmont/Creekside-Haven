@@ -511,6 +511,30 @@ anywhere else that asks for one.
 **It counts reloads.** Anyone refreshing or bookmarking that URL registers another `tour_request`.
 Acceptable at this volume, worth remembering if the numbers ever look generous.
 
+## Conversion tracking: GA4 only, on purpose
+
+**There is no Google Ads tag (`AW-…`) on this site and there should not be one.** Google Ads reads
+conversions by importing GA4's key events instead. Adding an `AW-` tag alongside would count the
+same lead twice and quietly corrupt the cost-per-lead figure the ad budget is judged on.
+
+The chain, once:
+
+1. GA4 &rarr; **Admin &rarr; Events** &rarr; *Recent events* &rarr; star `tour_request` and `phone_click`.
+   They appear only after firing once, and up to 24h later: the list is not real-time.
+2. GA4 &rarr; **Admin &rarr; Product links &rarr; Google Ads links** &rarr; link the account.
+3. Google Ads &rarr; **Goals &rarr; Conversions &rarr; Import &rarr; Google Analytics 4**.
+4. Google Ads &rarr; **Admin &rarr; Account settings** &rarr; confirm **auto-tagging is on**. Without it
+   Google Ads clicks carry no `gclid` and GA4 cannot attribute them, so the imported conversions
+   arrive with no campaign attached and the whole exercise is pointless.
+
+Why this way rather than a URL-based conversion on `thank-you.html`: a URL conversion can only see
+page loads, so it counts form submissions and misses every phone tap. `phone_click` has no page to
+land on. With no leasing office the phone is a primary channel, so a method that cannot see it
+would under-report leads and teach the bidding to chase the wrong clicks.
+
+**Marking is not retroactive.** Events before the star is clicked are recorded but never counted as
+key events.
+
 ## Campaign links (UTM)
 
 Post these rather than the bare domain. GA4 reads the parameters directly, so attribution does not
