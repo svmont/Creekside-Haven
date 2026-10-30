@@ -511,6 +511,17 @@ anywhere else that asks for one.
 **It counts reloads.** Anyone refreshing or bookmarking that URL registers another `tour_request`.
 Acceptable at this volume, worth remembering if the numbers ever look generous.
 
+## The home page is `/`, not `/index.html`
+
+Every internal link to the home page points at **`/`**. The canonical tag and `og:url` have always
+said `https://creeksidehavenapts.com/`, but the 28 logo and "Home" links said `index.html`, so a
+crawler following them discovered `/index.html` as a real URL serving identical content. The
+canonical stops that becoming a duplicate in search results, but it does not stop tools from
+*reporting* the page they found &mdash; Google Ads picked up `/index.html` as the site's home and
+started building URLs from it, which made it impossible to point a setting at another page.
+
+Link to `/` for the home page. Never `index.html`.
+
 ## Conversion tracking: GA4 only, on purpose
 
 **There is no Google Ads tag (`AW-…`) on this site and there should not be one.** Google Ads reads
