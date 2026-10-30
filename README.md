@@ -484,6 +484,33 @@ pages render and the form still works.
 
 **Analytics only counts forward.** There is no history before the install date.
 
+## The thank-you page
+
+`thank-you.html` exists because **ad platforms count URLs, not messages.** The tour form used to
+confirm in place, which no ad platform can see: Google Ads asks for "the page customers see after
+they schedule an appointment", and there was none. Pointing it at `contact.html` instead would
+count every visit to the form as a lead.
+
+How it hangs together:
+
+- The form still posts by `fetch` and still inspects the response body. Only once that confirms a
+  delivered submission does it set `location.href`. **A refused submission does not navigate** &mdash;
+  it shows the red notice, as before.
+- `_next` on the form sends FormSubmit's own redirect to the same page, so the no-JavaScript path
+  lands there too.
+- `tour_request` fires **on the thank-you page**, not on the form. Arriving is the proof, and an
+  event fired on arrival cannot be lost to the navigation the way one fired just before it can.
+- The page carries `noindex, follow` and is **not in `sitemap.xml`**. A confirmation page has
+  nothing to offer a searcher, and indexing it puts "Thank you" in results for brand searches.
+- The inline success message was removed from `contact.html` when the redirect went in. It could
+  no longer appear, and markup that claims a thing never shown misleads whoever reads it next.
+
+Use `https://creeksidehavenapts.com/thank-you.html` as the conversion URL in Google Ads, Meta, or
+anywhere else that asks for one.
+
+**It counts reloads.** Anyone refreshing or bookmarking that URL registers another `tour_request`.
+Acceptable at this volume, worth remembering if the numbers ever look generous.
+
 ## Campaign links (UTM)
 
 Post these rather than the bare domain. GA4 reads the parameters directly, so attribution does not

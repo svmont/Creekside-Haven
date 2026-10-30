@@ -140,12 +140,11 @@
   document.addEventListener("click", telDown);
 
   document.querySelectorAll("form[data-tour-form]").forEach(function (form) {
-    var ok = form.querySelector(".form-success");
     var fail = form.querySelector(".form-error");
     var offline = form.querySelector(".form-offline");
 
     function show(el) {
-      [ok, fail, offline].forEach(function (n) { if (n) n.classList.remove("show"); });
+      [fail, offline].forEach(function (n) { if (n) n.classList.remove("show"); });
       if (!el) return;
       el.classList.add("show");
       el.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -175,11 +174,14 @@
           var refused = data && (data.success === false || data.success === "false" ||
                                  data.ok === false || data.error);
           if (!res.ok || refused) throw new Error("rejected");
-          show(ok);
-          /* After the body check, so this counts delivered requests rather
-             than attempts: a refused submission returns 200 too. */
-          track("tour_request", { form_id: form.getAttribute("id") || "tour-form" });
+          /* Only now, past the body check, is the request actually delivered.
+             The confirmation lives on its own page so that every ad platform
+             has a URL to count -- none of them can see an inline message. The
+             tour_request event moved there with it, where arriving is the
+             proof and nothing can be lost to this navigation. */
           form.reset();
+          window.location.href = "thank-you.html";
+          return;
         });
       }).catch(function () {
         show(fail);
