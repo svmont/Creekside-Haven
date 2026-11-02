@@ -1,5 +1,40 @@
 # Google Ads — Creekside Haven
 
+## What is actually live (2026-11-02)
+
+A **Smart campaign**, not the Search campaign specified below. Account `254-007-0617` on
+`creeksidehavenapts@gmail.com`.
+
+| | |
+| --- | --- |
+| Budget | $15/day |
+| Location | 254 Plez Morgan Dr, Montgomery TX 77356, 15 mile radius |
+| Conversion | `creeksidehavenapts.com/thank-you.html` |
+| Keyword themes | seven, each naming Montgomery TX |
+| GA4 | linked during setup |
+| Account time zone | Chicago (GMT-06:00) &mdash; **permanent, cannot be changed** |
+| Promotion | spend $500 by **2027-01-01**, get $500 credit |
+
+It began as a throwaway to get through signup, and stopped being one once its targeting was
+fixed: Google had seeded it with `cypress apartments` (a Houston suburb 50 miles away) and
+confined it to the Montgomery city limits, a town of about 2,500. Both are corrected, the
+conversion points at the thank-you page rather than the contact page, and the copy is the
+fair-housing-safe version. It is a real campaign now.
+
+**The Search campaign below is an upgrade, not a replacement, and is deliberately not built yet.**
+Its advantages are real &mdash; match types, 27 negative keywords, a complete search terms report
+&mdash; but building it before knowing whether paid search produces leases here would be
+speculative. Run the Smart campaign two or three weeks, watch `tour_request` and `phone_click`,
+then decide with data.
+
+What the Smart campaign cannot do, and what it therefore costs: no negative keywords, so clicks
+from "studio" and "3 bedroom" searches get paid for and turned away; placements beyond Search;
+and limited search terms reporting, so waste is hard to diagnose.
+
+**Dates to keep:** $500 of spend by 2027-01-01. The credit then expires 60 days after it is
+applied, and nothing notifies you when it runs out &mdash; the card silently resumes paying.
+
+
 Everything needed to build the Search campaign, in the order Google asks for it.
 Every figure here is verified against the live site.
 
