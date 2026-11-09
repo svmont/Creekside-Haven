@@ -24,11 +24,19 @@
   {
     "@context": "https://schema.org",
     "@type": "ApartmentComplex",
-    "name": "Creekside Haven",
-    "description": "Spacious one- and two-bedroom apartment homes in Montgomery ISD, conveniently located near H-E-B, historic downtown Montgomery, Conroe and The Woodlands.",
+    "@id": "https://creeksidehavenapts.com/#apartmentcomplex",
+    "name": "Creekside Haven Apartments",
+    "alternateName": "Creekside Haven",
+    "description": "Spacious one- and two-bedroom apartment homes in Montgomery, TX, zoned to Montgomery ISD. A 48-home community with a full-size washer and dryer in every home, close to H-E-B, historic downtown Montgomery, Lake Conroe, Conroe and The Woodlands.",
     "url": "https://creeksidehavenapts.com/",
+    "image": [
+      "https://creeksidehavenapts.com/assets/home-hero.jpg",
+      "https://creeksidehavenapts.com/assets/community-aerial.jpg",
+      "https://creeksidehavenapts.com/assets/interior-furnished.jpg"
+    ],
+    "logo": "https://creeksidehavenapts.com/assets/logo.png",
+    "telephone": "+1-970-620-2093",
     "email": "Thpmservice@gmail.com",
-    "telephone": "+19706202093",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "254–282 Plez Morgan Dr",
@@ -37,16 +45,34 @@
       "postalCode": "77356",
       "addressCountry": "US"
     },
-    "image": "https://creeksidehavenapts.com/assets/entrance-sign-og.jpg",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 30.40151,
-      "longitude": -95.69559
-    },
     "numberOfAccommodationUnits": 48,
     "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Full-size washer and dryer in every home", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Dedicated laundry room", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Covered parking", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Gated entrance", "value": true }
+      { "@type": "LocationFeatureSpecification", "name": "Generous closet space", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Trash and pest control included", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "24/7 maintenance requests", "value": true }
+    ],
+    "accommodationFloorPlan": [
+      {
+        "@type": "FloorPlan",
+        "name": "1 Bedroom",
+        "url": "https://creeksidehavenapts.com/floor-plans.html",
+        "numberOfBedrooms": 1,
+        "numberOfFullBathrooms": 1,
+        "floorSize": { "@type": "QuantitativeValue", "value": 715, "unitCode": "FTK" },
+        "layoutImage": "https://creeksidehavenapts.com/assets/floorplan-1-bedroom.jpg"
+      },
+      {
+        "@type": "FloorPlan",
+        "name": "2 Bedroom",
+        "url": "https://creeksidehavenapts.com/floor-plans.html",
+        "numberOfBedrooms": 2,
+        "numberOfFullBathrooms": 2,
+        "floorSize": { "@type": "QuantitativeValue", "value": 975, "unitCode": "FTK" },
+        "layoutImage": "https://creeksidehavenapts.com/assets/floorplan-2-bedroom.jpg"
+      }
     ]
   }
   </script>
