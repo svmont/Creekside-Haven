@@ -546,6 +546,27 @@ would under-report leads and teach the bidding to chase the wrong clicks.
 **Marking is not retroactive.** Events before the star is clicked are recorded but never counted as
 key events.
 
+## The link preview image
+
+`assets/share-og.jpg`, 1200&times;630, referenced by `og:image` on all seven pages along with
+`og:image:width`, `og:image:height` and `og:image:alt`. The dimensions are there so Facebook can
+lay the card out on first scrape instead of deferring until it has fetched the file.
+
+It is cropped from `home-hero.jpg`, the photograph actually on the home page. It replaced
+`entrance-sign-og.jpg`, a different and flatter shot of the same sign, so every link shared
+anywhere showed a picture that was not on the site.
+
+**The crop stops at x=1185 of 1400 for a reason.** Past that point sits the building carrying a
+banner that reads "Under New Management!" and a telephone number that is not the property's. In
+the uncropped photograph it is legible. That photograph is the home page hero and is also listed
+in the JSON-LD `image` array, so the number is still published in both places &mdash; the crop
+fixes the link preview only.
+
+**A changed `og:image` does not change what Facebook already shows.** Facebook caches a scrape
+per URL and keeps serving it. Re-scrape each URL in the Sharing Debugger
+(`developers.facebook.com/tools/debug/`) after any change here, or the old picture persists
+indefinitely.
+
 ## Campaign links (UTM)
 
 Post these rather than the bare domain. GA4 reads the parameters directly, so attribution does not
