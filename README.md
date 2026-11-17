@@ -546,6 +546,24 @@ would under-report leads and teach the bidding to chase the wrong clicks.
 **Marking is not retroactive.** Events before the star is clicked are recorded but never counted as
 key events.
 
+**Done on 2026-11-17.** Both events are key events in GA4 and imported as Google Ads conversions:
+`tour_request` as *Book appointment*, `phone_click` as *Phone call lead*, both Primary.
+Auto-tagging confirmed on.
+
+Two things found while wiring it up that are worth keeping:
+
+- **Google creates its own GA4 event during Smart campaign signup**, named `ads_conversion_<name>`,
+  marks it a key event, and feeds a Google Ads conversion action from it. It fires on the same
+  `thank-you.html` load as `tour_request`, so importing both would have counted every form
+  submission twice. Unstarring the Google-made event broke its conversion action, which then
+  showed **Needs attention** in the conversions list &mdash; expected, and the reason the action
+  itself should be demoted to Secondary or removed rather than left as a dead Primary.
+- **Most of the account's conversion count is not leads.** "Local actions &mdash; Directions,
+  Other engagements, Website visits" are Google-hosted Smart campaign telemetry, and one of them
+  counts a website visit as a conversion. They are excluded from account-level goals, so they do
+  not drive bidding, but they inflate the headline figure. Judge the campaign on `tour_request`
+  and `phone_click` alone.
+
 ## The link preview image
 
 `assets/share-og.jpg`, 1200&times;630, referenced by `og:image` on all seven pages along with
