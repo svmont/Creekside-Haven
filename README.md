@@ -49,7 +49,7 @@ Each value appears in several files, so search-and-replace across the repository
 | Rents | **resolved 2026-10-27** &mdash; $1,150 (1BR) / $1,250 (2BR) starting, supplied by the property | `floor-plans.html`, `index.html` plan cards |
 | Drive times | **ACCEPTED 2026-10-27** &mdash; seven figures, 5 min H-E-B through 25 min The Woodlands. Never driven or checked against a routing service, but reviewed by the property and judged close enough. Every place they appear is hedged &mdash; "approximate", "about", "vary with traffic" &mdash; so they are presented as estimates, which is what they are. | `index.html`, `neighborhood.html` |
 | Fees & deposits | **RESOLVED** &mdash; $750 deposit and $45 application fee, both from the property. **There is no administrative fee.** The $150 line was invented in the first commit and is gone for good: do not restore it, and do not add one if a future template or listing site suggests the field should be filled. | `apply.html` |
-| Income criteria | **UNCONFIRMED** &mdash; three times the rent, five times for a guarantor. Industry-standard figures, but not known to be this property's. | `apply.html` |
+| Income criteria | **RESOLVED 2026-11-18** &mdash; three times the rent is correct and stays. The property has no stated guarantor policy, so both the guarantor card and the guarantor mention in the credit FAQ were removed; the site is silent on it, as the property is. | `apply.html` |
 | Photography | every interior in the gallery is a photograph; only the two neighborhood tiles are drawn there, and the home page strip still uses the kitchen and bedroom illustrations | `gallery.html`, `index.html` |
 
 ### What the photographs confirmed
