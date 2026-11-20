@@ -132,7 +132,7 @@ From $1,150 a Month
 Washer & Dryer Included
 715-975 Sq Ft Floor Plans
 Montgomery ISD Schools
-Covered Parking & Gated
+Fiber Internet Included
 Creekside Haven Apartments
 Minutes to Lake Conroe
 Schedule a Tour Today
@@ -143,7 +143,7 @@ See the Floor Plans
 **Descriptions** (90 characters each)
 ```
 Spacious 1 & 2 bedroom homes in Montgomery ISD. Full-size washer and dryer in every home.
-715 and 975 sq ft plans from $1,150. Covered parking, gated entrance. Tour by appointment.
+715 and 975 sq ft plans from $1,150. Water and fiber internet included. Tour by appt.
 Minutes from H-E-B, Kroger and downtown Montgomery. Near Conroe and The Woodlands.
 A 48-home community in eight two-story buildings. Schedule a tour to see it yourself.
 ```
@@ -174,14 +174,14 @@ never the resident.
 ```
 Washer & Dryer Included
 Covered Parking
-Gated Entrance
+Fiber Internet Included
 Montgomery ISD
 Separate Dining Room
 Tours by Appointment
 ```
 
-**Structured snippet** — header *Amenities*: Washer and dryer, Covered parking, Gated
-entrance, Separate dining room
+**Structured snippet** — header *Amenities*: Washer and dryer, Covered parking, Fiber
+internet, Separate dining room
 
 **Call asset** — (970) 620-2093. Add it **only if someone reliably answers.** A missed call
 is a lead lost with no record, where a form submission waits in an inbox. Schedule it to

@@ -61,7 +61,10 @@ guesses:
   and the site plan, replacing the single-unit address taken off a floor plan sheet.
 - **48 homes in 8 two-storey buildings**, units A–F in each (254, 258, 262, 266, 270, 274,
   278, 282). The community map on `gallery.html` is that site plan, as supplied: `assets/site-plan.webp`, 1536×1024.
-- **A gated entrance** — perimeter iron fencing and drive gates are visible in the photograph.
+- **Perimeter fencing** — iron fencing runs the boundary and is visible in the photograph.
+  **The community is fenced, not gated.** The owner confirmed this on 2026-11-20. "Gated" is a
+  specific claim renters pay a premium for and shop on, so nothing on the site, in the ads or in
+  any listing may say it, whatever the drive hardware looks like in a photograph.
 - **The brand mark** is the community seal — a heron standing in cattails over water inside a
   double ring — redrawn as inline SVG to the composition of the official logo, and used in the
   header, the footer and the favicon.
@@ -71,7 +74,7 @@ guesses:
 
 ### Community amenities
 
-The only confirmed community amenities are **covered parking** and the **gated entrance**.
+The only confirmed community amenities are **covered parking** and **perimeter fencing**.
 An earlier draft of this site advertised a pool, fitness center, clubhouse, coworking lounge, dog park, pet spa, grilling
 pavilion, package lockers, detached garages, gated entry, EV charging and a playground — none
 of which were verified, and all of which have been removed. If the property has more than

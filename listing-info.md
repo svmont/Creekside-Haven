@@ -46,9 +46,10 @@ and dining open to the living room.
 ## Amenities — only these are confirmed
 
 - Covered parking (monthly charge)
-- Gated entrance
+- Perimeter fencing (the community is fenced, NOT gated — never tick "gated")
 - Full-size washer and dryer in every home, in a dedicated laundry room
-- Trash and pest control included in rent
+- Fiber internet, water, trash and pest control included in rent; electricity is the
+  resident's only utility
 
 **Do not tick anything else.** ILS forms present long amenity checklists — pool, fitness centre,
 clubhouse, business centre, dog park, valet trash. Creekside Haven has none of those confirmed,
@@ -68,7 +69,8 @@ are billed monthly.
 > two-bedrooms are 975 square feet with a split-bedroom layout and a private primary suite.
 > Every home includes a dedicated laundry room with a full-size washer and dryer — not a stacked
 > unit in a hallway closet. The community has 48 homes across eight two-story buildings, with
-> covered parking and a gated entrance. Minutes from H-E-B, Kroger Marketplace and historic
+> covered parking and perimeter fencing. Fiber internet, water, trash and pest control are
+> included in the rent. Minutes from H-E-B, Kroger Marketplace and historic
 > downtown Montgomery, with easy access to Conroe and The Woodlands.
 
 **Never describe who the apartments suit.** No "families", "professionals", "students", "seniors",
