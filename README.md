@@ -713,6 +713,16 @@ says so: the specials card on `index.html` and `floor-plans.html`, the fee line 
 and the "Is the application fee refundable?" answer. If the wording is ever shortened to
 "credited back on approval" it becomes a promise the property has not made.
 
+**What is actually included.** Fiber internet, water, trash and pest control are included in
+the rent. Electricity is the only utility the resident sets up and pays for. The site said the
+opposite until 2026-11-20: the "What is included in rent?" answer had residents setting up their
+own internet and being billed monthly for water. Both are among the strongest things the
+property has to offer and both were being given away to a competitor on every comparison.
+
+It now appears in three places that must stay in step: the FAQ answer on `index.html`, two
+`amenityFeature` entries in the JSON-LD, and the amenity lists on `index.html` and
+`floor-plans.html` (which are duplicates of each other &mdash; change both).
+
 **No valet trash.** The "What is included in rent?" answer on `index.html` used to say water,
 sewer and valet trash were billed monthly, which also contradicted its own first sentence about
 trash being included. It now reads water and sewer.
@@ -814,6 +824,23 @@ repository as the source — there is no build command and no publish subdirecto
 Before launch: update `robots.txt` and `sitemap.xml` with the real domain, add the property to
 Google Business Profile and the ILS listings (Apartments.com, Zillow, etc.), and add analytics
 plus call tracking if leasing wants attribution per source.
+
+### Never re-run a failed Pages run &mdash; dispatch a fresh one
+
+On 2026-11-20 the deploy for `17978c9` failed with:
+
+> Fetching artifact metadata failed. &hellip; No artifacts named "github-pages" were found for
+> this workflow run.
+
+That is GitHub's own read-back of an upload that had just succeeded, and the message itself says
+to re-run. Re-running the failed job made it worse: the job uploads the artifact, so attempt two
+uploaded a *second* `github-pages` artifact into the same run, and `deploy-pages` failed again
+for the opposite reason &mdash; "Multiple artifacts named github-pages were unexpectedly found.
+Artifact count is 2." That run can now never go green, however many times it is re-run.
+
+The upload and the deploy live in one job here, so **re-running a failed run of this workflow is
+always wrong.** Start a new run instead: push a commit, or trigger `workflow_dispatch`, which
+this workflow accepts.
 
 ## Regenerating the pages
 
