@@ -564,7 +564,7 @@ Two things found while wiring it up that are worth keeping:
   not drive bidding, but they inflate the headline figure. Judge the campaign on `tour_request`
   and `phone_click` alone.
 
-## The leasing special bar
+## The leasing special: three places, one offer
 
 `.promo-bar` sits above the sticky header on all seven pages: **"Up to 4 Weeks Free! Ask about
 our leasing specials"**, linking to `contact.html`. The whole bar is the link, not a few words of
@@ -573,10 +573,50 @@ it &mdash; a concession is the reason someone calls, so the target should be lar
 It is above the header rather than inside it so that it scrolls away once read instead of eating
 height on every screen for the whole visit.
 
+Two other pieces carry the same offer:
+
+- **`<section class="specials">`** on `index.html` (between the fact strip and the pitch) and on
+  `floor-plans.html` (directly under the two plans, where the prices are). A cream-on-green card
+  with the brass **Move-In Specials** seal, the headline **Up to 4 Weeks Free**, the line about
+  the application fee, and the tour and phone buttons. The seal and the brass numeral are lifted
+  from the printed flyer deliberately, so somebody who saw that recognises the page as the same
+  offer.
+- **`<dialog class="welcome">`** on `index.html` only: a cream card over a dimmed page, 1.4
+  seconds after arrival, once per browser session.
+
+### The pop-up
+
+It is a native `<dialog>` opened with `showModal()` rather than a hand-built overlay, because
+that already gives the three things pop-ups get wrong: the rest of the page is made inert, focus
+is trapped inside and returned afterwards, and Escape closes. What `js/site.js` adds is the
+backdrop click, the once-per-session rule, and not firing at all where `showModal` is missing
+&mdash; an old browser then never sees the offer, which beats a card it cannot dismiss.
+
+Focus starts on the card, not the close button, so a screen reader announces the dialog and its
+heading and a mouse visitor is not met by a focus ring on the first thing they see. Tab reaches
+Close, then the tour button, then cycles.
+
+Four attributes on the `<dialog>` are the whole control panel:
+
+| Attribute | Does |
+| --- | --- |
+| `data-welcome-off` | Present &rarr; the pop-up never opens. Nothing else to change. |
+| `data-welcome-key` | The sessionStorage key. Change it and everyone sees the offer again. |
+| `data-welcome-delay` | Milliseconds before it opens. |
+| *(the three lines of copy)* | Kicker, heading, supporting line &mdash; plain text in the markup. |
+
+`sessionStorage` throws outright in some privacy modes, so a failed read counts as "not seen" and
+a failed write as "show again next page". Either beats a script error.
+
+Opening fires a `promo_view` GA4 event tagged with the key, so the pop-up's reach can be compared
+against `tour_request` later.
+
 **A special has an end date and the website will not remember it.** When this one finishes,
-remove the `<a class="promo-bar">` block from all seven pages; the CSS can stay. A concession
-advertised after it has expired is worse than never having advertised one, because the first
-thing it costs is the prospect's trust on the call.
+remove the `<a class="promo-bar">` block from all seven pages, the `<section class="specials">`
+from `index.html` and `floor-plans.html`, and the `<dialog class="welcome">` from `index.html`;
+the three CSS blocks can stay. Also take the credited-back clause off the application fee line in
+`apply.html`. A concession advertised after it has expired is worse than never having advertised
+one, because the first thing it costs is the prospect's trust on the call.
 
 **The wording carries its own qualifier.** "Up to" and "ask about our leasing specials" are doing
 the work that "on select homes, restrictions apply" usually does. Keep both halves if the terms

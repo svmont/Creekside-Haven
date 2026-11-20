@@ -191,6 +191,42 @@
     });
   });
 
+  /* ----------------------- Welcome offer pop-up ------------------------ */
+  /* A native <dialog> rather than a hand-rolled overlay, because showModal()
+     already gives the three things a pop-up gets wrong: the rest of the page
+     is made inert, focus is trapped inside and then returned to wherever it
+     was, and Escape closes. What is left to add is the backdrop click, the
+     once-per-session rule, and not firing at all where showModal is missing --
+     an old browser then simply never sees the offer, which is better than a
+     card it cannot dismiss. */
+  var welcome = document.querySelector("dialog.welcome");
+  if (welcome && typeof welcome.showModal === "function" &&
+      !welcome.hasAttribute("data-welcome-off")) {
+    var wKey = welcome.getAttribute("data-welcome-key") || "welcome";
+    var wDelay = parseInt(welcome.getAttribute("data-welcome-delay"), 10);
+    var wSeen = false;
+    /* sessionStorage throws outright in some privacy modes, so a failure to
+       read it counts as "not seen" and a failure to write it as "show again
+       next page". Either beats a script error. */
+    try { wSeen = sessionStorage.getItem(wKey) === "1"; } catch (err) { wSeen = false; }
+
+    if (!wSeen) {
+      window.setTimeout(function () {
+        if (welcome.open) { return; }
+        welcome.showModal();
+        track("promo_view", { promo_name: wKey });
+        try { sessionStorage.setItem(wKey, "1"); } catch (err) { /* nothing to do */ }
+      }, isNaN(wDelay) ? 1400 : wDelay);
+    }
+
+    /* The card is a child of the dialog and the dialog carries no padding of
+       its own, so the only click that can land on the dialog itself is one on
+       the backdrop. */
+    welcome.addEventListener("click", function (ev) {
+      if (ev.target === welcome) { welcome.close(); }
+    });
+  }
+
   /* ------------- Prefill the plan select from a ?plan= param ------------ */
   var planParam = new URLSearchParams(window.location.search).get("plan");
   if (planParam) {

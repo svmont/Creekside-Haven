@@ -847,6 +847,102 @@ p + p { margin-top: .9rem; }
 .cta-band h2 { color: #fff; max-width: 30rem; }
 .cta-band p { color: rgba(255,255,255,.85); margin-top: .5rem; max-width: 34rem; }
 
+/* ---------------------------- Move-in special ---------------------------- */
+/* Temporary, like .promo-bar above. When the concession ends, delete this
+   block, the .promo-bar block, and their markup on every page. The card is
+   deliberately the one piece of the site that shouts: the seal, the brass
+   numeral and the hero gradient are lifted from the printed flyer so a
+   prospect who saw that recognises this page as the same offer. */
+.specials { background: var(--sand); }
+.special-card {
+  display: flex; align-items: center; gap: clamp(1.4rem, 3vw, 2.6rem);
+  background: var(--grad-hero); color: #fff;
+  border: 1px solid rgba(220, 171, 95, .5);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: clamp(1.8rem, 3.2vw, 2.6rem) clamp(1.5rem, 3.2vw, 2.9rem);
+}
+.special-seal {
+  flex: none; width: 138px; height: 138px; border-radius: 50%;
+  display: grid; place-content: center; text-align: center;
+  background: var(--grad-brass); color: #2a1c06;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, .13);
+  font-family: var(--font-display); line-height: 1.08;
+}
+.special-seal span { font-size: .95rem; }
+.special-seal strong { display: block; font-size: 1.38rem; font-weight: 700; }
+.special-body { flex: 1 1 auto; }
+.special-kicker {
+  display: block; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+  font-weight: 700; color: var(--brass-2);
+}
+.special-headline {
+  font-family: var(--font-display); font-weight: 600; line-height: 1.02;
+  font-size: clamp(1.85rem, 4.2vw, 2.8rem); margin-top: .5rem; color: #fff;
+}
+.special-headline strong { display: block; font-weight: 700; color: var(--brass-2); }
+.special-note { color: rgba(255, 255, 255, .87); margin-top: .8rem; max-width: 30rem; }
+/* The buttons take the width the copy does not, so the card stays one band
+   deep instead of two. */
+.special-actions { flex: none; text-align: right; }
+.special-actions .btn-row { justify-content: flex-end; }
+.special-terms { font-size: .83rem; color: rgba(255, 255, 255, .6); margin-top: .9rem; }
+@media (max-width: 1020px) {
+  .special-card { flex-direction: column; text-align: center; }
+  .special-note { margin-left: auto; margin-right: auto; }
+  .special-actions { text-align: center; }
+  .special-actions .btn-row { justify-content: center; }
+}
+
+/* --------------------------- Welcome offer ------------------------------ */
+/* The <dialog> itself is transparent and holds no padding: that way any click
+   that lands on it is a click on the backdrop and nothing else, which is what
+   the dismiss handler keys on. The cream card is the child that carries the
+   look. Delete this block with .promo-bar and .specials when the offer ends. */
+.welcome {
+  padding: 0; border: 0; background: transparent; overflow: visible;
+  color: var(--text);
+  /* Centred here rather than left to the UA sheet: once width is declared,
+     browsers disagree about where a modal <dialog> lands. inset 0 plus
+     margin auto with a definite width and a fit-content height is the one
+     spelling that centres on both axes everywhere. */
+  position: fixed; inset: 0; margin: auto;
+  width: min(27rem, calc(100vw - 2rem)); height: fit-content;
+}
+.welcome::backdrop { background: rgba(16, 38, 30, .55); }
+.welcome-card {
+  position: relative; text-align: center;
+  background: var(--cream); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: clamp(2.1rem, 6vw, 2.9rem) clamp(1.5rem, 5vw, 2.5rem) clamp(1.7rem, 4vw, 2.2rem);
+}
+.welcome-card:focus { outline: none; }
+.welcome-close {
+  position: absolute; top: .8rem; right: .8rem;
+  width: 40px; height: 40px; padding: 0; border-radius: 50%;
+  display: grid; place-content: center; cursor: pointer;
+  background: var(--sand); color: var(--forest); border: 1px solid var(--line);
+  transition: background .15s ease, color .15s ease;
+}
+.welcome-close:hover { background: var(--forest); color: #fff; border-color: var(--forest); }
+.welcome-close svg { width: 17px; height: 17px; }
+.welcome-kicker {
+  display: block; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase;
+  font-weight: 700; color: var(--brass);
+}
+.welcome-title {
+  font-family: var(--font-display); color: var(--forest); font-weight: 600;
+  font-size: clamp(1.85rem, 6.5vw, 2.45rem); line-height: 1.05; margin-top: .75rem;
+}
+.welcome-copy { color: var(--ink-soft); margin-top: .7rem; }
+.welcome .btn { margin-top: 1.6rem; width: 100%; }
+.welcome-note { font-size: .84rem; color: var(--ink-soft); margin-top: .9rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .welcome[open] { animation: welcome-rise .28s ease-out; }
+  .welcome[open]::backdrop { animation: welcome-fade .28s ease-out; }
+}
+@keyframes welcome-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes welcome-fade { from { opacity: 0; } }
+
 /* -------------------------------- Footer --------------------------------- */
 .site-footer { background: var(--forest); color: rgba(255,255,255,.78); padding: 3.2rem 0 2rem; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 2rem; }
