@@ -631,6 +631,26 @@ one, because the first thing it costs is the prospect's trust on the call.
 the work that "on select homes, restrictions apply" usually does. Keep both halves if the terms
 vary by home or lease length.
 
+## The coordinates in the structured data
+
+`geo` on the `ApartmentComplex` block is **30.402911, -95.692062**, taken on 2026-11-20 from the
+pin on the property's own Google Business Profile, which is the verified location and the only
+source worth using.
+
+They replace a pair that had been in the file since October, carried over from whatever the
+neighbourhood map was centred on at the time: **30.40151, -95.69559**, which is **373 m away**
+&mdash; 156 m south and 339 m west of the real pin. That is the width of the whole community and
+then some, and it had been telling Google the property sits somewhere it does not.
+
+Six decimal places is about 0.1 m. More than that is noise: the pin was given to fifteen, and the
+extra digits describe a point inside a brick.
+
+**Never guess this pair, and never take it from a map embed.** If it has to be replaced, get it
+from the Business Profile again: open the property in Google Maps, right-click the pin, and the
+latitude and longitude are the first item in the menu. A wrong `geo` is worse than none at all,
+because it overrides the geocoding Google would otherwise do from the address and does so with
+more confidence than the address alone would carry.
+
 ## The home page, in order
 
 1. **Hero** &mdash; headline, paragraph, the included line, two buttons.
