@@ -575,12 +575,18 @@ height on every screen for the whole visit.
 
 Two other pieces carry the same offer:
 
-- **`<section class="specials">`** on `index.html` (between the fact strip and the pitch) and on
-  `floor-plans.html` (directly under the two plans, where the prices are). A cream-on-green card
-  with the brass **Move-In Specials** seal, the headline **Up to 4 Weeks Free**, the line about
-  the application fee, and the tour and phone buttons. The seal and the brass numeral are lifted
-  from the printed flyer deliberately, so somebody who saw that recognises the page as the same
-  offer.
+- **`<section class="specials">`** directly under the fact strip on `index.html`, and under the
+  two plans on `floor-plans.html` where the prices are. A green card on sand: the headline
+  **Up to 4 Weeks Free** in brass, the application-fee line, a gold **Schedule a Tour** button,
+  and the phone number under it as an underlined text link rather than a second button, so the
+  tour is unmistakably the primary action. The circular **Move-In Specials** seal that used to
+  sit on the left is gone: it was the one piece of the page borrowed wholesale from the printed
+  flyer, and without it the card is quieter and reads in one pass.
+
+  The headline is `white-space: nowrap` above 1020px and wraps normally below. Two concrete
+  numbers decide that breakpoint: at 1021px the card is still side by side and the headline
+  measures about 430px against a body column of roughly 560px, so it fits; under it the card
+  stacks and nowrap would push a phone sideways.
 - **`<dialog class="welcome">`** on `index.html` only: a cream card over a dimmed page, 1.4
   seconds after arrival, once per browser session.
 
@@ -621,6 +627,38 @@ one, because the first thing it costs is the prospect's trust on the call.
 **The wording carries its own qualifier.** "Up to" and "ask about our leasing specials" are doing
 the work that "on select homes, restrictions apply" usually does. Keep both halves if the terms
 vary by home or lease length.
+
+## The home page, in order
+
+1. **Hero** &mdash; headline, paragraph, the included line, two buttons.
+2. **Fact strip** &mdash; laundry, homes, space, schools.
+3. **Leasing special.**
+4. **The community** &mdash; one paragraph and the living-room photograph.
+5. **Floor plans** and starting prices.
+6. **Community features** &mdash; the amenity list, on forest green.
+7. **The neighborhood.**
+8. **Gallery preview.**
+9. **Leasing made simple** &mdash; three steps from tour to keys.
+10. **FAQs.**
+11. **Final tour invitation** (`.cta-band`).
+
+Two sections were collapsed into this on 2026-11-20. "Why Creekside Haven" opened with the
+paragraph and photograph now at 4 and then ran three benefit cards &mdash; More room, Quieter
+living, Convenient location &mdash; whose text restated the floor plans at 5, the amenity list
+at 6 and the whole neighbourhood section at 7. The cards are gone and the intro stands alone,
+lifted above the floor plans so the first photograph of an actual interior arrives early
+instead of a third of the way down. "What you get" became **Community features** and lost its
+lead paragraph, which listed dining areas, laundry, storage and parking immediately above a
+list that said the same things with icons.
+
+**The included line in the hero** (`.hero-includes`) carries the four utilities. It is in the
+brass tint `.eyebrow` already uses, so it reads as part of the hero rather than a banner
+dropped into it.
+
+Nothing in the gap between 1 and 11 is load-bearing for the others, so a section can be cut
+without breaking a layout. The one thing to keep in mind is the background alternation &mdash;
+green, sand, white, sand, forest, white, sand, white, sand, moss &mdash; which only looks
+deliberate while the sections alternate.
 
 ## The link preview image
 
@@ -750,6 +788,19 @@ trash being included. It now reads water and sewer.
 
 A `grep -riE 'the office|leasing (specialist|team|office)|valet'` over `*.html` should come back
 empty; it covers meta tags, which reading the pages does not.
+
+## The tour form says what happens next
+
+Above the submit button: **"We will contact you to confirm a tour time."** The brief for this
+line read "Our leasing team will contact you", and that phrasing cannot go on this site &mdash;
+see **No leasing office** below. "Leasing team" was one of the ten references removed on
+2026-10-23 for exactly this reason. The first person plural is what the rest of the site uses
+and says the same thing.
+
+Preferred tour date and target move-in date are labelled **(optional)**, with the same
+`.field-opt` span the message field already used. Neither ever carried `required`, so this
+changes nothing about validation &mdash; it changes what a prospect believes before they decide
+whether to start filling the form in.
 
 ## Wiring up the forms
 
