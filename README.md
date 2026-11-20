@@ -699,9 +699,13 @@ none of them ever confirmed:
 
 - "we can hold a home while paperwork clears" (the corporate leasing card)
 - "may still be approved with an additional deposit" (the credit FAQ)
-- "Once your application is approved and the administrative fee is paid, the home is held for
-  your agreed move-in date" &mdash; which was also the last live reference anywhere on the site
-  to an administrative fee that does not exist.
+The third, "Can I hold a specific home?", was cut with them and then restored the same day with
+the policy the property actually has: **approval plus the deposit**, not an administrative fee.
+That answer had been the last live reference anywhere on the site to a fee that does not exist,
+and it survived the earlier admin-fee sweep because it sat inside an FAQ answer rather than in
+the fees list. Grep `apply.html` for the fee names, not just the fees section, if this comes up
+again. The answer does not repeat the $750 figure: it is stated once, in the fees list, with its
+own subject-to-change note, and a second copy would drift.
 
 **The application fee credit is conditional.** The special credits the $45 back when the
 applicant meets the terms of the special, not simply on approval. Every place that mentions it
