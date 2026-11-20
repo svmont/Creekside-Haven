@@ -564,6 +564,24 @@ Two things found while wiring it up that are worth keeping:
   not drive bidding, but they inflate the headline figure. Judge the campaign on `tour_request`
   and `phone_click` alone.
 
+## The leasing special bar
+
+`.promo-bar` sits above the sticky header on all seven pages: **"Up to 4 Weeks Free! Ask about
+our leasing specials"**, linking to `contact.html`. The whole bar is the link, not a few words of
+it &mdash; a concession is the reason someone calls, so the target should be large.
+
+It is above the header rather than inside it so that it scrolls away once read instead of eating
+height on every screen for the whole visit.
+
+**A special has an end date and the website will not remember it.** When this one finishes,
+remove the `<a class="promo-bar">` block from all seven pages; the CSS can stay. A concession
+advertised after it has expired is worse than never having advertised one, because the first
+thing it costs is the prospect's trust on the call.
+
+**The wording carries its own qualifier.** "Up to" and "ask about our leasing specials" are doing
+the work that "on select homes, restrictions apply" usually does. Keep both halves if the terms
+vary by home or lease length.
+
 ## The link preview image
 
 `assets/share-og.jpg`, 1200&times;630, referenced by `og:image` on all seven pages along with

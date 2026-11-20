@@ -119,6 +119,24 @@ p + p { margin-top: .9rem; }
 .btn-row { display: flex; flex-wrap: wrap; gap: .8rem; }
 
 /* ------------------------------- Header -------------------------------- */
+/* Leasing special. Sits above the sticky header rather than inside it, so it
+   scrolls away once read and does not eat height on every screen. The whole
+   bar is the link: a concession is the reason someone calls, so the target
+   should be larger than a few words of it. */
+.promo-bar {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: .25rem .6rem;
+  background: var(--grad-brass); color: var(--ink);
+  padding: .62rem 1.25rem; text-align: center;
+  font-size: .95rem; text-decoration: none;
+}
+.promo-bar strong { font-weight: 800; }
+.promo-bar span { font-weight: 500; }
+.promo-bar__go { transition: transform .2s ease; }
+.promo-bar:hover .promo-bar__go,
+.promo-bar:focus-visible .promo-bar__go { transform: translateX(3px); }
+@media (max-width: 480px) { .promo-bar { font-size: .85rem; padding: .55rem 1rem; } }
+
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255, 253, 249, .92);
@@ -859,6 +877,9 @@ p + p { margin-top: .9rem; }
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
   .btn:hover, .card:hover, .plan-card:hover, .shot:hover { transform: none; }
+  .promo-bar__go,
+  .promo-bar:hover .promo-bar__go,
+  .promo-bar:focus-visible .promo-bar__go { transform: none; transition: none; }
   .gallery-section .shot img,
   .gallery-section .shot:hover img,
   .gallery-section .shot:focus-visible img { transform: none; transition: none; }
