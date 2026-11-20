@@ -693,6 +693,22 @@ The voice that replaced them is first person &mdash; "ask us", "we will confirm"
 message" &mdash; which is what the rest of the site already used. Contact is the phone number and
 the email in the footer, and the tour form.
 
+**No holding a home, and no approval-with-a-bigger-deposit.** Three claims came off
+`apply.html` on 2026-11-20, all of them commitments a prospect could hold the property to and
+none of them ever confirmed:
+
+- "we can hold a home while paperwork clears" (the corporate leasing card)
+- "may still be approved with an additional deposit" (the credit FAQ)
+- "Once your application is approved and the administrative fee is paid, the home is held for
+  your agreed move-in date" &mdash; which was also the last live reference anywhere on the site
+  to an administrative fee that does not exist.
+
+**The application fee credit is conditional.** The special credits the $45 back when the
+applicant meets the terms of the special, not simply on approval. Every place that mentions it
+says so: the specials card on `index.html` and `floor-plans.html`, the fee line on `apply.html`,
+and the "Is the application fee refundable?" answer. If the wording is ever shortened to
+"credited back on approval" it becomes a promise the property has not made.
+
 **No valet trash.** The "What is included in rent?" answer on `index.html` used to say water,
 sewer and valet trash were billed monthly, which also contradicted its own first sentence about
 trash being included. It now reads water and sewer.
