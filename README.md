@@ -920,22 +920,27 @@ Before launch: update `robots.txt` and `sitemap.xml` with the real domain, add t
 Google Business Profile and the ILS listings (Apartments.com, Zillow, etc.), and add analytics
 plus call tracking if leasing wants attribution per source.
 
-### Never re-run a failed Pages run &mdash; dispatch a fresh one
+### Why the workflow has two jobs
 
-On 2026-11-20 the deploy for `17978c9` failed with:
+`deploy-pages` asks the artifact API for the artifact `upload-pages-artifact` has just finished
+writing, and that index is eventually consistent. On 2026-11-20 it answered **"Found 0
+artifact(s)"** twice in one afternoon, for `17978c9` and for `3089b06`, each time seconds after
+a log line saying the upload had succeeded:
 
 > Fetching artifact metadata failed. &hellip; No artifacts named "github-pages" were found for
 > this workflow run.
 
-That is GitHub's own read-back of an upload that had just succeeded, and the message itself says
-to re-run. Re-running the failed job made it worse: the job uploads the artifact, so attempt two
-uploaded a *second* `github-pages` artifact into the same run, and `deploy-pages` failed again
-for the opposite reason &mdash; "Multiple artifacts named github-pages were unexpectedly found.
-Artifact count is 2." That run can now never go green, however many times it is re-run.
+Both steps used to live in a single `deploy` job. Splitting them into `build` and `deploy` puts
+the whole of the build job's teardown between the write and the read, and it makes a re-run safe,
+which it was not before: re-running the old single job uploaded a *second* artifact named
+`github-pages` into the same run, and `deploy-pages` then failed on the opposite error &mdash;
+"Multiple artifacts named github-pages were unexpectedly found. Artifact count is 2." A run that
+reaches that state can never go green, however many times it is re-run. That is what happened to
+`17978c9`, and why its content shipped on the back of the next push instead.
 
-The upload and the deploy live in one job here, so **re-running a failed run of this workflow is
-always wrong.** Start a new run instead: push a commit, or trigger `workflow_dispatch`, which
-this workflow accepts.
+**If a deploy fails now**, re-run the failed `deploy` job. It uploads nothing, so the re-run is
+idempotent. If `build` is the job that failed, push a commit or trigger `workflow_dispatch`
+instead of re-running &mdash; the old hazard applies to any job that does the upload.
 
 ## Regenerating the pages
 
