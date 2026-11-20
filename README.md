@@ -723,6 +723,16 @@ It now appears in three places that must stay in step: the FAQ answer on `index.
 `amenityFeature` entries in the JSON-LD, and the amenity lists on `index.html` and
 `floor-plans.html` (which are duplicates of each other &mdash; change both).
 
+**Lease terms are 12 to 18 months.** The home page FAQ said 7 to 15 until 2026-11-20, which
+was a placeholder and which advertised a short-term option the property does not offer. The
+question is still worded "Do you offer short-term leases?", because people search for that, but
+the answer now opens by saying the shortest lease is 12 months rather than leaving them to work
+it out from a range.
+
+**Pets are welcome, and the copy says so.** The two pet answers used to open "Pets are
+considered", which reads like a tribunal. They open with the welcome now. The fees, weight limits
+and breed restrictions stay in both &mdash; they are real, and management sets them.
+
 **No valet trash.** The "What is included in rent?" answer on `index.html` used to say water,
 sewer and valet trash were billed monthly, which also contradicted its own first sentence about
 trash being included. It now reads water and sewer.
