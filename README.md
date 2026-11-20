@@ -723,6 +723,17 @@ It now appears in three places that must stay in step: the FAQ answer on `index.
 `amenityFeature` entries in the JSON-LD, and the amenity lists on `index.html` and
 `floor-plans.html` (which are duplicates of each other &mdash; change both).
 
+**"We have homes available now" is a dated claim.** The "When can I move in?" answer on
+`index.html` says so as of 2026-11-20, on the property's word, and it converts far better than
+the hedge it replaced. It is also the one line on the site that can quietly become untrue
+without anyone touching the repository. Check it whenever the special is reviewed; if the
+community fills up, the honest fallback is the shape of the old answer &mdash; what is open and
+what is coming up &mdash; not silence.
+
+The second half of the answer, scheduling a move-in date further out, is deliberately worded as
+*scheduling*, not *holding*. Holding a specific home needs approval and the deposit; see the
+apply.html FAQ. Do not let the two blur.
+
 **Lease terms are 12 to 18 months.** The home page FAQ said 7 to 15 until 2026-11-20, which
 was a placeholder and which advertised a short-term option the property does not offer. The
 question is still worded "Do you offer short-term leases?", because people search for that, but
